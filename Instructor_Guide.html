@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Trip, My Book — Instructor Guide</title>
+<style>
+  :root{
+    --paper:#F5F2E9;
+    --card:#FFFFFF;
+    --ink:#232A2E;
+    --ink-soft:#4B565C;
+    --slate:#22333B;
+    --slate-deep:#16232A;
+    --clay:#B5651D;
+    --clay-tint:#F3E4D3;
+    --brass:#C79A4E;
+    --rule:#DAD4C5;
+    --shadow:0 1px 0 rgba(22,35,42,.04), 0 10px 30px -18px rgba(22,35,42,.45);
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0; background:var(--paper); color:var(--ink-soft);
+    font-family:"Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    font-size:18px; line-height:1.62;
+  }
+  .sheet{max-width:840px; margin:0 auto; padding:0 32px 90px;}
+
+  /* Masthead */
+  .masthead{
+    background:radial-gradient(120% 160% at 15% 0%, #2c4149, var(--slate) 55%, var(--slate-deep));
+    color:#EDE7D8; margin:0 -32px 8px; padding:44px 36px 30px;
+    border-bottom:5px solid var(--brass); position:relative;
+  }
+  .badge{
+    display:inline-block; font-size:12.5px; letter-spacing:.14em; text-transform:uppercase;
+    background:var(--clay); color:#fff; padding:5px 12px; border-radius:3px; margin-bottom:14px;
+    font-weight:600;
+  }
+  .masthead h1{font-size:clamp(28px,5vw,42px); margin:0 0 6px; line-height:1.08;}
+  .masthead p{margin:0; color:#C9C2AC; font-size:16px;}
+
+  h2{
+    color:var(--slate); font-size:24px; margin:40px 0 6px;
+    padding-bottom:8px; border-bottom:2px solid var(--rule);
+  }
+  h3{color:var(--slate); font-size:19px; margin:26px 0 6px;}
+  p{margin:10px 0;}
+  strong{color:var(--ink);}
+  a{color:var(--clay);}
+
+  ol,ul{padding-left:24px;}
+  li{margin:7px 0;}
+
+  code{
+    background:var(--clay-tint); color:#7A3D0F; padding:1px 6px; border-radius:4px;
+    font-family:"Courier New",ui-monospace,monospace; font-size:.92em;
+  }
+
+  .note{
+    background:var(--clay-tint); border-left:4px solid var(--clay);
+    padding:10px 16px; margin:8px 0 14px; border-radius:0 6px 6px 0;
+    font-size:16px; color:#5C3B1A;
+  }
+  .note strong{color:#5C3B1A;}
+
+  blockquote{
+    background:var(--card); border:1px solid var(--rule); border-left:4px solid var(--brass);
+    padding:14px 18px; margin:14px 0; border-radius:0 8px 8px 0; box-shadow:var(--shadow);
+    font-size:17px; color:var(--ink);
+  }
+
+  .callout{
+    background:var(--card); border:1px solid var(--rule); border-radius:10px;
+    padding:18px 22px; margin:16px 0; box-shadow:var(--shadow);
+  }
+
+  table{width:100%; border-collapse:collapse; margin:14px 0;}
+  td{padding:6px 4px; border-bottom:1px solid var(--rule); vertical-align:top;}
+
+  .checklist{list-style:none; padding-left:0;}
+  .checklist li{
+    padding-left:32px; position:relative; margin:9px 0;
+  }
+  .checklist li::before{
+    content:"☐"; position:absolute; left:0; top:0; font-size:19px; color:var(--slate);
+  }
+
+  .toc{
+    background:var(--card); border:1px solid var(--rule); border-radius:10px;
+    padding:18px 24px 20px; margin:18px 0 8px; box-shadow:var(--shadow);
+  }
+  .toc-title{
+    margin:0 0 8px; font-size:13px; letter-spacing:.12em; text-transform:uppercase;
+    color:var(--clay); font-weight:700;
+  }
+  .toc ol{
+    columns:2; column-gap:28px; margin:0; padding-left:20px; counter-reset:toc;
+  }
+  .toc li{margin:4px 0; break-inside:avoid; font-size:16px;}
+  .toc a{color:var(--slate); text-decoration:none;}
+  .toc a:hover{text-decoration:underline; color:var(--clay);}
+
+  .printbtn{
+    position:sticky; top:14px; float:right; margin:14px 0 0;
+    background:var(--slate); color:#fff; border:none; padding:9px 16px;
+    border-radius:6px; font-size:14px; cursor:pointer; box-shadow:var(--shadow);
+  }
+  .printbtn:hover{background:var(--slate-deep);}
+
+  hr{border:none; border-top:1px solid var(--rule); margin:30px 0;}
+
+  /* Side TOC panel */
+  .side-toc{
+    position:fixed; top:0; left:0; width:250px; height:100vh; overflow-y:auto;
+    background:linear-gradient(180deg, var(--slate), var(--slate-deep) 70%);
+    padding:26px 20px 30px; box-sizing:border-box; z-index:50;
+    border-right:3px solid var(--brass);
+  }
+  .side-toc-title{
+    font-size:11.5px; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--brass); font-weight:700; margin:0 0 14px 6px;
+  }
+  .side-toc nav ol{list-style:none; margin:0; padding:0; counter-reset:none;}
+  .side-toc nav li{margin:0;}
+  .side-toc nav a{
+    display:block; color:#C9C2AC; text-decoration:none; font-size:14.5px;
+    line-height:1.35; padding:8px 10px 8px 12px; margin:1px 0; border-radius:6px;
+    border-left:3px solid transparent; transition:background .15s, color .15s, border-color .15s;
+  }
+  .side-toc nav a:hover{background:rgba(237,231,216,.08); color:#EDE7D8;}
+  .side-toc nav a.active{
+    background:rgba(199,154,78,.16); color:#F3E4D3; border-left-color:var(--brass); font-weight:600;
+  }
+  .side-toc-toggle{
+    display:none; position:fixed; top:14px; left:14px; z-index:60;
+    background:var(--slate); color:#EDE7D8; border:none; width:42px; height:42px;
+    border-radius:8px; font-size:18px; cursor:pointer; box-shadow:var(--shadow);
+  }
+  .side-toc-backdrop{display:none;}
+  body.has-side-toc .sheet{margin-left:290px;}
+  body.has-side-toc .toc{display:none;}
+
+  @media (max-width:900px){
+    .side-toc{transform:translateX(-100%); transition:transform .2s ease; box-shadow:0 0 40px rgba(0,0,0,.4);}
+    body.side-open .side-toc{transform:translateX(0);}
+    .side-toc-toggle{display:block;}
+    body.has-side-toc .sheet{margin-left:0; padding-top:64px;}
+    body.side-open .side-toc-backdrop{
+      display:block; position:fixed; inset:0; background:rgba(0,0,0,.4); z-index:45;
+    }
+  }
+
+  @media print{
+    .side-toc, .side-toc-toggle, .side-toc-backdrop{display:none !important;}
+    body.has-side-toc .sheet{margin-left:0;}
+    .printbtn{display:none;}
+    body{background:#fff; font-size:12pt;}
+    .masthead{margin:0; padding:26px 0 18px; background:none !important; color:var(--ink) !important; border-bottom:2px solid var(--ink);}
+    .badge{background:none; color:var(--ink); border:1px solid var(--ink);}
+    .masthead p{color:var(--ink-soft);}
+    h2{page-break-after:avoid;}
+    .callout, blockquote, ul, ol, table, .toc{page-break-inside:avoid;}
+    h2{page-break-before:always;}
+    .masthead + h2{page-break-before:auto;}
+  }
+</style>
+</head>
+<body class="has-side-toc">
+
+<button class="side-toc-toggle" id="sideTocToggle" aria-label="Open contents menu">☰</button>
+<div class="side-toc-backdrop" id="sideTocBackdrop"></div>
+<aside class="side-toc" id="sideToc">
+  <p class="side-toc-title">Contents</p>
+  <nav>
+    <ol>
+      <li><a href="#the-goal" data-target="the-goal">The goal</a></li>
+      <li><a href="#how-it-works-the-whole-idea" data-target="how-it-works-the-whole-idea">How it works — the whole idea</a></li>
+      <li><a href="#what-youll-use" data-target="what-youll-use">What you'll use</a></li>
+      <li><a href="#who-and-how" data-target="who-and-how">Who and how</a></li>
+      <li><a href="#setting-up-each-students-project" data-target="setting-up-each-students-project">Setting up each student's project</a></li>
+      <li><a href="#before-the-first-class-note-to-students" data-target="before-the-first-class-note-to-students">Before the first class — note to students</a></li>
+      <li><a href="#the-four-steps" data-target="the-four-steps">The four steps</a></li>
+      <li><a href="#step-1-start-your-book-and-add-all-your-photos" data-target="step-1-start-your-book-and-add-all-your-photos">Step 1 — Start &amp; add photos</a></li>
+      <li><a href="#step-2-add-your-words-claude-asks-you" data-target="step-2-add-your-words-claude-asks-you">Step 2 — Add your words</a></li>
+      <li><a href="#step-3-put-it-in-order-and-polish" data-target="step-3-put-it-in-order-and-polish">Step 3 — Order &amp; polish</a></li>
+      <li><a href="#step-4-download-and-share-it" data-target="step-4-download-and-share-it">Step 4 — Download &amp; share</a></li>
+      <li><a href="#running-this-as-3-steps" data-target="running-this-as-3-steps">Running this as 3 steps</a></li>
+      <li><a href="#words-to-help-students-remember-give-out-in-steps-1-amp-3" data-target="words-to-help-students-remember-give-out-in-steps-1-amp-3">Words to help students remember</a></li>
+      <li><a href="#facilitator-checklist" data-target="facilitator-checklist">Facilitator checklist</a></li>
+    </ol>
+  </nav>
+</aside>
+
+<div class="sheet">
+
+  <div class="masthead">
+    <button class="printbtn" onclick="window.print()">⎙ Print / Save as PDF</button>
+    <span class="badge">Facilitator Copy</span>
+    <h1>My Trip, My Book</h1>
+    <p>Instructor Guide — a photo trip-book class for seniors, 4 steps (adaptable to 3)</p>
+  </div>
+
+<nav class="toc">
+<p class="toc-title">Contents</p>
+<ol>
+  <li><a href="#the-goal">The goal</a></li>
+  <li><a href="#how-it-works-the-whole-idea">How it works — the whole idea</a></li>
+  <li><a href="#what-youll-use">What you'll use</a></li>
+  <li><a href="#who-and-how">Who and how</a></li>
+  <li><a href="#setting-up-each-students-project">Setting up each student's project</a></li>
+  <li><a href="#before-the-first-class-note-to-students">Before the first class — note to students</a></li>
+  <li><a href="#the-four-steps">The four steps</a></li>
+  <li><a href="#step-1-start-your-book-and-add-all-your-photos">Step 1 — Start your book and add all your photos</a></li>
+  <li><a href="#step-2-add-your-words-claude-asks-you">Step 2 — Add your words (Claude asks you)</a></li>
+  <li><a href="#step-3-put-it-in-order-and-polish">Step 3 — Put it in order and polish</a></li>
+  <li><a href="#step-4-download-and-share-it">Step 4 — Download and share it</a></li>
+  <li><a href="#running-this-as-3-steps">Running this as 3 steps</a></li>
+  <li><a href="#words-to-help-students-remember-give-out-in-steps-1-amp-3">Words to help students remember (give out in Steps 1 &amp; 3)</a></li>
+  <li><a href="#facilitator-checklist">Facilitator checklist</a></li>
+</ol>
+</nav>
+
+  <div class="note"><strong>This is the facilitator copy.</strong> It has everything you need to run the class — setup, step scripts with teacher notes, and checklists. Hand students the separate <strong>Student Handbook</strong>: same steps, plain language, no notes.</div>
+
+
+  <h2 id="the-goal">The goal</h2>
+  <p>By the end, each student has a <strong>trip book</strong> that:</p>
+  <ol>
+    <li><strong>Flips like a real book</strong> — tap or click to turn the pages.</li>
+    <li><strong>Lives in Claude</strong> — they add to it by uploading photos from any phone or laptop, and can <strong>download</strong> the finished book any time.</li>
+  </ol>
+  <p>There is <strong>no separate app or tool to install</strong>. The student talks to Claude, uploads photos with the <strong>+</strong> button, and Claude builds and updates the book directly.</p>
+
+  <h2 id="how-it-works-the-whole-idea">How it works — the whole idea</h2>
+  <ol>
+    <li>Student gets their own <strong>Claude Project</strong>, set up once in Step 1 by a helper.
+      <div class="note">This is where the book-building rules live — the student never sees or touches them.</div>
+    </li>
+    <li>Inside that project, the student starts a chat and clicks <strong>+</strong> to upload photos (phone, tablet, or computer — anywhere).</li>
+    <li>Claude <strong>adds each photo as a new page</strong> in the flippable trip book.</li>
+    <li>Claude <strong>shows each photo in turn and asks about it</strong>; the student gives a line by typing or talking. <em>(Optional.)</em></li>
+    <li>The book updates on screen. The student can <strong>flip through it</strong> and <strong>download it</strong> any time.</li>
+  </ol>
+  <p>Because uploading uses the chat <strong>+</strong>, students can add photos between steps, from home, from their phone — they just reopen their project and continue.</p>
+
+  <h2 id="what-youll-use">What you'll use</h2>
+  <ul>
+    <li><strong>Claude</strong> (claude.ai), open in a web browser — one <strong>Project</strong> per student.</li>
+    <li><code>trip_book_spec.md</code> — the build spec, attached once to each student's project Context in Step 1.</li>
+    <li>The <strong>"Start my book" line</strong> below, to begin each student's book.</li>
+    <li><code>San_Francisco_demo_book.html</code> — a finished example to show the goal on day one.</li>
+  </ul>
+
+  <h2 id="who-and-how">Who and how</h2>
+  <ul>
+    <li><strong>Group size:</strong> 6–10 students. Aim for 1 helper per 3–4 students.</li>
+    <li><strong>Step length:</strong> 90 minutes with a short break.</li>
+    <li><strong>Devices:</strong> a laptop, tablet, or phone per student — anything that opens Claude in a browser.</li>
+    <li><strong>Room:</strong> a projector for demos; good lighting; water.</li>
+  </ul>
+  <div class="note"><strong>The setup steps:</strong> students create their own Claude account and Project — this is a real, if short, learning task, so budget 10–15 minutes per student and have helpers ready to sit with anyone who gets stuck, especially at phone verification (below).</div>
+
+  <h2 id="setting-up-each-students-project">Setting up each student's project</h2>
+  <div class="note">Students do this themselves, with a helper alongside. Do this before photos go in — either as a pre-step slot or as the start of Step 1.</div>
+
+  <h3>Part 1 — Create a Claude account</h3>
+  <ol>
+    <li>Open a browser and go to <strong>claude.ai</strong>.</li>
+    <li>Click <strong>Sign up</strong>. Choose <strong>"Continue with Google"</strong> (fastest, if they have a Google/Gmail account) or <strong>"Continue with email"</strong>.</li>
+    <li>If using email: enter the email address, then check that inbox for a message from Claude and click the verification link (or enter the code shown).</li>
+    <li>Enter a <strong>phone number</strong> and request a code.
+      <div class="note"><strong>This step trips people up — read carefully.</strong> Anthropic requires phone verification for every new account, with no way to skip it. It must be a real mobile number that can receive text messages. Landlines, Google Voice, and other app-generated numbers are rejected. A personal mobile phone is the safest bet.</div>
+    </li>
+    <li>Enter the 6-digit code that arrives by text message within a minute or two.</li>
+    <li>Once the Claude chat screen appears, the account is ready.</li>
+  </ol>
+
+  <h3>Part 2 — Create a Project</h3>
+  <ol>
+    <li>Click <strong>Projects</strong> in the left-hand menu (or go to claude.ai/projects).</li>
+    <li>Click <strong>+ New Project</strong>.</li>
+    <li>Name it after the trip (e.g. "Italy 2019") and confirm.</li>
+  </ol>
+
+  <h3>Part 3 — Attach the spec file</h3>
+  <ol>
+    <li>Inside the project, find the <strong>Context</strong> section (right side of the project page) and click <strong>+</strong> to add content.</li>
+    <li>Choose <code>trip_book_spec.md</code> from wherever it was saved on the student's device.
+      <div class="note">Students need this file <em>on their own device</em> before this step — it doesn't come with their account. Email it to every student ahead of Step 1 (have them save the attachment to Downloads or Photos), or hand it out in class via a shared link or USB stick.</div>
+    </li>
+  </ol>
+
+  <h3>Start my book — paste this into the chat</h3>
+  <blockquote>"Please start my flip-through trip book. The title is <strong>[trip name]</strong> and the dates are <strong>[dates]</strong>. I'll upload all my photos with the + button now."</blockquote>
+  <p>This is pasted once the project and spec file are set up — see the Step 1 script below. After this, students just upload photos — the rules already attached to the project handle the rest (adding pages, asking about each photo, skip logic, facts, sizing.)</p>
+
+  <h2 id="before-the-first-class-note-to-students">Before the first class — note to students</h2>
+  <blockquote>Bring your photos on your phone (or wherever they are). Pick one trip, and think of a title and the dates. You do not need to move the photos anywhere first — we'll upload them straight from your phone in class. You'll also need a mobile phone that can receive text messages, even if you're working on a laptop — it's used once, to verify your new account.</blockquote>
+
+  <hr>
+
+  <h1 style="font-size:28px; color:var(--slate);" id="the-four-steps">The four steps</h1>
+  <div class="note">Each numbered step is a plain instruction to say to the student. Say one, wait until they've done it, then say the next. The shaded notes below steps are for you — don't read them aloud.</div>
+
+  <h2 id="step-1-start-your-book-and-add-all-your-photos">Step 1 — Start your book and add all your photos</h2>
+  <ol>
+    <li>Open Claude in the browser and create the student's account and Project together — see "Setting up each student's project" above. <span style="color:var(--clay);">(Budget 10–15 minutes; have the spec file ready to hand over.)</span></li>
+    <li>Watch the example book on the big screen. (Flip through the San Francisco demo.)</li>
+    <li>Open the Project and start a new chat. Paste the Start my book line with the trip name and dates. Press Enter. <span style="color:var(--clay);">(Helper pastes it.)</span></li>
+    <li>Click the + at the bottom of the chat.</li>
+    <li>Choose <strong>4–6 photos</strong> to start with. <span style="color:var(--clay);">(Hold Ctrl and click on 4–6, or tap each one on a phone. Steer them away from "Select All" — on a phone that can mean their whole camera roll. A handful is plenty to see the book take shape; more can go in afterward.)</span></li>
+    <li>Send them. Wait — each photo becomes a page in your book.</li>
+    <li>Need more? Click + again and add the rest.</li>
+    <li>Flip through your book on the screen.</li>
+  </ol>
+  <div class="note">Don't add words yet — that's next step. If a phone won't upload, open Claude in the phone's own browser and use + there. The account, project, and spec file are only set up once — Steps 2–4 just reopen the same project.</div>
+
+  <h2 id="step-2-add-your-words-claude-asks-you">Step 2 — Add your words (Claude asks you)</h2>
+  <ol>
+    <li>Open Claude, open your Project, and continue your chat.</li>
+    <li>Claude will go through your photos one at a time — showing you each photo and asking about it.</li>
+    <li>For the photo on screen, tell Claude the place and a line about it — type it, or use your device's microphone to talk.</li>
+    <li>Not sure what to say? Ask Claude: "Give me a question to help me remember this one."</li>
+    <li>Don't want words on a photo? Just say "skip." <span style="color:var(--clay);">(Claude will name the place and add a short description and a fact for you.)</span></li>
+    <li>Flip through and read your book.</li>
+  </ol>
+  <div class="note">All words are optional — a photo-only book is fine. For skipped photos, Claude figures out the place and adds a line plus a fact about any well-known landmark. Students can also add more photos from home anytime with the + button.</div>
+
+  <h2 id="step-3-put-it-in-order-and-polish">Step 3 — Put it in order and polish</h2>
+  <ol>
+    <li>Open Claude, open your Project, and continue your chat.</li>
+    <li>To change the order, tell Claude: "Move the bridge photo to the front."</li>
+    <li>To take one out, tell Claude: "Remove the blurry photo on page 4."</li>
+    <li>Want a fact on a page? Ask Claude: "Add a fact about the Cliffs of Moher."</li>
+    <li>See a small <strong>"confirm venue"</strong> tag on a photo? Claude wasn't sure of the spot — tell it the real place and it'll update the page: "That's actually Fisherman's Wharf."</li>
+    <li>Fix any wording: "Change the line on the castle photo to…"</li>
+    <li>Flip through and check it reads the way you want.</li>
+  </ol>
+  <div class="note">Once every photo in the book has a confirmed location, the closing page automatically gets a small route map — one more reason to clear any "confirm venue" tags.</div>
+
+  <h2 id="step-4-download-and-share-it">Step 4 — Download and share it</h2>
+  <ol>
+    <li>Open Claude, open your Project, and continue your chat.</li>
+    <li>Flip through your finished book one more time.</li>
+    <li>To keep your own copy: click Download on the book. (It saves as one file with all the photos inside.)</li>
+    <li>To send it to family, pick one: tell Claude "Give me a link I can share" (you publish it, then send the link), or attach the downloaded file to an email.</li>
+    <li>Show the class your cover and one favourite page.</li>
+  </ol>
+  <div class="note">Students download nothing unless they want a copy of their own. You can publish each book as a link to share with family.</div>
+
+  <h2 id="running-this-as-3-steps">Running this as 3 steps</h2>
+  <ul>
+    <li><strong>Step 1</strong> — Start the book and upload all your photos.</li>
+    <li><strong>Step 2</strong> — Add your words (Claude asks about each photo) and put them in order.</li>
+    <li><strong>Step 3</strong> — Download and share.</li>
+  </ul>
+
+  <hr>
+
+  <h2 id="words-to-help-students-remember-give-out-in-steps-1-amp-3">Words to help students remember (give out in Steps 1 &amp; 3)</h2>
+  <p>Students don't need fancy words. One true sentence is plenty. Finish one of these for a photo:</p>
+  <ul>
+    <li>"This was the moment we…"</li>
+    <li>"I'll always remember the…"</li>
+    <li>"We didn't expect…"</li>
+    <li>"The best part of this day was…"</li>
+    <li>"We laughed because…"</li>
+    <li>"This is where we…"</li>
+  </ul>
+  <p>Or students can just ask Claude: "Give me a question about this photo."</p>
+
+  <h2 id="facilitator-checklist">Facilitator checklist</h2>
+  <h3>Before each step</h3>
+  <ul class="checklist">
+    <li>(Before Step 1) <code>trip_book_spec.md</code> emailed to every student, or ready on a shared link / USB stick</li>
+    <li>(Before Step 1) Students reminded to bring a mobile phone that can receive text messages, even if working on a laptop</li>
+    <li>The example book ready on the projector</li>
+    <li>The "Start my book" line ready to paste</li>
+    <li>Handouts printed in large type</li>
+    <li>Helpers briefed: guide, don't take over</li>
+  </ul>
+  <h3>Watch for</h3>
+  <ul class="checklist">
+    <li>Phone verification stalls — wrong number type (landline, Google Voice, VoIP), or the code takes a few minutes to arrive</li>
+    <li>Students who don't have the spec file saved on their device yet when they reach "attach to Context"</li>
+    <li>Trouble uploading photos from a phone — open Claude in the phone's own browser and use + there</li>
+    <li>A "confirm venue" tag left on a page — remind the student to just tell Claude the real place</li>
+    <li>Quiet students who are stuck — circulate and check screens</li>
+    <li>Remind students they can add photos from home anytime, by reopening their project</li>
+  </ul>
+
+</div>
+
+<script>
+(function(){
+  var links = Array.prototype.slice.call(document.querySelectorAll('.side-toc a'));
+  var sections = links.map(function(a){ return document.getElementById(a.getAttribute('data-target')); }).filter(Boolean);
+  var toggle = document.getElementById('sideTocToggle');
+  var backdrop = document.getElementById('sideTocBackdrop');
+  var body = document.body;
+
+  function setActive(id){
+    links.forEach(function(a){
+      a.classList.toggle('active', a.getAttribute('data-target') === id);
+    });
+  }
+
+  function closeSide(){ body.classList.remove('side-open'); }
+  function openSide(){ body.classList.add('side-open'); }
+
+  toggle.addEventListener('click', function(){
+    body.classList.contains('side-open') ? closeSide() : openSide();
+  });
+  backdrop.addEventListener('click', closeSide);
+  links.forEach(function(a){ a.addEventListener('click', closeSide); });
+
+  if ('IntersectionObserver' in window){
+    var observer = new IntersectionObserver(function(entries){
+      var visible = entries.filter(function(e){ return e.isIntersecting; });
+      if (visible.length){
+        visible.sort(function(a,b){ return a.boundingClientRect.top - b.boundingClientRect.top; });
+        setActive(visible[0].target.id);
+      }
+    }, { rootMargin: '-15% 0px -70% 0px', threshold: 0 });
+    sections.forEach(function(s){ observer.observe(s); });
+  } else if (sections.length){
+    setActive(sections[0].id);
+  }
+})();
+</script>
+</body>
+</html>

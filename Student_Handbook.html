@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Trip, My Book — Your Handbook</title>
+<style>
+  :root{
+    --paper:#FBF6EC;
+    --card:#FFFFFF;
+    --ink:#203A3F;
+    --ink-soft:#3C5256;
+    --teal:#1E6E72;
+    --teal-deep:#17585B;
+    --amber:#CF7A1E;
+    --amber-tint:#FAEBD2;
+    --teal-tint:#E4EFEE;
+    --rule:#D8CDB8;
+    --shadow:0 1px 0 rgba(32,58,63,.04), 0 10px 30px -18px rgba(32,58,63,.35);
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0; background:var(--paper); color:var(--ink-soft);
+    font-family:"Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    font-size:21px; line-height:1.68;
+  }
+  .sheet{max-width:820px; margin:0 auto; padding:0 36px 90px;}
+
+  .cover{
+    position:relative; border:2px solid var(--ink); border-radius:14px;
+    background:radial-gradient(circle at 18% 120%, var(--teal-tint), transparent 60%), var(--card);
+    padding:40px 36px 32px; margin:32px 0 26px; box-shadow:var(--shadow);
+  }
+  .stamp{
+    position:absolute; top:26px; right:30px; width:64px; height:78px;
+    border:2px dashed var(--amber); border-radius:4px; display:flex; align-items:center;
+    justify-content:center; color:var(--amber); font-size:12px; font-weight:700;
+    letter-spacing:.05em; text-align:center; transform:rotate(6deg);
+  }
+  .cover h1{font-size:clamp(30px,6vw,44px); color:var(--teal-deep); margin:0 0 8px; line-height:1.08;}
+  .cover p{margin:0; color:var(--ink-soft); font-size:19px;}
+
+  h2{
+    color:var(--teal-deep); font-size:25px; margin:38px 0 8px;
+    padding-bottom:8px; border-bottom:2px solid var(--rule);
+  }
+  p{margin:10px 0;}
+  strong{color:var(--ink);}
+
+  ol,ul{padding-left:26px;}
+  li{margin:9px 0;}
+
+  .loop-card{
+    background:var(--card); border:1px solid var(--rule); border-radius:12px;
+    padding:22px 26px; margin:14px 0; box-shadow:var(--shadow);
+  }
+  .loop-card ol{margin:8px 0 0;}
+  .loop-card li{margin:10px 0;}
+
+  .tip{
+    background:var(--amber-tint); border-left:4px solid var(--amber);
+    padding:12px 18px; margin:14px 0; border-radius:0 8px 8px 0; color:#6B4610;
+    font-size:19px;
+  }
+
+  code{
+    background:var(--teal-tint); color:var(--teal-deep); padding:2px 8px; border-radius:5px;
+    font-family:"Courier New",ui-monospace,monospace; font-weight:700;
+  }
+
+  .printbtn{
+    position:sticky; top:14px; float:right; margin:14px 0 0;
+    background:var(--teal); color:#fff; border:none; padding:10px 18px;
+    border-radius:8px; font-size:16px; cursor:pointer; box-shadow:var(--shadow);
+  }
+  .printbtn:hover{background:var(--teal-deep);}
+
+  hr{border:none; border-top:1px solid var(--rule); margin:32px 0;}
+
+  /* Side TOC panel */
+  .side-toc{
+    position:fixed; top:0; left:0; width:250px; height:100vh; overflow-y:auto;
+    background:linear-gradient(180deg, var(--teal), var(--teal-deep) 70%);
+    padding:26px 20px 30px; box-sizing:border-box; z-index:50;
+    border-right:3px solid var(--amber);
+  }
+  .side-toc-title{
+    font-size:12px; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--amber-tint); font-weight:700; margin:0 0 14px 6px;
+  }
+  .side-toc nav ol{list-style:none; margin:0; padding:0;}
+  .side-toc nav li{margin:0;}
+  .side-toc nav a{
+    display:block; color:#E4EFEE; text-decoration:none; font-size:15px;
+    line-height:1.35; padding:9px 10px 9px 12px; margin:1px 0; border-radius:6px;
+    border-left:3px solid transparent; transition:background .15s, color .15s, border-color .15s;
+  }
+  .side-toc nav a:hover{background:rgba(255,255,255,.1); color:#fff;}
+  .side-toc nav a.active{
+    background:rgba(207,122,30,.22); color:#fff; border-left-color:var(--amber); font-weight:700;
+  }
+  .side-toc-toggle{
+    display:none; position:fixed; top:14px; left:14px; z-index:60;
+    background:var(--teal); color:#fff; border:none; width:44px; height:44px;
+    border-radius:9px; font-size:19px; cursor:pointer; box-shadow:var(--shadow);
+  }
+  .side-toc-backdrop{display:none;}
+  body.has-side-toc .sheet{margin-left:290px;}
+  body.has-side-toc .toc{display:none;}
+
+  @media (max-width:900px){
+    .side-toc{transform:translateX(-100%); transition:transform .2s ease; box-shadow:0 0 40px rgba(0,0,0,.4);}
+    body.side-open .side-toc{transform:translateX(0);}
+    .side-toc-toggle{display:block;}
+    body.has-side-toc .sheet{margin-left:0; padding-top:68px;}
+    body.side-open .side-toc-backdrop{
+      display:block; position:fixed; inset:0; background:rgba(0,0,0,.4); z-index:45;
+    }
+  }
+
+  .quote-list{list-style:none; padding-left:0;}
+  .quote-list li{
+    background:var(--card); border:1px solid var(--rule); border-radius:8px;
+    padding:12px 18px; margin:8px 0; font-style:italic; color:var(--ink);
+  }
+
+  .toc{
+    background:var(--card); border:1px solid var(--rule); border-radius:12px;
+    padding:20px 26px 22px; margin:20px 0 8px; box-shadow:var(--shadow);
+  }
+  .toc-title{
+    margin:0 0 8px; font-size:14px; letter-spacing:.12em; text-transform:uppercase;
+    color:var(--amber); font-weight:700;
+  }
+  .toc ol{margin:0; padding-left:22px;}
+  .toc li{margin:6px 0; font-size:18px;}
+  .toc a{color:var(--teal-deep); text-decoration:none;}
+  .toc a:hover{text-decoration:underline; color:var(--amber);}
+
+  @media print{
+    .side-toc, .side-toc-toggle, .side-toc-backdrop{display:none !important;}
+    body.has-side-toc .sheet{margin-left:0;}
+    .printbtn{display:none;}
+    body{background:#fff; font-size:13pt;}
+    .cover{box-shadow:none;}
+    h2{page-break-after:avoid;}
+    .loop-card, .tip, ul, ol, .toc{page-break-inside:avoid;}
+  }
+</style>
+</head>
+<body class="has-side-toc">
+
+<button class="side-toc-toggle" id="sideTocToggle" aria-label="Open contents menu">☰</button>
+<div class="side-toc-backdrop" id="sideTocBackdrop"></div>
+<aside class="side-toc" id="sideToc">
+  <p class="side-toc-title">Contents</p>
+  <nav>
+    <ol>
+      <li><a href="#getting-set-up" data-target="getting-set-up">Getting set up</a></li>
+      <li><a href="#the-simple-loop" data-target="the-simple-loop">The simple loop</a></li>
+      <li><a href="#step-1-start-your-book-and-add-your-photos" data-target="step-1-start-your-book-and-add-your-photos">Step 1 — Start &amp; add photos</a></li>
+      <li><a href="#step-2-add-your-words" data-target="step-2-add-your-words">Step 2 — Add your words</a></li>
+      <li><a href="#step-3-put-it-in-order-and-polish" data-target="step-3-put-it-in-order-and-polish">Step 3 — Order &amp; polish</a></li>
+      <li><a href="#step-4-download-and-share-it" data-target="step-4-download-and-share-it">Step 4 — Download &amp; share</a></li>
+      <li><a href="#words-to-help-you-remember" data-target="words-to-help-you-remember">Words to help you remember</a></li>
+      <li><a href="#how-to-share-your-book" data-target="how-to-share-your-book">How to share your book</a></li>
+      <li><a href="#a-few-things-to-remember" data-target="a-few-things-to-remember">A few things to remember</a></li>
+    </ol>
+  </nav>
+</aside>
+
+<div class="sheet">
+
+  <button class="printbtn" onclick="window.print()">⎙ Print / Save as PDF</button>
+
+  <div class="cover">
+    <div class="stamp">MY<br>TRIP</div>
+    <h1>My Trip, My Book</h1>
+    <p>Your handbook — print large, yours to keep and write on.</p>
+  </div>
+
+<nav class="toc">
+<p class="toc-title">Contents</p>
+<ol>
+  <li><a href="#getting-set-up">Getting set up</a></li>
+  <li><a href="#the-simple-loop">The simple loop</a></li>
+  <li><a href="#step-1-start-your-book-and-add-your-photos">Step 1 — Start your book and add your photos</a></li>
+  <li><a href="#step-2-add-your-words">Step 2 — Add your words</a></li>
+  <li><a href="#step-3-put-it-in-order-and-polish">Step 3 — Put it in order and polish</a></li>
+  <li><a href="#step-4-download-and-share-it">Step 4 — Download and share it</a></li>
+  <li><a href="#words-to-help-you-remember">Words to help you remember</a></li>
+  <li><a href="#how-to-share-your-book">How to share your book</a></li>
+  <li><a href="#a-few-things-to-remember">A few things to remember</a></li>
+</ol>
+</nav>
+
+  <p>You are going to make a little <strong>book about one of your trips</strong> — your photos, in the order you choose, with a few of your own words next to each one. You'll be able to <strong>flip through it</strong> like a real book, and <strong>send it</strong> to your family.</p>
+  <p>No special app to install. If you've ever put photos in an album or a shoebox, you already have every skill you need.</p>
+  <div class="tip"><strong>If anything goes too fast, say so.</strong> That's not you being difficult — that's you helping. A helper is right there with you.</div>
+
+  <h2 id="getting-set-up">Getting set up</h2>
+  <p>Before you start your book, you'll create your own free Claude account and a Project to keep it in. Your helper will sit with you — take it one step at a time.</p>
+
+  <h3>1. Create your account</h3>
+  <div class="loop-card">
+    <ol>
+      <li>Go to <strong>claude.ai</strong> in your browser.</li>
+      <li>Click <strong>Sign up</strong>.</li>
+      <li>Choose <strong>"Continue with Google"</strong> if you have a Gmail address — it's the quickest way. Otherwise choose <strong>"Continue with email"</strong> and type your email address.</li>
+      <li>If you used email: check your inbox for a message from Claude and click the link inside it (or type in the code it shows you).</li>
+      <li>Type in your <strong>mobile phone number</strong> when asked, and click to get a code.</li>
+      <li>A text message will arrive with a 6-digit code. Type that code in.</li>
+    </ol>
+  </div>
+  <div class="tip">The phone number step is required for everyone — it's how Claude checks you're a real person. It needs to be a <strong>mobile</strong> number that can receive text messages (not a home phone). This only happens once.</div>
+
+  <h3>2. Create your Project</h3>
+  <div class="loop-card">
+    <ol>
+      <li>Look for <strong>Projects</strong> in the menu and click it.</li>
+      <li>Click <strong>+ New Project</strong>.</li>
+      <li>Type a name for your trip (like "Italy 2019") and confirm.</li>
+    </ol>
+  </div>
+
+  <h3>3. Add the rules file</h3>
+  <div class="loop-card">
+    <ol>
+      <li>Your helper will give you a small file called <code>trip_book_spec.md</code> — by email, a link, or a USB stick. Save it somewhere on your device you can find again, like Downloads.</li>
+      <li>Inside your new Project, find the <strong>Context</strong> area and click <strong>+</strong>.</li>
+      <li>Choose the <code>trip_book_spec.md</code> file you saved.</li>
+    </ol>
+  </div>
+  <p>That's it — your project now knows how to build your book. You won't need to touch this file again.</p>
+
+  <h2 id="the-simple-loop">The simple loop</h2>
+  <p>This is the whole thing. Once you know this, you know the class.</p>
+  <div class="loop-card">
+    <ol>
+      <li>Open <strong>Claude</strong> in your browser and open your <strong>Project</strong>.</li>
+      <li>Continue your chat inside it.</li>
+      <li>Click <strong>+</strong> at the bottom of the chat.</li>
+      <li>Choose a <strong>photo</strong>. Claude adds it as a page.</li>
+      <li>Tell Claude a <strong>line</strong> to go with it — type or talk. <em>(Optional.)</em></li>
+      <li>Repeat for each photo.</li>
+      <li><strong>Flip</strong> through your book any time.</li>
+      <li>Click <strong>Download</strong> to keep a copy.</li>
+    </ol>
+  </div>
+  <p>You can add photos from <strong>anywhere</strong> — even your phone at home. Just open your project and click <strong>+</strong>.</p>
+
+  <hr>
+
+  <h2 id="step-1-start-your-book-and-add-your-photos">Step 1 — Start your book and add your photos</h2>
+  <ol>
+    <li>Open <strong>Claude</strong> in your browser and go to your Project. <em>(Already set up? Skip to step 2.)</em></li>
+    <li>Watch the example book on the big screen.</li>
+    <li>Tell Claude the <strong>name</strong> of your trip and the <strong>dates</strong>.</li>
+    <li>Click the <strong>+</strong> at the bottom of the chat.</li>
+    <li>Choose <strong>4–6 photos</strong> to start with. <em>(On a phone, tap each one — no need to grab your whole camera roll.)</em></li>
+    <li>Send them. Watch each one become a page.</li>
+    <li>Flip through your book on the screen.</li>
+  </ol>
+  <div class="tip">Don't add words yet — that's next step.</div>
+
+  <h2 id="step-2-add-your-words">Step 2 — Add your words</h2>
+  <ol>
+    <li>Open Claude, open your project, and continue your chat.</li>
+    <li>Claude will show you each photo, one at a time, and ask about it.</li>
+    <li>Tell Claude the <strong>place</strong> and a <strong>line</strong> about it — type it, or talk.</li>
+    <li>Not sure what to say? Ask Claude: <em>"Give me a question to help me remember this one."</em></li>
+    <li>Don't want words on a photo? Just say <strong>"skip."</strong> Claude will add a short description for you.</li>
+    <li>Flip through and read your book.</li>
+  </ol>
+  <div class="tip">Words are optional — a photo-only book is fine too.</div>
+
+  <h2 id="step-3-put-it-in-order-and-polish">Step 3 — Put it in order and polish</h2>
+  <ol>
+    <li>Open Claude, open your project, and continue your chat.</li>
+    <li>To change the order: <em>"Move the bridge photo to the front."</em></li>
+    <li>To take one out: <em>"Remove the blurry photo on page 4."</em></li>
+    <li>Want a fact on a page? Ask: <em>"Add a fact about the Cliffs of Moher."</em></li>
+    <li>See a little <strong>"confirm venue"</strong> tag on a photo? Claude guessed the spot — just tell it the real place: <em>"That's actually Fisherman's Wharf."</em></li>
+    <li>To fix wording: <em>"Change the line on the castle photo to…"</em></li>
+    <li>Flip through and check it reads the way you want.</li>
+  </ol>
+  <div class="tip">Once every photo's spot is confirmed, your closing page gets a bonus map of your whole route.</div>
+
+  <h2 id="step-4-download-and-share-it">Step 4 — Download and share it</h2>
+  <ol>
+    <li>Open Claude, open your project, and continue your chat.</li>
+    <li>Flip through your finished book one more time.</li>
+    <li>Click <strong>Download</strong> to keep your own copy. It saves as one file, photos inside.</li>
+    <li>To send it to family: ask Claude for a <strong>share link</strong>, or attach the downloaded file to an email.</li>
+    <li>Show the class your cover and one favourite page!</li>
+  </ol>
+
+  <hr>
+
+  <h2 id="words-to-help-you-remember">Words to help you remember</h2>
+  <p>You don't need fancy words. One true sentence is plenty. Finish one of these for a photo:</p>
+  <ul class="quote-list">
+    <li>"This was the moment we…"</li>
+    <li>"I'll always remember the…"</li>
+    <li>"We didn't expect…"</li>
+    <li>"The best part of this day was…"</li>
+    <li>"We laughed because…"</li>
+    <li>"This is where we…"</li>
+  </ul>
+  <p>Or just ask Claude: <em>"Give me a question about this photo."</em></p>
+
+  <h2 id="how-to-share-your-book">How to share your book</h2>
+  <p>Your book lives in Claude. You can:</p>
+  <ul>
+    <li><strong>Flip through it</strong> any time in your chat.</li>
+    <li><strong>Download it</strong> as one file (photos inside) to keep or email.</li>
+    <li><strong>Get a share link</strong> — ask your instructor to publish it, then send the link to family.</li>
+  </ul>
+  <p>To email the file: start an email, attach the file, send. The other person opens it to flip through.</p>
+  <div class="tip">If your email won't let the file through, send the share link instead, or copy the file onto a memory stick.</div>
+
+  <h2 id="a-few-things-to-remember">A few things to remember</h2>
+  <ul>
+    <li>Always open the <strong>same project</strong> — that's where your book lives.</li>
+    <li>You can add photos from <strong>home, on your phone</strong>, any time.</li>
+    <li>Nothing is permanent until you say so. Ask Claude to change anything.</li>
+    <li>This book is <strong>yours</strong>.</li>
+  </ul>
+
+</div>
+
+<script>
+(function(){
+  var links = Array.prototype.slice.call(document.querySelectorAll('.side-toc a'));
+  var sections = links.map(function(a){ return document.getElementById(a.getAttribute('data-target')); }).filter(Boolean);
+  var toggle = document.getElementById('sideTocToggle');
+  var backdrop = document.getElementById('sideTocBackdrop');
+  var body = document.body;
+
+  function setActive(id){
+    links.forEach(function(a){
+      a.classList.toggle('active', a.getAttribute('data-target') === id);
+    });
+  }
+
+  function closeSide(){ body.classList.remove('side-open'); }
+  function openSide(){ body.classList.add('side-open'); }
+
+  toggle.addEventListener('click', function(){
+    body.classList.contains('side-open') ? closeSide() : openSide();
+  });
+  backdrop.addEventListener('click', closeSide);
+  links.forEach(function(a){ a.addEventListener('click', closeSide); });
+
+  if ('IntersectionObserver' in window){
+    var observer = new IntersectionObserver(function(entries){
+      var visible = entries.filter(function(e){ return e.isIntersecting; });
+      if (visible.length){
+        visible.sort(function(a,b){ return a.boundingClientRect.top - b.boundingClientRect.top; });
+        setActive(visible[0].target.id);
+      }
+    }, { rootMargin: '-15% 0px -70% 0px', threshold: 0 });
+    sections.forEach(function(s){ observer.observe(s); });
+  } else if (sections.length){
+    setActive(sections[0].id);
+  }
+})();
+</script>
+</body>
+</html>
