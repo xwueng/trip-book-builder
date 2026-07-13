@@ -1,25 +1,28 @@
-# My Trip, My Book — Class Guides
+# My Trip Book — Class Guides
 
-Facilitation materials for **My Trip, My Book**, a photo trip-book class that runs entirely inside Claude — no separate app to install.
+Facilitation materials for **My Trip Book**, a photo trip-book class that runs entirely inside Claude — no separate app to install.
 
 ## What's in this repo
 
-| File | What it's for | Who it's for |
+| File / folder | What it's for | Who it's for |
 |---|---|---|
 | [`Instructor_Guide.html`](./Instructor_Guide.html) | Full facilitator copy — setup, step-by-step scripts, teacher notes, checklists | Instructors / helpers |
 | [`Student_Handbook.html`](./Student_Handbook.html) | Same steps, plain language, no notes — printable for students | Students |
 | [`trip_book_spec.md`](./trip_book_spec.md) | The build spec attached to each student's Claude Project — tells Claude how to build their trip book | Attached to student projects (not meant to be read as a guide) |
+| [`San_Francisco_demo_book.html`](./San_Francisco_demo_book.html) | Finished example trip book, flipped through on the projector on day one to show the goal | Instructors (demo only) |
+| [`Demo Photos/`](./Demo%20Photos) | Source photos used to build the San Francisco demo book | Instructors (reference only, not needed by students) |
 
 ## Viewing the guides
 
-The two HTML guides are hosted live via **GitHub Pages**, so they open directly in a browser with full formatting, the sidebar contents menu, and the "Print / Save as PDF" button all working:
+The HTML files are hosted live via **GitHub Pages**, so they open directly in a browser with full formatting, the sidebar contents menu, and the "Print / Save as PDF" button all working:
 
 - **Instructor Guide:** `https://<your-username>.github.io/<repo-name>/Instructor_Guide.html`
 - **Student Handbook:** `https://<your-username>.github.io/<repo-name>/Student_Handbook.html`
+- **San Francisco demo book:** `https://<your-username>.github.io/<repo-name>/San_Francisco_demo_book.html`
 
 (Replace `<your-username>` and `<repo-name>` with your actual GitHub username and this repo's name.)
 
-`trip_book_spec.md` doesn't need Pages — GitHub renders Markdown natively, so [viewing it directly in the repo](./trip_book_spec.md) is enough.
+`trip_book_spec.md` doesn't need Pages — GitHub renders Markdown natively, so [viewing it directly in the repo](./trip_book_spec.md) is enough. The `Demo Photos` folder is just a reference — GitHub shows the images in-browser if you click into the folder, but there's no need for a Pages link to it.
 
 ## Making edits
 
