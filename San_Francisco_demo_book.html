@@ -271,10 +271,13 @@
   var nextBtn = document.getElementById('nextBtn');
   var counter = document.getElementById('counter');
 
-  function render(){
+  var FLIP_MS = 850;      // must match the .page transition duration
+  var settleTimers = {};
+
+  function baseZ(i){ return i < current ? i : (1000 - i); }
+
+  function applyState(){
     pages.forEach(function(p, i){
-      var z = i < current ? i : (1000 - i);
-      p.style.zIndex = z;
       p.classList.toggle('turned', i < current);
     });
     counter.textContent = (current + 1) + ' / ' + total;
@@ -282,8 +285,36 @@
     nextBtn.disabled = current === total - 1;
   }
 
-  function next(){ if (current < total - 1){ current++; render(); } }
-  function prev(){ if (current > 0){ current--; render(); } }
+  function settleZ(){
+    pages.forEach(function(p, i){ p.style.zIndex = baseZ(i); });
+  }
+
+  function render(){ applyState(); settleZ(); }
+
+  function next(){
+    if (current >= total - 1) return;
+    var leaving = current;
+    current++;
+    applyState();
+    settleZ();
+    // Keep the page that's actively turning above the whole book while it
+    // animates, so it arcs over the top instead of sinking behind the stack;
+    // only drop it to its settled (low) z-index once the flip has landed.
+    pages[leaving].style.zIndex = 5000;
+    clearTimeout(settleTimers[leaving]);
+    settleTimers[leaving] = setTimeout(function(){
+      pages[leaving].style.zIndex = baseZ(leaving);
+    }, FLIP_MS);
+  }
+
+  function prev(){
+    if (current <= 0) return;
+    var returning = current - 1;
+    clearTimeout(settleTimers[returning]);
+    current--;
+    applyState();
+    settleZ(); // the returning page is "unturned" now, so it's already on top
+  }
 
   nextBtn.addEventListener('click', next);
   prevBtn.addEventListener('click', prev);
