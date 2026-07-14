@@ -108,6 +108,48 @@ reader doesn't have to manually select/retype it:
   text goes (e.g. "Paste it into the Project instructions box, then tap Save") — never
   leave the reader to infer the destination from the copy step alone.
 
+Collapsible sections (added to both docs): every section — both top-level h2 (and the
+one h1, "The four steps," in the Instructor Guide) and nested h3 subsections (Getting
+set up's Create account / Create Project / Add the rules; Setting up each student's
+project's Part 1–3) — is wrapped in a native `<details class="step-details">` /
+`<summary>` pair, collapsed by default (no `open` attribute). Parent sections whose
+content is itself a set of numbered sub-steps (e.g. "Getting set up," "Setting up each
+student's project," "The four steps") nest their child `<details>` inside their own
+`<div class="step-body">`, so opening the parent reveals a set of still-individually-
+collapsed children — a two-level accordion, not a single flat list. The only headings
+left unwrapped are ones with no id and no sidebar entry that sit inside an already-
+wrapped section (e.g. "Start my book" in the Instructor Guide, "Before each step" /
+"Watch for" inside Facilitator checklist) — wrapping a sub-heading with no id doesn't
+help navigation and would just add another click.
+
+- Markup: `<details class="step-details"><summary><h2 id="...">...</h2><svg
+  class="chevron-icon" ...>...</svg></summary><div class="step-body">...section
+  content...</div></details>`. The heading keeps its existing id and stays the single
+  link to its sidebar entry, exactly as before — collapsing doesn't change the id/
+  sidebar-matching rule above.
+- CSS: `summary` has its native marker hidden (`::-webkit-details-marker{display:none}`
+  / `::marker{content:""}`) and is laid out as a flex row (heading flex:1, chevron
+  fixed) so the whole heading row is clickable. The heading's existing margin/
+  border-bottom moves onto `summary > h2`/`summary > h3`/`summary > h1` (nested
+  selector, covers all three since the Instructor Guide's "The four steps" is an h1),
+  not onto the `<details>` itself. The chevron SVG rotates 90° via `details[open] >
+  summary .chevron-icon{transform:rotate(90deg)}` — a CSS-only transform, no JS needed
+  for the toggle itself (native `<details>` handles open/close). Nested `<details>`
+  inside a parent's `.step-body` get a left border + indent
+  (`details.step-details .step-body details.step-details{margin-left:6px;
+  padding-left:14px; border-left:2px solid var(--rule)}`) to show the accordion depth.
+- No JS is required for the accordion behavior — this is native `<details>` markup.
+  Do not add a click handler for expand/collapse; only the existing copy-to-clipboard
+  and scrollspy scripts remain.
+- Print: `<details>` content must stay visible when printed regardless of collapsed
+  state, so `@media print` forces `details.step-details:not([open]) > *:not(summary)`
+  to `display:block !important` and hides the chevron — printed/PDF output always
+  shows every section expanded (nested included), unaffected by on-screen collapse
+  state.
+- Apply this consistently to both docs wherever a new section (numbered step or not)
+  is added, unless it's an unlinked sub-heading inside an already-wrapped section (see
+  above).
+
 Download-button instructions (desktop + mobile) — status: not currently used by either
 guide. The rules-file step used to instruct downloading trip_book_spec.md and attaching
 it under Context/Project files; that flow has been replaced by the copy-to-clipboard
@@ -190,6 +232,12 @@ Verification checklist before delivering any edit to either guide:
 6. Every `.copy-btn`'s `data-copy-target` matches exactly one `.copy-text` id in the
    same doc, and each doc's copy-to-clipboard `<script>` block is present and unchanged
    unless the copy behavior itself was the point of the edit.
+7. Every section (top-level h2/h1 and nested h3 subsections) is wrapped in
+   `<details class="step-details">` with no `open` attribute (collapsed by default),
+   except unlinked sub-headings with no id inside an already-wrapped section. Each
+   heading's id is unchanged and still inside its `<details>`/`<summary>`, nested
+   parent/child accordions are preserved where they existed, and the `@media print`
+   override still forces collapsed content visible for printing.
 
 Edits: given in plain language — apply to both docs' matching structure/CSS tokens
 (not just one), regenerate, and re-run the verification checklist above before delivering.

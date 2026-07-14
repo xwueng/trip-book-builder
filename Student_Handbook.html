@@ -80,6 +80,26 @@
   .copy-btn.copied{ background:var(--teal); border-color:var(--teal); color:#fff; }
   .copy-icon{ flex-shrink:0; }
 
+  details.step-details{ margin:0; }
+  details.step-details > summary{
+    list-style:none; cursor:pointer; display:flex; align-items:center;
+    justify-content:space-between; gap:12px;
+  }
+  details.step-details > summary::-webkit-details-marker{ display:none; }
+  details.step-details > summary::marker{ content:""; }
+  details.step-details > summary h2{
+    flex:1; margin:26px 0 6px; padding-bottom:8px; border-bottom:2px solid var(--rule);
+  }
+  details.step-details > summary h3{ flex:1; margin:16px 0 6px; }
+  details.step-details > summary:hover h2,
+  details.step-details > summary:hover h3{ color:var(--amber); }
+  details.step-details .chevron-icon{
+    flex-shrink:0; color:var(--amber); transition:transform .18s ease; margin-top:6px;
+  }
+  details.step-details[open] > summary .chevron-icon{ transform:rotate(90deg); }
+  details.step-details > .step-body{ padding-top:2px; }
+  details.step-details .step-body details.step-details{ margin-left:6px; padding-left:14px; border-left:2px solid var(--rule); }
+
   .tip{
     background:var(--amber-tint); border-left:4px solid var(--amber);
     padding:8px 18px; margin:6px 0 10px; border-radius:0 8px 8px 0; color:#6B4610;
@@ -172,6 +192,9 @@
     .cover{box-shadow:none;}
     h2{page-break-after:avoid;}
     .loop-card, .tip, ul, ol, .toc{page-break-inside:avoid;}
+    details.step-details:not([open]) > *:not(summary){display:block !important;}
+    details.step-details .chevron-icon{display:none;}
+    details.step-details > summary{cursor:default;}
   }
 </style>
 </head>
@@ -231,10 +254,20 @@
   <p>You are going to make a little <strong>book about one of your trips</strong> — your photos, in the order you choose, with a few of your own words next to each one. You'll be able to <strong>flip through it</strong> like a real book, and <strong>send it</strong> to your family.</p>
   <p>No special app to install. If you've ever put photos in an album or a shoebox, you already have every skill you need.</p>
 
-  <h2 id="getting-set-up">Getting set up</h2>
+  <details class="step-details">
+  <summary>
+    <h2 id="getting-set-up">Getting set up</h2>
+    <svg class="chevron-icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M6 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </summary>
+  <div class="step-body">
   <p>Before you start your book, you'll create your own free Claude account and a Project to keep it in. Your helper will sit with you — take it one step at a time.</p>
 
-  <h3 id="create-your-account">1. Create your account</h3>
+  <details class="step-details">
+  <summary>
+    <h3 id="create-your-account">1. Create your account</h3>
+    <svg class="chevron-icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M6 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </summary>
+  <div class="step-body">
   <div class="loop-card">
     <ol>
       <li>Go to <strong>claude.ai</strong> in your browser.</li>
@@ -244,8 +277,15 @@
     </ol>
   </div>
   <div class="tip">The phone number step only applies if you signed up with <strong>email</strong> — it's how Claude checks you're a real person in that case. It needs to be a <strong>mobile</strong> number that can receive text messages (not a home phone). If you signed up with <strong>Google</strong>, you can skip straight to the next step.</div>
+  </div>
+  </details>
 
-  <h3 id="create-your-project">2. Create your Project</h3>
+  <details class="step-details">
+  <summary>
+    <h3 id="create-your-project">2. Create your Project</h3>
+    <svg class="chevron-icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M6 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </summary>
+  <div class="step-body">
   <div class="loop-card">
     <ol>
       <li>Look for <strong>Projects</strong> in the menu and click it.</li>
@@ -253,8 +293,15 @@
       <li>Type a name for your trip (like "Italy 2019") and confirm.</li>
     </ol>
   </div>
+  </div>
+  </details>
 
-  <h3 id="add-the-rules-file">3. Add the rules</h3>
+  <details class="step-details">
+  <summary>
+    <h3 id="add-the-rules-file">3. Add the rules</h3>
+    <svg class="chevron-icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M6 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </summary>
+  <div class="step-body">
   <div class="loop-card">
     <ol>
       <li>Inside your new Project, find <strong>Project instructions</strong> (same name on desktop and the mobile app) and click into the box.</li>
@@ -273,8 +320,17 @@
     </ol>
   </div>
   <p>That's it — your project now knows how to build your book. You won't need to touch this again.</p>
+  </div>
+  </details>
+  </div>
+  </details>
 
-  <h2 id="the-simple-loop">The simple loop</h2>
+  <details class="step-details">
+  <summary>
+    <h2 id="the-simple-loop">The simple loop</h2>
+    <svg class="chevron-icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M6 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </summary>
+  <div class="step-body">
   <p>This is the whole thing. Once you know this, you know the class.</p>
   <div class="loop-card">
     <ol>
@@ -289,10 +345,17 @@
     </ol>
   </div>
   <p>You can add photos from <strong>anywhere</strong> — even your phone at home. Just open your project and click <strong>+</strong>.</p>
+  </div>
+  </details>
 
   <hr>
 
-  <h2 id="step-1-start-your-book-and-add-your-photos">Step 1 — Start your book and add your photos</h2>
+  <details class="step-details">
+  <summary>
+    <h2 id="step-1-start-your-book-and-add-your-photos">Step 1 — Start your book and add your photos</h2>
+    <svg class="chevron-icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M6 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </summary>
+  <div class="step-body">
   <ol>
     <li>Open <strong>Claude</strong> in your browser and go to your Project. <em>(Already set up? Skip to step 2.)</em></li>
     <li>Watch the example book on the big screen.</li>
@@ -302,7 +365,14 @@
     <li>Send them. Watch each one become a page.</li>
     <li>Flip through your book on the screen.</li>
   </ol>
-  <h2 id="step-2-add-your-words">Step 2 — Add your words</h2>
+  </div>
+  </details>
+  <details class="step-details">
+  <summary>
+    <h2 id="step-2-add-your-words">Step 2 — Add your words</h2>
+    <svg class="chevron-icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M6 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </summary>
+  <div class="step-body">
   <ol>
     <li>Open Claude, open your project, and continue your chat.</li>
     <li>Claude will show you each photo, one at a time, and ask about it.</li>
@@ -312,8 +382,14 @@
     <li>Flip through and read your book.</li>
   </ol>
   <div class="tip">Words are optional — a photo-only book is fine too.</div>
-
-  <h2 id="step-3-put-it-in-order-and-polish">Step 3 — Put it in order and polish</h2>
+  </div>
+  </details>
+  <details class="step-details">
+  <summary>
+    <h2 id="step-3-put-it-in-order-and-polish">Step 3 — Put it in order and polish</h2>
+    <svg class="chevron-icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M6 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </summary>
+  <div class="step-body">
   <ol>
     <li>Open Claude, open your project, and continue your chat.</li>
     <li>To change the order: <em>"Move the bridge photo to the front."</em></li>
@@ -324,8 +400,14 @@
     <li>Flip through and check it reads the way you want.</li>
   </ol>
   <div class="tip">Once every photo's spot is confirmed, your closing page gets a bonus map of your whole route.</div>
-
-  <h2 id="step-4-download-and-share-it">Step 4 — Download and share it</h2>
+  </div>
+  </details>
+  <details class="step-details">
+  <summary>
+    <h2 id="step-4-download-and-share-it">Step 4 — Download and share it</h2>
+    <svg class="chevron-icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M6 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </summary>
+  <div class="step-body">
   <ol>
     <li>Open Claude, open your project, and continue your chat.</li>
     <li>Flip through your finished book one more time.</li>
@@ -333,10 +415,17 @@
     <li>To send it to family: ask Claude for a <strong>share link</strong>, or attach the downloaded file to an email.</li>
     <li>Show the class your cover and one favourite page!</li>
   </ol>
+  </div>
+  </details>
 
   <hr>
 
-  <h2 id="words-to-help-you-remember">Words to help you remember</h2>
+  <details class="step-details">
+  <summary>
+    <h2 id="words-to-help-you-remember">Words to help you remember</h2>
+    <svg class="chevron-icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M6 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </summary>
+  <div class="step-body">
   <p>You don't need fancy words. One true sentence is plenty. Finish one of these for a photo:</p>
   <ul class="quote-list">
     <li>"This was the moment we…"</li>
@@ -347,8 +436,15 @@
     <li>"This is where we…"</li>
   </ul>
   <p>Or just ask Claude: <em>"Give me a question about this photo."</em></p>
+  </div>
+  </details>
 
-  <h2 id="how-to-share-your-book">How to share your book</h2>
+  <details class="step-details">
+  <summary>
+    <h2 id="how-to-share-your-book">How to share your book</h2>
+    <svg class="chevron-icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M6 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </summary>
+  <div class="step-body">
   <p>Your book lives in Claude. You can:</p>
   <ul>
     <li><strong>Flip through it</strong> any time in your chat.</li>
@@ -357,14 +453,23 @@
   </ul>
   <p>To email the file: start an email, attach the file, send. The other person opens it to flip through.</p>
   <div class="tip">If your email won't let the file through, send the share link instead, or copy the file onto a memory stick.</div>
+  </div>
+  </details>
 
-  <h2 id="a-few-things-to-remember">A few things to remember</h2>
+  <details class="step-details">
+  <summary>
+    <h2 id="a-few-things-to-remember">A few things to remember</h2>
+    <svg class="chevron-icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M6 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </summary>
+  <div class="step-body">
   <ul>
     <li>Always open the <strong>same project</strong> — that's where your book lives.</li>
     <li>You can add photos from <strong>home, on your phone</strong>, any time.</li>
     <li>Nothing is permanent until you say so. Ask Claude to change anything.</li>
     <li>This book is <strong>yours</strong>.</li>
   </ul>
+  </div>
+  </details>
 
 </div>
 

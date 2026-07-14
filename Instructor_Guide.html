@@ -84,6 +84,28 @@
   .copy-btn.copied{ background:var(--slate); border-color:var(--slate); color:#fff; }
   .copy-icon{ flex-shrink:0; }
 
+  details.step-details{ margin:0; }
+  details.step-details > summary{
+    list-style:none; cursor:pointer; display:flex; align-items:center;
+    justify-content:space-between; gap:12px;
+  }
+  details.step-details > summary::-webkit-details-marker{ display:none; }
+  details.step-details > summary::marker{ content:""; }
+  details.step-details > summary h2{
+    flex:1; margin:26px 0 6px; padding-bottom:8px; border-bottom:2px solid var(--rule);
+  }
+  details.step-details > summary h3{ flex:1; margin:16px 0 6px; }
+  details.step-details > summary h1{ flex:1; margin:26px 0 6px !important; }
+  details.step-details > summary:hover h2,
+  details.step-details > summary:hover h3,
+  details.step-details > summary:hover h1{ color:var(--clay); }
+  details.step-details .chevron-icon{
+    flex-shrink:0; color:var(--brass); transition:transform .18s ease; margin-top:6px;
+  }
+  details.step-details[open] > summary .chevron-icon{ transform:rotate(90deg); }
+  details.step-details > .step-body{ padding-top:2px; }
+  details.step-details .step-body details.step-details{ margin-left:6px; padding-left:14px; border-left:2px solid var(--rule); }
+
   blockquote{
     background:var(--card); border:1px solid var(--rule); border-left:4px solid var(--brass);
     padding:12px 18px; margin:10px 0; border-radius:0 8px 8px 0; box-shadow:var(--shadow);
@@ -187,6 +209,9 @@
     .callout, blockquote, ul, ol, table, .toc{page-break-inside:avoid;}
     h2{page-break-before:always;}
     .masthead + h2{page-break-before:auto;}
+    details.step-details:not([open]) > *:not(summary){display:block !important;}
+    details.step-details .chevron-icon{display:none;}
+    details.step-details > summary{cursor:default;}
   }
 </style>
 </head>
@@ -254,15 +279,27 @@
 
   <div class="note"><strong>This is the facilitator copy.</strong> It has everything you need to run the class — setup, step scripts with teacher notes, and checklists. Hand students the separate <strong>Student Handbook</strong>: same steps, plain language, no notes.</div>
 
-  <h2 id="the-goal">The goal</h2>
+  <details class="step-details">
+  <summary>
+    <h2 id="the-goal">The goal</h2>
+    <svg class="chevron-icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M6 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </summary>
+  <div class="step-body">
   <p>By the end, each student has a <strong>trip book</strong> that:</p>
   <ol>
     <li><strong>Flips like a real book</strong> — tap or click to turn the pages.</li>
     <li><strong>Lives in Claude</strong> — they add to it by uploading photos from any phone or laptop, and can <strong>download</strong> the finished book any time.</li>
   </ol>
   <p>There is <strong>no separate app or tool to install</strong>. The student talks to Claude, uploads photos with the <strong>+</strong> button, and Claude builds and updates the book directly.</p>
+  </div>
+  </details>
 
-  <h2 id="how-it-works-the-whole-idea">How it works — the whole idea</h2>
+  <details class="step-details">
+  <summary>
+    <h2 id="how-it-works-the-whole-idea">How it works — the whole idea</h2>
+    <svg class="chevron-icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M6 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </summary>
+  <div class="step-body">
   <ol>
     <li>Student gets their own <strong>Claude Project</strong>, set up once in Step 1 by a helper.
       <div class="note">This is where the book-building rules live — the student never sees or touches them.</div>
@@ -273,16 +310,30 @@
     <li>The book updates on screen. The student can <strong>flip through it</strong> and <strong>download it</strong> any time.</li>
   </ol>
   <p>Because uploading uses the chat <strong>+</strong>, students can add photos between steps, from home, from their phone — they just reopen their project and continue.</p>
+  </div>
+  </details>
 
-  <h2 id="what-youll-use">What you'll use</h2>
+  <details class="step-details">
+  <summary>
+    <h2 id="what-youll-use">What you'll use</h2>
+    <svg class="chevron-icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M6 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </summary>
+  <div class="step-body">
   <ul>
     <li><strong>Claude</strong> (claude.ai), open in a web browser — one <strong>Project</strong> per student.</li>
     <li><a href="https://github.com/xwueng/trip-book-builder/blob/main/trip_book_spec.md" target="_blank" rel="noopener"><code>trip_book_spec.md</code></a> — the build spec; students point their project at it with a one-line paste into Project instructions in Step 1.</li>
     <li>The <strong>"Start my book" line</strong> below, to begin each student's book.</li>
     <li><a href="https://github.com/xwueng/trip-book-builder/blob/main/San_Francisco_demo_book.html" target="_blank" rel="noopener"><code>San_Francisco_demo_book.html</code></a> — a finished example to show the goal on day one.</li>
   </ul>
+  </div>
+  </details>
 
-  <h2 id="who-and-how">Who and how</h2>
+  <details class="step-details">
+  <summary>
+    <h2 id="who-and-how">Who and how</h2>
+    <svg class="chevron-icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M6 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </summary>
+  <div class="step-body">
   <ul>
     <li><strong>Group size:</strong> 6–10 students. Aim for 1 helper per 3–4 students.</li>
     <li><strong>Step length:</strong> 90 minutes with a short break.</li>
@@ -290,11 +341,23 @@
     <li><strong>Room:</strong> a projector for demos; good lighting; water.</li>
   </ul>
   <div class="note"><strong>The setup steps:</strong> students create their own Claude account and Project — this is a real, if short, learning task, so budget 10–15 minutes per student and have helpers ready to sit with anyone who gets stuck, especially at phone verification (below).</div>
+  </div>
+  </details>
 
-  <h2 id="setting-up-each-students-project">Setting up each student's project</h2>
+  <details class="step-details">
+  <summary>
+    <h2 id="setting-up-each-students-project">Setting up each student's project</h2>
+    <svg class="chevron-icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M6 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </summary>
+  <div class="step-body">
   <div class="note">Students do this themselves, with a helper alongside. Do this before photos go in — either as a pre-step slot or as the start of Step 1.</div>
 
-  <h3 id="part-1-create-a-claude-account">Part 1 — Create a Claude account</h3>
+  <details class="step-details">
+  <summary>
+    <h3 id="part-1-create-a-claude-account">Part 1 — Create a Claude account</h3>
+    <svg class="chevron-icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M6 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </summary>
+  <div class="step-body">
   <ol>
     <li>Open a browser and go to <strong>claude.ai</strong>.</li>
     <li>Click <strong>Sign up</strong>. Choose <strong>"Continue with Google"</strong> (fastest, if they have a Google/Gmail account) or <strong>"Continue with email"</strong>.</li>
@@ -303,15 +366,29 @@
     </li>
     <li>Once the Claude chat screen appears, the account is ready.</li>
   </ol>
+  </div>
+  </details>
 
-  <h3 id="part-2-create-a-project">Part 2 — Create a Project</h3>
+  <details class="step-details">
+  <summary>
+    <h3 id="part-2-create-a-project">Part 2 — Create a Project</h3>
+    <svg class="chevron-icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M6 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </summary>
+  <div class="step-body">
   <ol>
     <li>Click <strong>Projects</strong> in the left-hand menu (or go to claude.ai/projects).</li>
     <li>Click <strong>+ New Project</strong>.</li>
     <li>Name it after the trip (e.g. "Italy 2019") and confirm.</li>
   </ol>
+  </div>
+  </details>
 
-  <h3 id="part-3-attach-the-spec-file">Part 3 — Add the rules</h3>
+  <details class="step-details">
+  <summary>
+    <h3 id="part-3-attach-the-spec-file">Part 3 — Add the rules</h3>
+    <svg class="chevron-icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M6 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </summary>
+  <div class="step-body">
   <ol>
     <li>Copy this line exactly as written — click <strong>Copy</strong>, or select it yourself:
       <div class="copy-box">
@@ -328,20 +405,41 @@
       <div class="note">No download or attachment needed — students don't have to save anything to their device for this step.</div>
     </li>
   </ol>
+  </div>
+  </details>
 
   <h3>Start my book — paste this into the chat</h3>
   <blockquote>"Please start my flip-through trip book. The title is <strong>[trip name]</strong> and the dates are <strong>[dates]</strong>. I'll upload all my photos with the + button now."</blockquote>
   <p>This is pasted once the project is set up and the rules are added — see the Step 1 script below. After this, students just upload photos — the rules already in the project's instructions handle the rest (adding pages, asking about each photo, skip logic, facts, sizing).</p>
+  </div>
+  </details>
 
-  <h2 id="before-the-first-class-note-to-students">Before the first class — note to students</h2>
+  <details class="step-details">
+  <summary>
+    <h2 id="before-the-first-class-note-to-students">Before the first class — note to students</h2>
+    <svg class="chevron-icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M6 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </summary>
+  <div class="step-body">
   <blockquote>Bring your photos on your phone (or wherever they are). Pick one trip, and think of a title and the dates. You do not need to move the photos anywhere first — we'll upload them straight from your phone in class. If you don't have a Gmail address to sign up with, bring a mobile phone that can receive text messages, even if you're working on a laptop — it's used once, to verify your new account.</blockquote>
+  </div>
+  </details>
 
   <hr>
 
-  <h1 style="font-size:28px; color:var(--slate);" id="the-four-steps">The four steps</h1>
+  <details class="step-details">
+  <summary>
+    <h1 style="font-size:28px; color:var(--slate); margin:0;" id="the-four-steps">The four steps</h1>
+    <svg class="chevron-icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M6 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </summary>
+  <div class="step-body">
   <div class="note">Each numbered step is a plain instruction to say to the student. Say one, wait until they've done it, then say the next. The shaded notes below steps are for you — don't read them aloud.</div>
 
-  <h2 id="step-1-start-your-book-and-add-all-your-photos">Step 1 — Start your book and add all your photos</h2>
+  <details class="step-details">
+  <summary>
+    <h2 id="step-1-start-your-book-and-add-all-your-photos">Step 1 — Start your book and add all your photos</h2>
+    <svg class="chevron-icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M6 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </summary>
+  <div class="step-body">
   <ol>
     <li>Open Claude in the browser and create the student's account and Project together — see "Setting up each student's project" above. <span style="color:var(--clay);">(Budget 10–15 minutes; have the spec file ready to hand over.)</span></li>
     <li>Watch the example book on the big screen. (Flip through the San Francisco demo.)</li>
@@ -353,8 +451,15 @@
     <li>Flip through your book on the screen.</li>
   </ol>
   <div class="note">If a phone won't upload, open Claude in the phone's own browser and use + there. The account, project, and spec file are only set up once — Steps 2–4 just reopen the same project.</div>
+  </div>
+  </details>
 
-  <h2 id="step-2-add-your-words-claude-asks-you">Step 2 — Add your words (Claude asks you)</h2>
+  <details class="step-details">
+  <summary>
+    <h2 id="step-2-add-your-words-claude-asks-you">Step 2 — Add your words (Claude asks you)</h2>
+    <svg class="chevron-icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M6 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </summary>
+  <div class="step-body">
   <ol>
     <li>Open Claude, open your Project, and continue your chat.</li>
     <li>Claude will go through your photos one at a time — showing you each photo and asking about it.</li>
@@ -364,8 +469,15 @@
     <li>Flip through and read your book.</li>
   </ol>
   <div class="note">All words are optional — a photo-only book is fine. For skipped photos, Claude figures out the place and adds a line plus a fact about any well-known landmark. Students can also add more photos from home anytime with the + button.</div>
+  </div>
+  </details>
 
-  <h2 id="step-3-put-it-in-order-and-polish">Step 3 — Put it in order and polish</h2>
+  <details class="step-details">
+  <summary>
+    <h2 id="step-3-put-it-in-order-and-polish">Step 3 — Put it in order and polish</h2>
+    <svg class="chevron-icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M6 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </summary>
+  <div class="step-body">
   <ol>
     <li>Open Claude, open your Project, and continue your chat.</li>
     <li>To change the order, tell Claude: "Move the bridge photo to the front."</li>
@@ -376,8 +488,15 @@
     <li>Flip through and check it reads the way you want.</li>
   </ol>
   <div class="note">Once every photo in the book has a confirmed location, the closing page automatically gets a small route map — one more reason to clear any "confirm venue" tags.</div>
+  </div>
+  </details>
 
-  <h2 id="step-4-download-and-share-it">Step 4 — Download and share it</h2>
+  <details class="step-details">
+  <summary>
+    <h2 id="step-4-download-and-share-it">Step 4 — Download and share it</h2>
+    <svg class="chevron-icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M6 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </summary>
+  <div class="step-body">
   <ol>
     <li>Open Claude, open your Project, and continue your chat.</li>
     <li>Flip through your finished book one more time.</li>
@@ -386,17 +505,33 @@
     <li>Show the class your cover and one favourite page.</li>
   </ol>
   <div class="note">Students download nothing unless they want a copy of their own. You can publish each book as a link to share with family.</div>
+  </div>
+  </details>
+  </div>
+  </details>
 
-  <h2 id="running-this-as-3-steps">Running this as 3 steps</h2>
+  <details class="step-details">
+  <summary>
+    <h2 id="running-this-as-3-steps">Running this as 3 steps</h2>
+    <svg class="chevron-icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M6 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </summary>
+  <div class="step-body">
   <ul>
     <li><strong>Step 1</strong> — Start the book and upload all your photos.</li>
     <li><strong>Step 2</strong> — Add your words (Claude asks about each photo) and put them in order.</li>
     <li><strong>Step 3</strong> — Download and share.</li>
   </ul>
+  </div>
+  </details>
 
   <hr>
 
-  <h2 id="words-to-help-students-remember-give-out-in-steps-1-amp-3">Words to help students remember (give out in Steps 1 &amp; 3)</h2>
+  <details class="step-details">
+  <summary>
+    <h2 id="words-to-help-students-remember-give-out-in-steps-1-amp-3">Words to help students remember (give out in Steps 1 &amp; 3)</h2>
+    <svg class="chevron-icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M6 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </summary>
+  <div class="step-body">
   <p>Students don't need fancy words. One true sentence is plenty. Finish one of these for a photo:</p>
   <ul>
     <li>"This was the moment we…"</li>
@@ -407,8 +542,15 @@
     <li>"This is where we…"</li>
   </ul>
   <p>Or students can just ask Claude: "Give me a question about this photo."</p>
+  </div>
+  </details>
 
-  <h2 id="facilitator-checklist">Facilitator checklist</h2>
+  <details class="step-details">
+  <summary>
+    <h2 id="facilitator-checklist">Facilitator checklist</h2>
+    <svg class="chevron-icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M6 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </summary>
+  <div class="step-body">
   <h3>Before each step</h3>
   <ul class="checklist">
     <li>(Before Step 1) The Project-instructions paste line (pointing to <a href="https://github.com/xwueng/trip-book-builder/blob/main/trip_book_spec.md" target="_blank" rel="noopener"><code>trip_book_spec.md</code></a>) ready to share with every student</li>
@@ -428,6 +570,8 @@
     <li>Quiet students who are stuck — circulate and check screens</li>
     <li>Remind students they can add photos from home anytime, by reopening their project</li>
   </ul>
+  </div>
+  </details>
 
 </div>
 
