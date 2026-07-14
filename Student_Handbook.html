@@ -82,8 +82,7 @@
 
   details.step-details{ margin:0; }
   details.step-details > summary{
-    list-style:none; cursor:pointer; display:flex; align-items:center;
-    justify-content:space-between; gap:12px;
+    list-style:none; cursor:pointer; display:flex; align-items:center; gap:12px;
   }
   details.step-details > summary::-webkit-details-marker{ display:none; }
   details.step-details > summary::marker{ content:""; }
@@ -93,10 +92,8 @@
   details.step-details > summary h3{ flex:1; margin:16px 0 6px; }
   details.step-details > summary:hover h2,
   details.step-details > summary:hover h3{ color:var(--amber); }
-  details.step-details .chevron-icon{
-    flex-shrink:0; color:var(--amber); transition:transform .18s ease; margin-top:6px;
-  }
-  details.step-details[open] > summary .chevron-icon{ transform:rotate(90deg); }
+  details.step-details .toggle-icon{ flex-shrink:0; color:var(--amber); }
+  details.step-details[open] > summary .toggle-icon-v{ display:none; }
   details.step-details > .step-body{ padding-top:2px; }
   details.step-details .step-body details.step-details{ margin-left:6px; padding-left:14px; border-left:2px solid var(--rule); }
 
@@ -193,7 +190,7 @@
     h2{page-break-after:avoid;}
     .loop-card, .tip, ul, ol, .toc{page-break-inside:avoid;}
     details.step-details:not([open]) > *:not(summary){display:block !important;}
-    details.step-details .chevron-icon{display:none;}
+    details.step-details .toggle-icon{display:none;}
     details.step-details > summary{cursor:default;}
   }
 </style>
@@ -253,19 +250,20 @@
 
   <p>You are going to make a little <strong>book about one of your trips</strong> — your photos, in the order you choose, with a few of your own words next to each one. You'll be able to <strong>flip through it</strong> like a real book, and <strong>send it</strong> to your family.</p>
   <p>No special app to install. If you've ever put photos in an album or a shoebox, you already have every skill you need.</p>
+  <p class="tip">Tap the small <strong>+</strong> square next to any heading below to open that section — tap it again to close it.</p>
 
   <details class="step-details">
   <summary>
+    <svg class="toggle-icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><rect x="1.5" y="1.5" width="17" height="17" rx="4" fill="none" stroke="currentColor" stroke-width="1.6"/><line class="toggle-icon-v" x1="10" y1="5.5" x2="10" y2="14.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><line x1="5.5" y1="10" x2="14.5" y2="10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
     <h2 id="getting-set-up">Getting set up</h2>
-    <svg class="chevron-icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M6 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </summary>
   <div class="step-body">
-  <p>Before you start your book, you'll create your own free Claude account and a Project to keep it in. Your helper will sit with you — take it one step at a time.</p>
+  <p>Before you start your book, you'll create your own free Claude account and a Project to keep it in. Take it one step at a time.</p>
 
   <details class="step-details">
   <summary>
+    <svg class="toggle-icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><rect x="1.5" y="1.5" width="17" height="17" rx="4" fill="none" stroke="currentColor" stroke-width="1.6"/><line class="toggle-icon-v" x1="10" y1="5.5" x2="10" y2="14.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><line x1="5.5" y1="10" x2="14.5" y2="10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
     <h3 id="create-your-account">1. Create your account</h3>
-    <svg class="chevron-icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M6 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </summary>
   <div class="step-body">
   <div class="loop-card">
@@ -282,8 +280,8 @@
 
   <details class="step-details">
   <summary>
+    <svg class="toggle-icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><rect x="1.5" y="1.5" width="17" height="17" rx="4" fill="none" stroke="currentColor" stroke-width="1.6"/><line class="toggle-icon-v" x1="10" y1="5.5" x2="10" y2="14.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><line x1="5.5" y1="10" x2="14.5" y2="10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
     <h3 id="create-your-project">2. Create your Project</h3>
-    <svg class="chevron-icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M6 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </summary>
   <div class="step-body">
   <div class="loop-card">
@@ -298,8 +296,8 @@
 
   <details class="step-details">
   <summary>
+    <svg class="toggle-icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><rect x="1.5" y="1.5" width="17" height="17" rx="4" fill="none" stroke="currentColor" stroke-width="1.6"/><line class="toggle-icon-v" x1="10" y1="5.5" x2="10" y2="14.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><line x1="5.5" y1="10" x2="14.5" y2="10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
     <h3 id="add-the-rules-file">3. Add the rules</h3>
-    <svg class="chevron-icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M6 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </summary>
   <div class="step-body">
   <div class="loop-card">
@@ -327,8 +325,8 @@
 
   <details class="step-details">
   <summary>
+    <svg class="toggle-icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><rect x="1.5" y="1.5" width="17" height="17" rx="4" fill="none" stroke="currentColor" stroke-width="1.6"/><line class="toggle-icon-v" x1="10" y1="5.5" x2="10" y2="14.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><line x1="5.5" y1="10" x2="14.5" y2="10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
     <h2 id="the-simple-loop">The simple loop</h2>
-    <svg class="chevron-icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M6 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </summary>
   <div class="step-body">
   <p>This is the whole thing. Once you know this, you know the class.</p>
@@ -352,8 +350,8 @@
 
   <details class="step-details">
   <summary>
+    <svg class="toggle-icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><rect x="1.5" y="1.5" width="17" height="17" rx="4" fill="none" stroke="currentColor" stroke-width="1.6"/><line class="toggle-icon-v" x1="10" y1="5.5" x2="10" y2="14.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><line x1="5.5" y1="10" x2="14.5" y2="10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
     <h2 id="step-1-start-your-book-and-add-your-photos">Step 1 — Start your book and add your photos</h2>
-    <svg class="chevron-icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M6 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </summary>
   <div class="step-body">
   <ol>
@@ -369,8 +367,8 @@
   </details>
   <details class="step-details">
   <summary>
+    <svg class="toggle-icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><rect x="1.5" y="1.5" width="17" height="17" rx="4" fill="none" stroke="currentColor" stroke-width="1.6"/><line class="toggle-icon-v" x1="10" y1="5.5" x2="10" y2="14.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><line x1="5.5" y1="10" x2="14.5" y2="10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
     <h2 id="step-2-add-your-words">Step 2 — Add your words</h2>
-    <svg class="chevron-icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M6 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </summary>
   <div class="step-body">
   <ol>
@@ -386,8 +384,8 @@
   </details>
   <details class="step-details">
   <summary>
+    <svg class="toggle-icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><rect x="1.5" y="1.5" width="17" height="17" rx="4" fill="none" stroke="currentColor" stroke-width="1.6"/><line class="toggle-icon-v" x1="10" y1="5.5" x2="10" y2="14.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><line x1="5.5" y1="10" x2="14.5" y2="10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
     <h2 id="step-3-put-it-in-order-and-polish">Step 3 — Put it in order and polish</h2>
-    <svg class="chevron-icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M6 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </summary>
   <div class="step-body">
   <ol>
@@ -404,17 +402,22 @@
   </details>
   <details class="step-details">
   <summary>
+    <svg class="toggle-icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><rect x="1.5" y="1.5" width="17" height="17" rx="4" fill="none" stroke="currentColor" stroke-width="1.6"/><line class="toggle-icon-v" x1="10" y1="5.5" x2="10" y2="14.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><line x1="5.5" y1="10" x2="14.5" y2="10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
     <h2 id="step-4-download-and-share-it">Step 4 — Download and share it</h2>
-    <svg class="chevron-icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M6 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </summary>
   <div class="step-body">
   <ol>
     <li>Open Claude, open your project, and continue your chat.</li>
     <li>Flip through your finished book one more time.</li>
     <li>Click <strong>Download</strong> to keep your own copy. It saves as one file, photos inside.</li>
-    <li>To send it to family: ask Claude for a <strong>share link</strong>, or attach the downloaded file to an email.</li>
+    <li>To send it to family: attach the downloaded file to an email, a text message, or a messaging app.</li>
     <li>Show the class your cover and one favourite page!</li>
   </ol>
+  <div class="tip">Sending to an <strong>Android phone or a Windows/Mac computer</strong>? No extra steps needed — the downloaded file opens and flips normally there.</div>
+  <div class="tip"><strong>On an iPhone or iPad?</strong> Downloaded books don't open the same way as on a computer — tapping the file often shows plain text instead of your flip-through book. You have two options:
+    <br>1. <strong>Save it as a PDF</strong> — easy to view, print, or email on any device, but it turns into flat, non-flipping pages (no more page-turning).
+    <br>2. <strong>Use a computer instead</strong> — if you or a family member has a Windows or Mac computer, open claude.ai there, sign in, open the same project, and download the book — it opens and flips normally on a computer.
+  </div>
   </div>
   </details>
 
@@ -422,8 +425,8 @@
 
   <details class="step-details">
   <summary>
+    <svg class="toggle-icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><rect x="1.5" y="1.5" width="17" height="17" rx="4" fill="none" stroke="currentColor" stroke-width="1.6"/><line class="toggle-icon-v" x1="10" y1="5.5" x2="10" y2="14.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><line x1="5.5" y1="10" x2="14.5" y2="10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
     <h2 id="words-to-help-you-remember">Words to help you remember</h2>
-    <svg class="chevron-icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M6 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </summary>
   <div class="step-body">
   <p>You don't need fancy words. One true sentence is plenty. Finish one of these for a photo:</p>
@@ -441,25 +444,25 @@
 
   <details class="step-details">
   <summary>
+    <svg class="toggle-icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><rect x="1.5" y="1.5" width="17" height="17" rx="4" fill="none" stroke="currentColor" stroke-width="1.6"/><line class="toggle-icon-v" x1="10" y1="5.5" x2="10" y2="14.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><line x1="5.5" y1="10" x2="14.5" y2="10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
     <h2 id="how-to-share-your-book">How to share your book</h2>
-    <svg class="chevron-icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M6 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </summary>
   <div class="step-body">
   <p>Your book lives in Claude. You can:</p>
   <ul>
     <li><strong>Flip through it</strong> any time in your chat.</li>
     <li><strong>Download it</strong> as one file (photos inside) to keep or email.</li>
-    <li><strong>Get a share link</strong> — ask your instructor to publish it, then send the link to family.</li>
   </ul>
   <p>To email the file: start an email, attach the file, send. The other person opens it to flip through.</p>
-  <div class="tip">If your email won't let the file through, send the share link instead, or copy the file onto a memory stick.</div>
+  <div class="tip">Works normally when opened on an Android phone or a Windows/Mac computer. On an iPhone or iPad, see the note in Step 4 — tapping the downloaded file may just show plain text instead of the book.</div>
+  <div class="tip">If your email won't let the file through (photo-heavy books can get large), copy it onto a USB drive, or upload it to a cloud drive like Google Drive or Dropbox and share the link from there.</div>
   </div>
   </details>
 
   <details class="step-details">
   <summary>
+    <svg class="toggle-icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><rect x="1.5" y="1.5" width="17" height="17" rx="4" fill="none" stroke="currentColor" stroke-width="1.6"/><line class="toggle-icon-v" x1="10" y1="5.5" x2="10" y2="14.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><line x1="5.5" y1="10" x2="14.5" y2="10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
     <h2 id="a-few-things-to-remember">A few things to remember</h2>
-    <svg class="chevron-icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M6 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </summary>
   <div class="step-body">
   <ul>

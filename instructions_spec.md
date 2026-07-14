@@ -9,6 +9,17 @@ so any future edit can be applied to both without re-deriving the design each ti
 scale) — it does not mean identical wording; either doc's content can be trimmed or
 reworded on its own (e.g. the Student Handbook drops asides the Instructor Guide keeps).
 
+Students work independently: neither guide assumes a classroom helper/aide sits with
+students during setup or steps. The Instructor Guide still assumes an instructor runs
+the class (demos the example book, times the steps, answers questions, circulates to
+check on stuck students) — that role stays. But phrasing implying a second person
+walks a student through their own setup one-on-one (e.g. "a helper," "helper pastes
+it," "with a helper alongside," a helper-to-student ratio) should not appear; students
+create their own account/Project and paste their own lines, following the written
+steps. If a new draft reintroduces helper-based phrasing, rewrite it to have the
+student act on their own, and keep the instructor role limited to running the class,
+not personally walking each student through it.
+
 Title: both docs display "My Trip Book" — in the page <title> and in the visible
 masthead/cover h1 — not "My Trip, My Book".
 
@@ -122,20 +133,27 @@ wrapped section (e.g. "Start my book" in the Instructor Guide, "Before each step
 "Watch for" inside Facilitator checklist) — wrapping a sub-heading with no id doesn't
 help navigation and would just add another click.
 
-- Markup: `<details class="step-details"><summary><h2 id="...">...</h2><svg
-  class="chevron-icon" ...>...</svg></summary><div class="step-body">...section
-  content...</div></details>`. The heading keeps its existing id and stays the single
-  link to its sidebar entry, exactly as before — collapsing doesn't change the id/
-  sidebar-matching rule above.
+- Markup: `<details class="step-details"><summary><svg class="toggle-icon" ...>...
+  </svg><h2 id="...">...</h2></summary><div class="step-body">...section
+  content...</div></details>`. The toggle icon comes first in the markup (leftmost in
+  the row), the heading follows — never the reverse. The heading keeps its existing id
+  and stays the single link to its sidebar entry, exactly as before — collapsing
+  doesn't change the id/sidebar-matching rule above.
+- Icon: a small rounded square containing a plus sign — one `<rect>` (the square
+  outline) plus two `<line>`s (one horizontal, one vertical, forming the "+"). The
+  vertical line carries its own class (`toggle-icon-v`) so `details[open] > summary
+  .toggle-icon-v{display:none}` hides just that line when expanded, leaving only the
+  horizontal line — turning the "+" into a "−" with no separate open/closed icon
+  asset needed. Do not use a chevron/arrow/rotate-based indicator; this square
+  plus/minus is the one collapse indicator used across both docs.
 - CSS: `summary` has its native marker hidden (`::-webkit-details-marker{display:none}`
-  / `::marker{content:""}`) and is laid out as a flex row (heading flex:1, chevron
-  fixed) so the whole heading row is clickable. The heading's existing margin/
-  border-bottom moves onto `summary > h2`/`summary > h3`/`summary > h1` (nested
-  selector, covers all three since the Instructor Guide's "The four steps" is an h1),
-  not onto the `<details>` itself. The chevron SVG rotates 90° via `details[open] >
-  summary .chevron-icon{transform:rotate(90deg)}` — a CSS-only transform, no JS needed
-  for the toggle itself (native `<details>` handles open/close). Nested `<details>`
-  inside a parent's `.step-body` get a left border + indent
+  / `::marker{content:""}`) and is laid out as a flex row (`align-items:center`, icon
+  fixed-size first, heading `flex:1` second) so the whole heading row is clickable and
+  the icon stays vertically centered against the heading regardless of h1/h2/h3 size.
+  The heading's existing margin/border-bottom stays on `summary > h2`/`summary >
+  h3`/`summary > h1` (nested selector, covers all three since the Instructor Guide's
+  "The four steps" is an h1), not on the `<details>` itself. Nested `<details>` inside
+  a parent's `.step-body` get a left border + indent
   (`details.step-details .step-body details.step-details{margin-left:6px;
   padding-left:14px; border-left:2px solid var(--rule)}`) to show the accordion depth.
 - No JS is required for the accordion behavior — this is native `<details>` markup.
@@ -143,12 +161,33 @@ help navigation and would just add another click.
   and scrollspy scripts remain.
 - Print: `<details>` content must stay visible when printed regardless of collapsed
   state, so `@media print` forces `details.step-details:not([open]) > *:not(summary)`
-  to `display:block !important` and hides the chevron — printed/PDF output always
+  to `display:block !important` and hides the toggle icon — printed/PDF output always
   shows every section expanded (nested included), unaffected by on-screen collapse
   state.
+- A one-line note near the top of each doc (right after the intro paragraph(s), before
+  the first collapsible section) tells the reader how the accordion works — e.g. "Tap
+  the small + square next to any heading below to open that section — tap it again to
+  close it." Keep this to one line; it's an orientation cue, not a repeated
+  instruction.
 - Apply this consistently to both docs wherever a new section (numbered step or not)
   is added, unless it's an unlinked sub-heading inside an already-wrapped section (see
   above).
+
+iOS trip-book download guidance (added to both docs, in Step 4 — Download and share
+it): iPhone/iPad don't open a downloaded HTML file as a live webpage by default —
+tapping it typically shows plain text instead of the flip-book — so Step 4 includes a
+note (student-facing tone in the Student Handbook, facilitator-framing "flag this
+before they download" in the Instructor Guide) giving iOS users two named options:
+1) download as PDF, with the tradeoff stated plainly (easy to view/share anywhere, but
+becomes flat, non-flipping pages — the page-turn animation is lost); 2) use a Windows
+or Mac computer instead — sign in to claude.ai there, open the same project, and
+download the book, since it opens and flips normally on a desktop browser. Do not
+reintroduce a "Share button → Open in Safari" style suggestion as an iOS workaround —
+it was tested and found not to reliably work, which is why option 2 is the
+desktop-computer route instead. Keep both current options and their tradeoffs in
+every mention — don't drop the PDF's animation-loss caveat or the "needs a Windows/Mac
+computer" condition on option 2. Both docs also note, right before the iOS-specific
+block, that Android phones and Windows/Mac computers need no extra steps at all.
 
 Download-button instructions (desktop + mobile) — status: not currently used by either
 guide. The rules-file step used to instruct downloading trip_book_spec.md and attaching
@@ -206,6 +245,24 @@ has not been independently verified against Anthropic's own product documentatio
 platform-label parity (unlike the Context/Project files note above, which cites
 support docs) — flag this for re-confirmation if it's ever in doubt, and correct both
 guides together if the actual mobile label turns out to differ.
+
+Sharing the finished trip book: the student's finished book is a Claude artifact, and
+Anthropic's own docs (https://support.claude.com/en/articles/9547008-publish-and-share-artifacts)
+describe a **Publish**/**Share** button on artifacts for getting a link. In practice
+that route isn't used in either guide for this class — trip books are photo-heavy and
+often too large for that publish/share path, so both guides route all sharing through
+the **Download** button instead: download the file, then attach it to an email, text,
+or messaging app. Do not reintroduce "click Publish"/"ask Claude for a link" wording
+unless the file-size limitation is independently reconfirmed to no longer apply.
+
+- Android phones and Windows/Mac computers open a downloaded trip-book HTML file
+  normally — no extra steps, so both guides just say to attach it as usual there.
+- iPhone/iPad don't open a downloaded HTML file as a live webpage by default (see the
+  "iOS trip-book download guidance" entry below) — this is the one case that needs
+  its own note.
+- If an email won't carry the file (large photo-heavy books), both guides suggest a
+  USB drive or a generic cloud-drive link (Google Drive, Dropbox) rather than a
+  Claude-specific publish/share link.
 
 Repo file references: any time a repo file is named in either guide (trip_book_spec.md,
 San_Francisco_demo_book.html, etc.) — whether as an instruction to open it, a "what
