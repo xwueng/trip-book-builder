@@ -32,8 +32,8 @@ Palette (the one thing kept distinct, same structure):
 - Instructor Guide: slate/slate-deep background, brass accent, clay badges — facilitator tone.
 - Student Handbook: teal/teal-deep background, amber accent — plain-language tone.
 Each doc's :root CSS variables are the single source of truth for its palette; the
-sidebar, toggle button, and active-link highlight all derive their colors from those
-same variables, not hard-coded hex values.
+sidebar, toggle button, active-link highlight, and copy-button component (below) all
+derive their colors from those same variables, not hard-coded hex values.
 
 Structure: masthead/cover, an inline on-page TOC (kept for print only), then numbered
 h2 sections each with a stable kebab-case id. The id is the single link between a
@@ -52,7 +52,7 @@ Left sidebar TOC (added to both docs):
 
 Second-level (nested) index: where an h2 section contains its own numbered h3
 subsections (e.g. "Getting set up" → "1. Create your account" / "2. Create your
-Project" / "3. Add the rules file"), give each h3 its own kebab-case id and nest a
+Project" / "3. Add the rules"), give each h3 its own kebab-case id and nest a
 <ul class="side-toc-sub"> of matching links inside that h2's <li> in the sidebar.
 The .side-toc-sub CSS (smaller font, left-indented, no bullet) is already defined in
 both docs' stylesheets. No JS changes are needed — the scrollspy script selects all
@@ -76,11 +76,50 @@ link that opens directly in a browser with full JS/CSS intact. instructions_spec
 (this file) and trip_book_spec.md ship alongside as plain Markdown; GitHub renders
 .md natively, so neither needs Pages setup.
 
-Download-button instructions (desktop + mobile): GitHub's download control for a repo
-file is NOT the same UI on desktop vs. mobile web, so wherever either guide instructs
-the reader to download a repo file (e.g. trip_book_spec.md), give both flows as two
-separate paragraphs with a blank line between them (never joined with a line break) —
-mobile first, since most students in this class are on phones, desktop second:
+Copy-to-clipboard instruction line (added to both docs): whenever a step asks the
+reader to paste an exact string somewhere else (currently: the one-line
+"Build trip book by following the spec in <URL>" instruction that goes into Project
+instructions), show it as a copy-box rather than plain prose or a note block, so the
+reader doesn't have to manually select/retype it:
+
+- Markup: `<div class="copy-box"><code class="copy-text" id="UNIQUE-ID">EXACT TEXT
+  TO COPY</code><button type="button" class="copy-btn" data-copy-target="UNIQUE-ID"
+  aria-label="Copy line to clipboard"><svg class="copy-icon" ...>...</svg><span
+  class="copy-btn-label">Copy</span></button></div>`.
+- `id`/`data-copy-target` must match within the same doc; each doc only needs one such
+  id today (`rules-line`) but keep ids unique if a second copy-box is ever added to the
+  same page.
+- The text inside `.copy-text` is the literal string to be pasted elsewhere — never
+  convert it into a link, never reformat it, never wrap the URL portion in different
+  styling. It must round-trip exactly as written.
+- CSS (per doc's palette, matching the sidebar/toggle accent already in use):
+  `.copy-box` a bordered/rounded container in `--card`/`--paper`; `.copy-btn` uses the
+  doc's accent color for its border/background (`--amber`/`--amber-tint` for the
+  Student Handbook, `--brass`/`--clay-tint` for the Instructor Guide) and switches to
+  a solid, contrasting fill (`--teal` / `--slate`) with a `.copied` class while showing
+  feedback.
+- JS: a single delegated click handler (one per doc, in its own `<script>` block,
+  separate from the sidebar/scrollspy script) copies the target element's `textContent`
+  via `navigator.clipboard.writeText`, with a `document.execCommand('copy')` fallback
+  through a hidden textarea for browsers without Clipboard API support. On success the
+  button's label swaps to "Copied!" for ~1.8s (via a `.copied` class + timeout) before
+  reverting to "Copy".
+- Always pair a copy-box with an explicit, separate paste step naming exactly where the
+  text goes (e.g. "Paste it into the Project instructions box, then tap Save") — never
+  leave the reader to infer the destination from the copy step alone.
+
+Download-button instructions (desktop + mobile) — status: not currently used by either
+guide. The rules-file step used to instruct downloading trip_book_spec.md and attaching
+it under Context/Project files; that flow has been replaced by the copy-to-clipboard
+pattern above (paste one line into Project instructions — no download or attachment
+needed). This section is kept in case a future edit reintroduces a step that requires
+downloading a repo file directly:
+
+GitHub's download control for a repo file is NOT the same UI on desktop vs. mobile web,
+so wherever a guide instructs the reader to download a repo file, give both flows as
+two separate paragraphs with a blank line between them (never joined with a line
+break) — mobile first, since most students in this class are on phones, desktop
+second:
 
 - Mobile (phone browser): there is no standalone icon. Near the top of the file, next
   to the Preview / Code / Blame tabs, is a "•••" (three-dot) icon at the right end of
@@ -104,7 +143,9 @@ mobile first, since most students in this class are on phones, desktop second:
     <path fill="currentColor" d="M7.25 10.25a.75.75 0 0 0 1.5 0V3.75a.75.75 0 1 0-1.5 0v6.5ZM4.72 6.72a.75.75 0 0 1 1.06 0L8 8.94l2.22-2.22a.75.75 0 1 1 1.06 1.06l-2.75 2.75a.75.75 0 0 1-1.06 0L4.72 7.78a.75.75 0 0 1 0-1.06ZM3.5 12.75a.75.75 0 0 1 .75-.75h7.5a.75.75 0 0 1 0 1.5h-7.5a.75.75 0 0 1-.75-.75Z"/>
   </svg>
 
-Apply this consistently everywhere the download-button step is described in either doc.
+Apply this consistently everywhere a download-button step is (re)introduced in either
+doc. (The `.dl-icon` CSS rule remains defined in both stylesheets even while unused,
+so it's ready if this pattern comes back.)
 
 Claude Projects "add content" naming: the area where a downloaded file gets attached
 to a Project is labeled differently by platform — on desktop web it's called
@@ -115,6 +156,15 @@ Anthropic's own support documentation only for the general project-knowledge flo
 the mobile-specific "Project files" label came from the person's own testing, not a
 docs citation — flag this to them again if it should ever need re-confirming.)
 
+Claude Projects "Project instructions" naming: the free-text field where a project's
+own custom instructions live (separate from Context/Project files above — this field
+holds instructions, not attached files) is currently referred to in both guides as
+**Project instructions**, used as the same label on desktop and the mobile app. This
+has not been independently verified against Anthropic's own product documentation for
+platform-label parity (unlike the Context/Project files note above, which cites
+support docs) — flag this for re-confirmation if it's ever in doubt, and correct both
+guides together if the actual mobile label turns out to differ.
+
 Repo file references: any time a repo file is named in either guide (trip_book_spec.md,
 San_Francisco_demo_book.html, etc.) — whether as an instruction to open it, a "what
 you'll use" list entry, or a checklist item — wrap the filename in a link to its GitHub
@@ -122,7 +172,9 @@ blob URL (https://github.com/xwueng/trip-book-builder/blob/main/<filename>). The
 filename itself stays the visible link text; never show the raw URL as the link text
 or add it as separate visible text next to the filename. Apply this consistently
 everywhere a repo filename appears in either doc, including repeated mentions of the
-same file.
+same file. Exception: the literal text inside a copy-box (see the copy-to-clipboard
+pattern above) is exempt — it must stay exact, unstyled, unlinked plain text so it
+copies and pastes correctly, even where it contains a URL that names a repo file.
 
 Verification checklist before delivering any edit to either guide:
 1. Every heading id (h2 and any nested h3) has exactly one matching sidebar
@@ -133,7 +185,11 @@ Verification checklist before delivering any edit to either guide:
 4. Font sizes for shared elements (body, h2, h3, notes/tips, TOC, sidebar) still match
    between the two docs, unless a change was explicitly asked for only one.
 5. Every mention of a repo filename in either doc is a clickable link to its GitHub
-   blob URL, with the filename (not the raw URL) as the visible link text.
+   blob URL, with the filename (not the raw URL) as the visible link text — except
+   literal copy-box text, which stays unlinked.
+6. Every `.copy-btn`'s `data-copy-target` matches exactly one `.copy-text` id in the
+   same doc, and each doc's copy-to-clipboard `<script>` block is present and unchanged
+   unless the copy behavior itself was the point of the edit.
 
 Edits: given in plain language — apply to both docs' matching structure/CSS tokens
 (not just one), regenerate, and re-run the verification checklist above before delivering.
