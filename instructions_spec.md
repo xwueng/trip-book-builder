@@ -1,0 +1,100 @@
+GUIDE BOOK RULES
+(this file: instructions_spec.md — instructions for Claude to build and maintain
+Instructor_Guide.html and Student_Handbook.html, the class-facilitation guides.
+Separate from trip_book_spec.md, which governs the student's own trip book.)
+
+Purpose: keep the two guide documents structurally identical and visually distinct,
+so any future edit can be applied to both without re-deriving the design each time.
+"Structurally identical" means shared mechanics (sidebar, ids, spacing scale, type
+scale) — it does not mean identical wording; either doc's content can be trimmed or
+reworded on its own (e.g. the Student Handbook drops asides the Instructor Guide keeps).
+
+Title: both docs display "My Trip Book" — in the page <title> and in the visible
+masthead/cover h1 — not "My Trip, My Book".
+
+Format: each is one self-contained HTML file — no external dependencies, no build step.
+HTML (not PDF) is the primary deliverable, because it's the only format that supports
+the live sidebar behavior below. PDF export remains available as a fallback via each
+doc's built-in "Print / Save as PDF" button.
+
+Typography: both docs share one type scale — body 18px/1.62 line-height, h2 24px,
+h3 19px, notes/tips 16px, on-page TOC list 16px, sidebar title 11.5px, sidebar links
+14.5px, nested sidebar sub-links 13px. Only the palette (below) is allowed to differ
+between docs — font sizes must match exactly so neither guide reads as an afterthought.
+
+Spacing: kept compact and consistent between docs — h2 margin 26px top / 6px bottom,
+h3 margin 16px top, paragraphs and list items 5–8px vertical margin, hr rule 18px,
+notes/tips/blockquotes/loop-cards 6–10px vertical margin, masthead/cover padding
+trimmed to roughly 22–32px. Treat these as the baseline; don't reintroduce the larger
+spacing (e.g. 40px h2 margins) when adding new sections.
+
+Palette (the one thing kept distinct, same structure):
+- Instructor Guide: slate/slate-deep background, brass accent, clay badges — facilitator tone.
+- Student Handbook: teal/teal-deep background, amber accent — plain-language tone.
+Each doc's :root CSS variables are the single source of truth for its palette; the
+sidebar, toggle button, and active-link highlight all derive their colors from those
+same variables, not hard-coded hex values.
+
+Structure: masthead/cover, an inline on-page TOC (kept for print only), then numbered
+h2 sections each with a stable kebab-case id. The id is the single link between a
+section and its sidebar entry — never rename an id without updating the matching
+sidebar data-target.
+
+Left sidebar TOC (added to both docs):
+- Fixed left panel, full height, duplicating the on-page TOC, color-matched per doc.
+- Live active-section highlighting via IntersectionObserver watching each h2 — updates
+  as the reader scrolls, not just per "page" (this is the capability a static PDF
+  cannot offer; only the HTML version does this).
+- Every sidebar entry is a real anchor link that jumps to its section and closes the
+  panel on mobile after clicking.
+- On-page inline TOC is hidden on screen (sidebar replaces it) but stays in the markup
+  for print output.
+
+Second-level (nested) index: where an h2 section contains its own numbered h3
+subsections (e.g. "Getting set up" → "1. Create your account" / "2. Create your
+Project" / "3. Add the rules file"), give each h3 its own kebab-case id and nest a
+<ul class="side-toc-sub"> of matching links inside that h2's <li> in the sidebar.
+The .side-toc-sub CSS (smaller font, left-indented, no bullet) is already defined in
+both docs' stylesheets. No JS changes are needed — the scrollspy script selects all
+`.side-toc a` regardless of nesting depth, so nested links highlight automatically.
+Apply this pattern to both docs wherever a section has its own numbered/lettered
+subsections, to keep the sidebar's depth consistent between them.
+
+Mobile (<900px): sidebar collapses off-canvas behind a fixed ☰ toggle button top-left;
+opening it shows a dark backdrop that closes the panel on tap; content gets top padding
+to clear the toggle button. Above 900px the sidebar is always visible and content gets
+a left margin to clear it.
+
+Print / Save-as-PDF: sidebar, toggle, and backdrop are hidden in @media print; the
+original inline TOC and existing page-break rules take over unchanged, so print output
+is unaffected by the sidebar addition.
+
+Hosting: Google Drive does not render HTML as a live webpage (files open as source/blank
+or force a download), so these guides are hosted via GitHub Pages — public repo, Pages
+enabled on the root or /docs folder — giving each a working https://<user>.github.io/...
+link that opens directly in a browser with full JS/CSS intact. instructions_spec.md
+(this file) and trip_book_spec.md ship alongside as plain Markdown; GitHub renders
+.md natively, so neither needs Pages setup.
+
+Repo file references: any time a repo file is named in either guide (trip_book_spec.md,
+San_Francisco_demo_book.html, etc.) — whether as an instruction to open it, a "what
+you'll use" list entry, or a checklist item — wrap the filename in a link to its GitHub
+blob URL (https://github.com/xwueng/trip-book-builder/blob/main/<filename>). The
+filename itself stays the visible link text; never show the raw URL as the link text
+or add it as separate visible text next to the filename. Apply this consistently
+everywhere a repo filename appears in either doc, including repeated mentions of the
+same file.
+
+Verification checklist before delivering any edit to either guide:
+1. Every heading id (h2 and any nested h3) has exactly one matching sidebar
+   data-target, and vice versa (no orphans) — nested ids included.
+2. HTML tag counts balance (div/aside/ul/script open vs close) and CSS brace count balances.
+3. Rendered check at both a wide (desktop) and narrow (<900px) viewport width to confirm
+   the sidebar/toggle behavior looks right before handing off.
+4. Font sizes for shared elements (body, h2, h3, notes/tips, TOC, sidebar) still match
+   between the two docs, unless a change was explicitly asked for only one.
+5. Every mention of a repo filename in either doc is a clickable link to its GitHub
+   blob URL, with the filename (not the raw URL) as the visible link text.
+
+Edits: given in plain language — apply to both docs' matching structure/CSS tokens
+(not just one), regenerate, and re-run the verification checklist above before delivering.
