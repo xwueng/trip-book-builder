@@ -76,6 +76,45 @@ link that opens directly in a browser with full JS/CSS intact. instructions_spec
 (this file) and trip_book_spec.md ship alongside as plain Markdown; GitHub renders
 .md natively, so neither needs Pages setup.
 
+Download-button instructions (desktop + mobile): GitHub's download control for a repo
+file is NOT the same UI on desktop vs. mobile web, so wherever either guide instructs
+the reader to download a repo file (e.g. trip_book_spec.md), give both flows as two
+separate paragraphs with a blank line between them (never joined with a line break) —
+mobile first, since most students in this class are on phones, desktop second:
+
+- Mobile (phone browser): there is no standalone icon. Near the top of the file, next
+  to the Preview / Code / Blame tabs, is a "•••" (three-dot) icon at the right end of
+  that row. Tapping it opens a small menu (Raw file content / Copy / View / Download)
+  where "Download" appears as a plain text row. Instruct mobile readers to tap "•••"
+  at the right end of that row, then tap "Download" from the menu that appears.
+  Illustrate this with a screenshot of the actual tab row (Preview | Code | Blame with
+  the ••• icon), embedded inline as a base64 image directly below the instruction —
+  do not just describe it in prose.
+
+- Desktop: the Preview/Code/Blame row has no "•••" icon at all — do not use "menu"
+  language for desktop, since there is no menu to open. Instead, the right side of
+  that same row (past the line-count info) has a "Raw" button, a copy icon, and a
+  small standalone download-tray icon button, which the reader clicks directly. Give
+  a screenshot of this right-hand cluster (Raw / copy / download / edit icons) as a
+  base64 image directly below the instruction, same as the mobile screenshot. Also
+  represent the download icon inline in the sentence with this SVG instead of a plain
+  "⬇" character:
+
+  <svg class="dl-icon" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" style="vertical-align:-2px;">
+    <path fill="currentColor" d="M7.25 10.25a.75.75 0 0 0 1.5 0V3.75a.75.75 0 1 0-1.5 0v6.5ZM4.72 6.72a.75.75 0 0 1 1.06 0L8 8.94l2.22-2.22a.75.75 0 1 1 1.06 1.06l-2.75 2.75a.75.75 0 0 1-1.06 0L4.72 7.78a.75.75 0 0 1 0-1.06ZM3.5 12.75a.75.75 0 0 1 .75-.75h7.5a.75.75 0 0 1 0 1.5h-7.5a.75.75 0 0 1-.75-.75Z"/>
+  </svg>
+
+Apply this consistently everywhere the download-button step is described in either doc.
+
+Claude Projects "add content" naming: the area where a downloaded file gets attached
+to a Project is labeled differently by platform — on desktop web it's called
+**Context** (right side of the project page); on the Claude mobile app, the same area
+is called **Project files**. Whenever either guide instructs the reader to attach a
+file to their Project, name both labels rather than only "Context." (Verified against
+Anthropic's own support documentation only for the general project-knowledge flow;
+the mobile-specific "Project files" label came from the person's own testing, not a
+docs citation — flag this to them again if it should ever need re-confirming.)
+
 Repo file references: any time a repo file is named in either guide (trip_book_spec.md,
 San_Francisco_demo_book.html, etc.) — whether as an instruction to open it, a "what
 you'll use" list entry, or a checklist item — wrap the filename in a link to its GitHub
