@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My Trip, My Book — Instructor Guide</title>
+<title>My Trip Book — Instructor Guide</title>
 <style>
   :root{
     --paper:#F5F2E9;
@@ -30,7 +30,7 @@
   /* Masthead */
   .masthead{
     background:radial-gradient(120% 160% at 15% 0%, #2c4149, var(--slate) 55%, var(--slate-deep));
-    color:#EDE7D8; margin:0 -32px 8px; padding:44px 36px 30px;
+    color:#EDE7D8; margin:0 -32px 6px; padding:32px 36px 22px;
     border-bottom:5px solid var(--brass); position:relative;
   }
   .badge{
@@ -42,16 +42,16 @@
   .masthead p{margin:0; color:#C9C2AC; font-size:16px;}
 
   h2{
-    color:var(--slate); font-size:24px; margin:40px 0 6px;
+    color:var(--slate); font-size:24px; margin:26px 0 6px;
     padding-bottom:8px; border-bottom:2px solid var(--rule);
   }
-  h3{color:var(--slate); font-size:19px; margin:26px 0 6px;}
-  p{margin:10px 0;}
+  h3{color:var(--slate); font-size:19px; margin:16px 0 6px;}
+  p{margin:7px 0;}
   strong{color:var(--ink);}
   a{color:var(--clay);}
 
   ol,ul{padding-left:24px;}
-  li{margin:7px 0;}
+  li{margin:5px 0;}
 
   code{
     background:var(--clay-tint); color:#7A3D0F; padding:1px 6px; border-radius:4px;
@@ -60,20 +60,20 @@
 
   .note{
     background:var(--clay-tint); border-left:4px solid var(--clay);
-    padding:10px 16px; margin:8px 0 14px; border-radius:0 6px 6px 0;
+    padding:8px 16px; margin:6px 0 10px; border-radius:0 6px 6px 0;
     font-size:16px; color:#5C3B1A;
   }
   .note strong{color:#5C3B1A;}
 
   blockquote{
     background:var(--card); border:1px solid var(--rule); border-left:4px solid var(--brass);
-    padding:14px 18px; margin:14px 0; border-radius:0 8px 8px 0; box-shadow:var(--shadow);
+    padding:12px 18px; margin:10px 0; border-radius:0 8px 8px 0; box-shadow:var(--shadow);
     font-size:17px; color:var(--ink);
   }
 
   .callout{
     background:var(--card); border:1px solid var(--rule); border-radius:10px;
-    padding:18px 22px; margin:16px 0; box-shadow:var(--shadow);
+    padding:18px 22px; margin:12px 0; box-shadow:var(--shadow);
   }
 
   table{width:100%; border-collapse:collapse; margin:14px 0;}
@@ -89,7 +89,7 @@
 
   .toc{
     background:var(--card); border:1px solid var(--rule); border-radius:10px;
-    padding:18px 24px 20px; margin:18px 0 8px; box-shadow:var(--shadow);
+    padding:14px 24px 16px; margin:12px 0 8px; box-shadow:var(--shadow);
   }
   .toc-title{
     margin:0 0 8px; font-size:13px; letter-spacing:.12em; text-transform:uppercase;
@@ -109,7 +109,7 @@
   }
   .printbtn:hover{background:var(--slate-deep);}
 
-  hr{border:none; border-top:1px solid var(--rule); margin:30px 0;}
+  hr{border:none; border-top:1px solid var(--rule); margin:18px 0;}
 
   /* Side TOC panel */
   .side-toc{
@@ -133,6 +133,8 @@
   .side-toc nav a.active{
     background:rgba(199,154,78,.16); color:#F3E4D3; border-left-color:var(--brass); font-weight:600;
   }
+  .side-toc-sub{list-style:none; margin:0 0 2px; padding-left:14px;}
+  .side-toc-sub a{font-size:13px; padding:6px 10px 6px 10px;}
   .side-toc-toggle{
     display:none; position:fixed; top:14px; left:14px; z-index:60;
     background:var(--slate); color:#EDE7D8; border:none; width:42px; height:42px;
@@ -179,7 +181,14 @@
       <li><a href="#how-it-works-the-whole-idea" data-target="how-it-works-the-whole-idea">How it works — the whole idea</a></li>
       <li><a href="#what-youll-use" data-target="what-youll-use">What you'll use</a></li>
       <li><a href="#who-and-how" data-target="who-and-how">Who and how</a></li>
-      <li><a href="#setting-up-each-students-project" data-target="setting-up-each-students-project">Setting up each student's project</a></li>
+      <li>
+        <a href="#setting-up-each-students-project" data-target="setting-up-each-students-project">Setting up each student's project</a>
+        <ul class="side-toc-sub">
+          <li><a href="#part-1-create-a-claude-account" data-target="part-1-create-a-claude-account">Part 1 — Create account</a></li>
+          <li><a href="#part-2-create-a-project" data-target="part-2-create-a-project">Part 2 — Create project</a></li>
+          <li><a href="#part-3-attach-the-spec-file" data-target="part-3-attach-the-spec-file">Part 3 — Attach spec</a></li>
+        </ul>
+      </li>
       <li><a href="#before-the-first-class-note-to-students" data-target="before-the-first-class-note-to-students">Before the first class — note to students</a></li>
       <li><a href="#the-four-steps" data-target="the-four-steps">The four steps</a></li>
       <li><a href="#step-1-start-your-book-and-add-all-your-photos" data-target="step-1-start-your-book-and-add-all-your-photos">Step 1 — Start &amp; add photos</a></li>
@@ -198,7 +207,7 @@
   <div class="masthead">
     <button class="printbtn" onclick="window.print()">⎙ Print / Save as PDF</button>
     <span class="badge">Facilitator Copy</span>
-    <h1>My Trip, My Book</h1>
+    <h1>My Trip Book</h1>
     <p>Instructor Guide — a photo trip-book class for seniors, 4 steps (adaptable to 3)</p>
   </div>
 
@@ -223,7 +232,6 @@
 </nav>
 
   <div class="note"><strong>This is the facilitator copy.</strong> It has everything you need to run the class — setup, step scripts with teacher notes, and checklists. Hand students the separate <strong>Student Handbook</strong>: same steps, plain language, no notes.</div>
-
 
   <h2 id="the-goal">The goal</h2>
   <p>By the end, each student has a <strong>trip book</strong> that:</p>
@@ -265,7 +273,7 @@
   <h2 id="setting-up-each-students-project">Setting up each student's project</h2>
   <div class="note">Students do this themselves, with a helper alongside. Do this before photos go in — either as a pre-step slot or as the start of Step 1.</div>
 
-  <h3>Part 1 — Create a Claude account</h3>
+  <h3 id="part-1-create-a-claude-account">Part 1 — Create a Claude account</h3>
   <ol>
     <li>Open a browser and go to <strong>claude.ai</strong>.</li>
     <li>Click <strong>Sign up</strong>. Choose <strong>"Continue with Google"</strong> (fastest, if they have a Google/Gmail account) or <strong>"Continue with email"</strong>.</li>
@@ -277,18 +285,20 @@
     <li>Once the Claude chat screen appears, the account is ready.</li>
   </ol>
 
-  <h3>Part 2 — Create a Project</h3>
+  <h3 id="part-2-create-a-project">Part 2 — Create a Project</h3>
   <ol>
     <li>Click <strong>Projects</strong> in the left-hand menu (or go to claude.ai/projects).</li>
     <li>Click <strong>+ New Project</strong>.</li>
     <li>Name it after the trip (e.g. "Italy 2019") and confirm.</li>
   </ol>
 
-  <h3>Part 3 — Attach the spec file</h3>
+  <h3 id="part-3-attach-the-spec-file">Part 3 — Attach the spec file</h3>
   <ol>
+    <li>Share the class repo link with students ahead of time: <code>https://github.com/xwueng/trip-book-builder</code>.</li>
+    <li>Walk each student through: open that link, click <code>trip_book_spec.md</code> in the file list, then click the small download button (⬇) near the top of the file to save it to their device.</li>
     <li>Inside the project, find the <strong>Context</strong> section (right side of the project page) and click <strong>+</strong> to add content.</li>
-    <li>Choose <code>trip_book_spec.md</code> from wherever it was saved on the student's device.
-      <div class="note">Students need this file <em>on their own device</em> before this step — it doesn't come with their account. Email it to every student ahead of Step 1 (have them save the attachment to Downloads or Photos), or hand it out in class via a shared link or USB stick.</div>
+    <li>Choose the <code>trip_book_spec.md</code> file they just saved.
+      <div class="note">Students need this file <em>on their own device</em> before this step — it doesn't come with their account. Send the repo link ahead of Step 1 so everyone has it downloaded and ready.</div>
     </li>
   </ol>
 
