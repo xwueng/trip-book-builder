@@ -109,6 +109,7 @@
   }
 
   .dl-icon{ vertical-align:-2px; }
+  .send-icon{ vertical-align:-2px; }
 
   .printbtn{
     position:sticky; top:14px; float:right; margin:14px 0 0;
@@ -162,6 +163,18 @@
     }
   }
 
+  .feature-table{
+    width:100%; border-collapse:collapse; margin:10px 0; background:var(--card);
+    border:1px solid var(--rule); border-radius:12px; overflow:hidden; box-shadow:var(--shadow);
+  }
+  .feature-table th, .feature-table td{padding:10px 14px; text-align:left; font-size:16px; vertical-align:top;}
+  .feature-table th{
+    background:var(--teal-tint); color:var(--teal-deep); font-size:13.5px;
+    text-transform:uppercase; letter-spacing:.04em;
+  }
+  .feature-table tbody tr+tr td{border-top:1px solid var(--rule);}
+  .feature-table td:first-child{font-weight:700; color:var(--teal-deep); width:30px;}
+
   .quote-list{list-style:none; padding-left:0;}
   .quote-list li{
     background:var(--card); border:1px solid var(--rule); border-radius:8px;
@@ -211,14 +224,12 @@
           <li><a href="#add-the-rules-file" data-target="add-the-rules-file">3. Add the rules</a></li>
         </ul>
       </li>
-      <li><a href="#the-simple-loop" data-target="the-simple-loop">The simple loop</a></li>
       <li><a href="#step-1-start-your-book-and-add-your-photos" data-target="step-1-start-your-book-and-add-your-photos">Step 1 — Start &amp; add photos</a></li>
       <li><a href="#step-2-add-your-words" data-target="step-2-add-your-words">Step 2 — Add your words</a></li>
       <li><a href="#step-3-put-it-in-order-and-polish" data-target="step-3-put-it-in-order-and-polish">Step 3 — Order &amp; polish</a></li>
       <li><a href="#step-4-download-and-share-it" data-target="step-4-download-and-share-it">Step 4 — Download &amp; share</a></li>
       <li><a href="#words-to-help-you-remember" data-target="words-to-help-you-remember">Words to help you remember</a></li>
-      <li><a href="#how-to-share-your-book" data-target="how-to-share-your-book">How to share your book</a></li>
-      <li><a href="#a-few-things-to-remember" data-target="a-few-things-to-remember">A few things to remember</a></li>
+      <li><a href="#what-claude-does-for-you" data-target="what-claude-does-for-you">What Claude does for you</a></li>
     </ol>
   </nav>
 </aside>
@@ -237,14 +248,12 @@
 <p class="toc-title">Contents</p>
 <ol>
   <li><a href="#getting-set-up">Getting set up</a></li>
-  <li><a href="#the-simple-loop">The simple loop</a></li>
   <li><a href="#step-1-start-your-book-and-add-your-photos">Step 1 — Start your book and add your photos</a></li>
   <li><a href="#step-2-add-your-words">Step 2 — Add your words</a></li>
   <li><a href="#step-3-put-it-in-order-and-polish">Step 3 — Put it in order and polish</a></li>
   <li><a href="#step-4-download-and-share-it">Step 4 — Download and share it</a></li>
   <li><a href="#words-to-help-you-remember">Words to help you remember</a></li>
-  <li><a href="#how-to-share-your-book">How to share your book</a></li>
-  <li><a href="#a-few-things-to-remember">A few things to remember</a></li>
+  <li><a href="#what-claude-does-for-you">What Claude does for you</a></li>
 </ol>
 </nav>
 
@@ -288,7 +297,7 @@
     <ol>
       <li>Look for <strong>Projects</strong> in the menu and click it.</li>
       <li>Click <strong>+ New Project</strong>.</li>
-      <li>Type a name for your trip (like "Italy 2019") and confirm.</li>
+      <li>Type a name for your project (like "My Trip Books") and confirm.</li>
     </ol>
   </div>
   </div>
@@ -323,29 +332,6 @@
   </div>
   </details>
 
-  <details class="step-details">
-  <summary>
-    <svg class="toggle-icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><rect x="1.5" y="1.5" width="17" height="17" rx="4" fill="none" stroke="currentColor" stroke-width="1.6"/><line class="toggle-icon-v" x1="10" y1="5.5" x2="10" y2="14.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><line x1="5.5" y1="10" x2="14.5" y2="10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-    <h2 id="the-simple-loop">The simple loop</h2>
-  </summary>
-  <div class="step-body">
-  <p>This is the whole thing. Once you know this, you know the class.</p>
-  <div class="loop-card">
-    <ol>
-      <li>Open <strong>Claude</strong> in your browser and open your <strong>Project</strong>.</li>
-      <li>Continue your chat inside it.</li>
-      <li>Click <strong>+</strong> at the bottom of the chat.</li>
-      <li>Choose a <strong>photo</strong>. Claude adds it as a page.</li>
-      <li>Tell Claude a <strong>line</strong> to go with it — type or talk. <em>(Optional.)</em></li>
-      <li>Repeat for each photo.</li>
-      <li><strong>Flip</strong> through your book any time.</li>
-      <li>Click <strong>Download</strong> to keep a copy.</li>
-    </ol>
-  </div>
-  <p>You can add photos from <strong>anywhere</strong> — even your phone at home. Just open your project and click <strong>+</strong>.</p>
-  </div>
-  </details>
-
   <hr>
 
   <details class="step-details">
@@ -356,11 +342,10 @@
   <div class="step-body">
   <ol>
     <li>Open <strong>Claude</strong> in your browser and go to your Project. <em>(Already set up? Skip to step 2.)</em></li>
-    <li>Watch the example book on the big screen.</li>
-    <li>Tell Claude the <strong>name</strong> of your trip and the <strong>dates</strong>.</li>
     <li>Click the <strong>+</strong> at the bottom of the chat.</li>
+    <li>Tell Claude the <strong>name</strong> of your trip and the <strong>dates</strong>.</li>
     <li>Choose <strong>4–6 photos</strong> to start with. <em>(On a phone, tap each one — no need to grab your whole camera roll.)</em></li>
-    <li>Send them. Watch each one become a page.</li>
+    <li><svg class="send-icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#D97757"/><path d="M12 17V7M12 7l-4.5 4.5M12 7l4.5 4.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg> Send them. Watch each one become a page.</li>
     <li>Flip through your book on the screen.</li>
   </ol>
   </div>
@@ -418,6 +403,7 @@
     <br>1. <strong>Save it as a PDF</strong> — easy to view, print, or email on any device, but it turns into flat, non-flipping pages (no more page-turning).
     <br>2. <strong>Use a computer instead</strong> — if you or a family member has a Windows or Mac computer, open claude.ai there, sign in, open the same project, and download the book — it opens and flips normally on a computer.
   </div>
+  <div class="tip">If your email won't let the file through (photo-heavy books can get large), copy it onto a USB drive, or upload it to a cloud drive like Google Drive or Dropbox and share the link from there.</div>
   </div>
   </details>
 
@@ -445,32 +431,21 @@
   <details class="step-details">
   <summary>
     <svg class="toggle-icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><rect x="1.5" y="1.5" width="17" height="17" rx="4" fill="none" stroke="currentColor" stroke-width="1.6"/><line class="toggle-icon-v" x1="10" y1="5.5" x2="10" y2="14.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><line x1="5.5" y1="10" x2="14.5" y2="10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-    <h2 id="how-to-share-your-book">How to share your book</h2>
+    <h2 id="what-claude-does-for-you">What Claude does for you</h2>
   </summary>
   <div class="step-body">
-  <p>Your book lives in Claude. You can:</p>
-  <ul>
-    <li><strong>Flip through it</strong> any time in your chat.</li>
-    <li><strong>Download it</strong> as one file (photos inside) to keep or email.</li>
-  </ul>
-  <p>To email the file: start an email, attach the file, send. The other person opens it to flip through.</p>
-  <div class="tip">Works normally when opened on an Android phone or a Windows/Mac computer. On an iPhone or iPad, see the note in Step 4 — tapping the downloaded file may just show plain text instead of the book.</div>
-  <div class="tip">If your email won't let the file through (photo-heavy books can get large), copy it onto a USB drive, or upload it to a cloud drive like Google Drive or Dropbox and share the link from there.</div>
-  </div>
-  </details>
-
-  <details class="step-details">
-  <summary>
-    <svg class="toggle-icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><rect x="1.5" y="1.5" width="17" height="17" rx="4" fill="none" stroke="currentColor" stroke-width="1.6"/><line class="toggle-icon-v" x1="10" y1="5.5" x2="10" y2="14.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><line x1="5.5" y1="10" x2="14.5" y2="10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-    <h2 id="a-few-things-to-remember">A few things to remember</h2>
-  </summary>
-  <div class="step-body">
-  <ul>
-    <li>Always open the <strong>same project</strong> — that's where your book lives.</li>
-    <li>You can add photos from <strong>home, on your phone</strong>, any time.</li>
-    <li>Nothing is permanent until you say so. Ask Claude to change anything.</li>
-    <li>This book is <strong>yours</strong>.</li>
-  </ul>
+  <p>A quick summary of what's happening behind the scenes as you build your book:</p>
+  <table class="feature-table">
+    <thead>
+      <tr><th>#</th><th>What Claude does for you</th><th>How</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Builds your trip book</td><td>Follows your instructions to turn photos into a flip-through book</td></tr>
+      <tr><td>2</td><td>Reads your photos</td><td>Describes what's in each photo and names the place; flags any it's unsure about so you can confirm</td></tr>
+      <tr><td>3</td><td>Edits on request</td><td>Just tell Claude what to change in chat — like moving a photo, changing the cover color, or making the fonts bigger</td></tr>
+      <tr><td>4</td><td>Lets you download and share it</td><td>Click Download anytime to save your book and send it to family</td></tr>
+    </tbody>
+  </table>
   </div>
   </details>
 

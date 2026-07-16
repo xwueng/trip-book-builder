@@ -173,6 +173,43 @@ help navigation and would just add another click.
   is added, unless it's an unlinked sub-heading inside an already-wrapped section (see
   above).
 
+Feature-summary table ("What Claude does for you," added to both docs, last
+collapsible section before the closing `</div>`): a plain-language summary of what
+Claude does for the student, aimed at students rather than facilitators — student
+wording is reused as-is in the Instructor Guide rather than reframed for facilitators.
+Structure: a 3-column `<table class="feature-table">` — `#`, `What Claude does for
+you`, `How` — inside the section's `<div class="step-body">`, one row per capability.
+Keep the row set itself short (four rows currently: builds the book, reads/describes
+photos, edits on request, download & share) — this is a summary, not a full feature
+inventory; do not expand it into a duplicate of the step-by-step instructions
+elsewhere in the doc.
+- CSS: `.feature-table` is a bordered/rounded card matching the doc's other card
+  components (`.loop-card`/`.callout`), using the doc's own `--card`/`--rule`/
+  `--shadow` tokens for the container. The header row (`.feature-table th`) uses the
+  doc's tint/accent pair for background/text — `--teal-tint`/`--teal-deep` in the
+  Student Handbook, `--clay-tint`/`--slate-deep` in the Instructor Guide — so the
+  table's palette derivation matches every other themed component in that doc. The
+  first column (`#`) is bold and colored with the doc's deep accent
+  (`--teal-deep`/`--slate-deep`).
+- Apply the same row content to both docs; only the intro sentence above the table may
+  differ in framing (plain in the Student Handbook, "worth sharing with students" in
+  the Instructor Guide).
+
+Send icon (added wherever a step's "Send" action is called out, currently Step 1's
+final "Send them" list item in both docs): a small inline SVG matching the real Claude
+send button — a solid filled circle with a white up-arrow inside
+(`class="send-icon"`, `viewBox="0 0 24 24"`, `<circle cx="12" cy="12" r="11"
+fill="#D97757"/>` plus an up-arrow `<path d="M12 17V7M12 7l-4.5 4.5M12 7l4.5
+4.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+fill="none"/>`) — placed directly before the word "Send" in that list item. Not a
+paper-plane glyph; match the actual button shape (circle + up-arrow), not a generic
+"send" icon convention. Unlike every other themed icon in these docs, this one is an
+intentional exception to the palette-derived-color rule above: it uses a fixed
+Claude-brand orange (`fill="#D97757"`) in both docs rather than either doc's
+`--amber`/`--clay`/`--brass` tokens, since it represents the actual product's send-
+button color, not a doc-specific accent. `.send-icon{vertical-align:-2px}` keeps it
+aligned with the surrounding text, matching the pattern already used for `.dl-icon`.
+
 iOS trip-book download guidance (added to both docs, in Step 4 — Download and share
 it): iPhone/iPad don't open a downloaded HTML file as a live webpage by default —
 tapping it typically shows plain text instead of the flip-book — so Step 4 includes a
@@ -263,6 +300,11 @@ unless the file-size limitation is independently reconfirmed to no longer apply.
 - If an email won't carry the file (large photo-heavy books), both guides suggest a
   USB drive or a generic cloud-drive link (Google Drive, Dropbox) rather than a
   Claude-specific publish/share link.
+- This USB/cloud-drive fallback line lives inside Step 4 itself (right after the
+  iPhone/iPad note, under the "To send it to family" step) in the Student Handbook — a
+  separate standalone "How to share your book" section used to duplicate this content
+  and has been removed. Do not reintroduce a second, separate sharing section; keep
+  all sharing guidance inside Step 4.
 
 Repo file references: any time a repo file is named in either guide (trip_book_spec.md,
 San_Francisco_demo_book.html, etc.) — whether as an instruction to open it, a "what
