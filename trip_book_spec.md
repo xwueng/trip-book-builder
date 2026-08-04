@@ -1,6 +1,8 @@
 # TRIP BOOK SPEC
 Claude-only file (not user-facing) — build rules for a per-Project flip-book from photos. Distinct from instructions_spec.md (Instructor_Guide.html/Student_Handbook.html).
 
+Reference example: `San_Francisco_demo_book.pdf` in this repo is a worked PDF output built from this spec (paired with `San_Francisco_demo_book.html`, the source flip-book) — see PDF generation below for how it's produced.
+
 Output: 1 self-contained HTML, phone-friendly, real page-turn flip. No music unless asked. Not travel-only — any titled photo collection works (see Topic scope).
 
 ## Design
