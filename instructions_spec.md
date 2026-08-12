@@ -20,8 +20,8 @@ steps. If a new draft reintroduces helper-based phrasing, rewrite it to have the
 student act on their own, and keep the instructor role limited to running the class,
 not personally walking each student through it.
 
-Title: both docs display "My Trip Book" — in the page <title> and in the visible
-masthead/cover h1 — not "My Trip, My Book".
+Title: both docs display "AI Hands-on Lab" — in the page <title> and in the visible
+masthead/cover h1. Subtitle below it: "Make a Trip Book with Claude AI".
 
 Format: each is one self-contained HTML file — no external dependencies, no build step.
 HTML (not PDF) is the primary deliverable, because it's the only format that supports

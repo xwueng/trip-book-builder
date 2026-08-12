@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My Trip Book — Instructor Guide</title>
+<title>AI Hands-on Lab — Instructor Guide</title>
 <style>
   :root{
     --paper:#F5F2E9;
@@ -254,7 +254,7 @@
       <li><a href="#running-this-as-3-steps" data-target="running-this-as-3-steps">Running this as 3 steps</a></li>
       <li><a href="#words-to-help-students-remember-give-out-in-steps-1-amp-3" data-target="words-to-help-students-remember-give-out-in-steps-1-amp-3">Words to help students remember</a></li>
       <li><a href="#facilitator-checklist" data-target="facilitator-checklist">Facilitator checklist</a></li>
-      <li><a href="#what-claude-does-for-you" data-target="what-claude-does-for-you">What Claude does for you</a></li>
+      <li><a href="#what-claude-does-for-you" data-target="what-claude-does-for-you">What Claude AI does and doesn't</a></li>
     </ol>
   </nav>
 </aside>
@@ -264,8 +264,8 @@
   <div class="masthead">
     <button class="printbtn" onclick="window.print()">⎙ Print / Save as PDF</button>
     <span class="badge">Facilitator Copy</span>
-    <h1>My Trip Book</h1>
-    <p>Instructor Guide — a photo trip-book class for seniors, 4 steps (adaptable to 3)</p>
+    <h1>AI Hands-on Lab</h1>
+    <p>Make a Trip Book with Claude AI</p>
   </div>
 
 <nav class="toc">
@@ -285,11 +285,14 @@
   <li><a href="#running-this-as-3-steps">Running this as 3 steps</a></li>
   <li><a href="#words-to-help-students-remember-give-out-in-steps-1-amp-3">Words to help students remember (give out in Steps 1 &amp; 3)</a></li>
   <li><a href="#facilitator-checklist">Facilitator checklist</a></li>
-  <li><a href="#what-claude-does-for-you">What Claude does for you</a></li>
+  <li><a href="#what-claude-does-for-you">What Claude AI does and doesn't</a></li>
 </ol>
 </nav>
 
   <div class="note"><strong>This is the facilitator copy.</strong> It has everything you need to run the class — setup, step scripts with teacher notes, and checklists. Hand students the separate <strong>Student Handbook</strong>: same steps, plain language, no notes.</div>
+
+  <p><strong>A hands-on lab.</strong> This is a hands-on lab to demonstrate where AI stands today. The trip book is the project, but the real point is watching Claude work: what it gets right on its own, what it has to infer. Encourage students to notice this as they build — the friction is the lesson, not something to apologize for.</p>
+
   <p class="note">Tap the small <strong>+</strong> square next to any heading below to open that section — tap it again to close it.</p>
 
   <details class="step-details">
@@ -512,16 +515,21 @@
   <ol>
     <li>Open Claude, open your Project, and continue your chat.</li>
     <li>Flip through your finished book one more time.</li>
-    <li>To keep your own copy: click Download on the book. (It saves as one file with all the photos inside.)</li>
-    <li>To send it to family: attach the downloaded file to an email, a text message, or a messaging app.</li>
+    <li>To keep your own copy: click Download on the book. Students get two files — an <strong>HTML</strong> version and a <strong>PDF</strong> version.</li>
+    <li>To send it to family: attach the right file to an email, a text message, or a messaging app.</li>
     <li>Show the class your cover and one favourite page.</li>
   </ol>
   <div class="note">Downloading is entirely optional — only for students who want a copy of their own or want to send it to family.</div>
-  <div class="note">Sending to an <strong>Android phone or a Windows/Mac computer</strong>? No extra steps — the downloaded file opens and flips normally there.</div>
-  <div class="note"><strong>iPhone/iPad students — flag this before they download.</strong> iOS doesn't open a downloaded HTML file the way a computer does; tapping it in Files often just shows plain text instead of the flip-book. Give them two options:
-    <br>1. <strong>Download as PDF</strong> — opens and shares easily on any device, but it becomes flat, non-flipping pages; they lose the page-turn animation entirely.
-    <br>2. <strong>Use a computer instead</strong> — if the student or their family has access to a Windows or Mac computer, they can sign in to claude.ai there, open the same project, and download the book — it opens and flips normally on a computer.
-  </div>
+  <p><strong>Which file to download</strong></p>
+  <table class="feature-table">
+    <thead><tr><th>Student's device (or the family member receiving it)</th><th>Download this</th></tr></thead>
+    <tbody>
+      <tr><td>Android phone</td><td>HTML</td></tr>
+      <tr><td>Windows or Mac computer</td><td>HTML</td></tr>
+      <tr><td>iPhone or iPad</td><td>PDF</td></tr>
+    </tbody>
+  </table>
+  <div class="note">Saving the HTML page as a PDF yourself (through the browser's print menu) does <strong>not</strong> produce a correct PDF. Students should always use the PDF file the trip book tool generates for them.</div>
   </div>
   </details>
   </div>
@@ -592,7 +600,7 @@
   <details class="step-details">
   <summary>
     <svg class="toggle-icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><rect x="1.5" y="1.5" width="17" height="17" rx="4" fill="none" stroke="currentColor" stroke-width="1.6"/><line class="toggle-icon-v" x1="10" y1="5.5" x2="10" y2="14.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><line x1="5.5" y1="10" x2="14.5" y2="10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-    <h2 id="what-claude-does-for-you">What Claude does for you</h2>
+    <h2 id="what-claude-does-for-you">What Claude AI does and doesn't</h2>
   </summary>
   <div class="step-body">
   <p>Worth sharing with students as a plain-language summary of what's happening behind the scenes:</p>
@@ -602,11 +610,13 @@
     </thead>
     <tbody>
       <tr><td>1</td><td>Builds your trip book</td><td>Follows your instructions to turn photos into a flip-through book</td></tr>
-      <tr><td>2</td><td>Reads your photos</td><td>Describes what's in each photo and names the place; flags any it's unsure about so you can confirm</td></tr>
+      <tr><td>2</td><td>Reads your photos</td><td>Describes what's in each photo and infers the place; flags any it's unsure about so you can confirm</td></tr>
       <tr><td>3</td><td>Edits on request</td><td>Just tell Claude what to change in chat — like moving a photo, changing the cover color, or making the fonts bigger</td></tr>
       <tr><td>4</td><td>Lets you download and share it</td><td>Click Download anytime to save your book and send it to family</td></tr>
     </tbody>
   </table>
+  <p><strong>Limited by:</strong> Claude AI is limited by platform support — iPhone and iPad don't open local HTML files as live pages. Direct students to the PDF file instead (see the table in Step 4).</p>
+  <p><strong>Doesn't:</strong> Claude doesn't generate a perfect trip book. The book might have misalignment, truncated text, or other rough spots — worth telling students to check it over before sharing, and a good discussion point on where AI still needs a human check.</p>
   </div>
   </details>
 
