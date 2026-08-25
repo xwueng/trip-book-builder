@@ -94,10 +94,8 @@
     flex:1; margin:26px 0 6px; padding-bottom:8px; border-bottom:2px solid var(--rule);
   }
   details.step-details > summary h3{ flex:1; margin:16px 0 6px; }
-  details.step-details > summary h1{ flex:1; margin:26px 0 6px !important; }
   details.step-details > summary:hover h2,
-  details.step-details > summary:hover h3,
-  details.step-details > summary:hover h1{ color:var(--clay); }
+  details.step-details > summary:hover h3{ color:var(--clay); }
   details.step-details .toggle-icon{ flex-shrink:0; color:var(--brass); }
   details.step-details[open] > summary .toggle-icon-v{ display:none; }
   details.step-details > .step-body{ padding-top:2px; }
@@ -127,7 +125,8 @@
     text-transform:uppercase; letter-spacing:.04em;
   }
   .feature-table tbody tr+tr td{border-top:1px solid var(--rule);}
-  .feature-table td:first-child{font-weight:700; color:var(--slate-deep); width:30px;}
+  .feature-table td:first-child{font-weight:700; color:var(--slate-deep);}
+  .feature-table--index td:first-child{width:30px;}
 
   .checklist{list-style:none; padding-left:0;}
   .checklist li{
@@ -233,28 +232,28 @@
   <p class="side-toc-title">Contents</p>
   <nav>
     <ol>
-      <li><a href="#the-goal" data-target="the-goal">The goal</a></li>
-      <li><a href="#how-it-works-the-whole-idea" data-target="how-it-works-the-whole-idea">How it works — the whole idea</a></li>
-      <li><a href="#what-youll-use" data-target="what-youll-use">What you'll use</a></li>
-      <li><a href="#who-and-how" data-target="who-and-how">Who and how</a></li>
+      <li><a href="#class-size-and-student-devices" data-target="class-size-and-student-devices">1. Class size and student devices</a></li>
+      <li><a href="#before-the-first-class-note-to-students" data-target="before-the-first-class-note-to-students">2. Before the first class — note to students</a></li>
+      <li><a href="#before-the-first-class-facilitator-prep-list" data-target="before-the-first-class-facilitator-prep-list">3. Before the first class — facilitator prep list</a></li>
       <li>
-        <a href="#setting-up-each-students-project" data-target="setting-up-each-students-project">Setting up each student's project</a>
+        <a href="#setting-up-each-students-project" data-target="setting-up-each-students-project">4. Setting up each student's project</a>
         <ul class="side-toc-sub">
           <li><a href="#part-1-create-a-claude-account" data-target="part-1-create-a-claude-account">Part 1 — Create account</a></li>
           <li><a href="#part-2-create-a-project" data-target="part-2-create-a-project">Part 2 — Create project</a></li>
           <li><a href="#part-3-attach-the-spec-file" data-target="part-3-attach-the-spec-file">Part 3 — Add the rules</a></li>
         </ul>
       </li>
-      <li><a href="#before-the-first-class-note-to-students" data-target="before-the-first-class-note-to-students">Before the first class — note to students</a></li>
-      <li><a href="#the-four-steps" data-target="the-four-steps">The four steps</a></li>
+      <li><a href="#building-the-trip-book-the-three-steps" data-target="building-the-trip-book-the-three-steps">5. Building the trip book</a></li>
       <li><a href="#step-1-start-your-book-and-add-all-your-photos" data-target="step-1-start-your-book-and-add-all-your-photos">Step 1 — Start &amp; add photos</a></li>
-      <li><a href="#step-2-add-your-words-claude-asks-you" data-target="step-2-add-your-words-claude-asks-you">Step 2 — Add your words</a></li>
-      <li><a href="#step-3-put-it-in-order-and-polish" data-target="step-3-put-it-in-order-and-polish">Step 3 — Order &amp; polish</a></li>
-      <li><a href="#step-4-download-and-share-it" data-target="step-4-download-and-share-it">Step 4 — Download &amp; share</a></li>
-      <li><a href="#running-this-as-3-steps" data-target="running-this-as-3-steps">Running this as 3 steps</a></li>
-      <li><a href="#words-to-help-students-remember-give-out-in-steps-1-amp-3" data-target="words-to-help-students-remember-give-out-in-steps-1-amp-3">Words to help students remember</a></li>
-      <li><a href="#facilitator-checklist" data-target="facilitator-checklist">Facilitator checklist</a></li>
-      <li><a href="#what-claude-does-for-you" data-target="what-claude-does-for-you">What Claude AI does and doesn't</a></li>
+      <li>
+        <a href="#step-2-put-it-in-order-and-polish" data-target="step-2-put-it-in-order-and-polish">Step 2 — Order &amp; polish</a>
+        <ul class="side-toc-sub">
+          <li><a href="#words-to-help-students-remember" data-target="words-to-help-students-remember">Words to help students remember</a></li>
+        </ul>
+      </li>
+      <li><a href="#step-3-download-and-share-it" data-target="step-3-download-and-share-it">Step 3 — Download &amp; share</a></li>
+      <li><a href="#watch-for" data-target="watch-for">6. Watch for</a></li>
+      <li><a href="#what-claude-does-for-you" data-target="what-claude-does-for-you">7. What Claude AI does and doesn't</a></li>
     </ol>
   </nav>
 </aside>
@@ -271,75 +270,61 @@
 <nav class="toc">
 <p class="toc-title">Contents</p>
 <ol>
-  <li><a href="#the-goal">The goal</a></li>
-  <li><a href="#how-it-works-the-whole-idea">How it works — the whole idea</a></li>
-  <li><a href="#what-youll-use">What you'll use</a></li>
-  <li><a href="#who-and-how">Who and how</a></li>
-  <li><a href="#setting-up-each-students-project">Setting up each student's project</a></li>
-  <li><a href="#before-the-first-class-note-to-students">Before the first class — note to students</a></li>
-  <li><a href="#the-four-steps">The four steps</a></li>
+  <li><a href="#class-size-and-student-devices">1. Class size and student devices</a></li>
+  <li><a href="#before-the-first-class-note-to-students">2. Before the first class — note to students</a></li>
+  <li><a href="#before-the-first-class-facilitator-prep-list">3. Before the first class — facilitator prep list</a></li>
+  <li><a href="#setting-up-each-students-project">4. Setting up each student's project</a></li>
+  <li><a href="#building-the-trip-book-the-three-steps">5. Building the trip book — the three steps</a></li>
   <li><a href="#step-1-start-your-book-and-add-all-your-photos">Step 1 — Start your book and add all your photos</a></li>
-  <li><a href="#step-2-add-your-words-claude-asks-you">Step 2 — Add your words (Claude asks you)</a></li>
-  <li><a href="#step-3-put-it-in-order-and-polish">Step 3 — Put it in order and polish</a></li>
-  <li><a href="#step-4-download-and-share-it">Step 4 — Download and share it</a></li>
-  <li><a href="#running-this-as-3-steps">Running this as 3 steps</a></li>
-  <li><a href="#words-to-help-students-remember-give-out-in-steps-1-amp-3">Words to help students remember (give out in Steps 1 &amp; 3)</a></li>
-  <li><a href="#facilitator-checklist">Facilitator checklist</a></li>
-  <li><a href="#what-claude-does-for-you">What Claude AI does and doesn't</a></li>
+  <li><a href="#step-2-put-it-in-order-and-polish">Step 2 — Put it in order and polish</a></li>
+  <li><a href="#words-to-help-students-remember">Words to help students remember</a></li>
+  <li><a href="#step-3-download-and-share-it">Step 3 — Download and share it</a></li>
+  <li><a href="#watch-for">6. Watch for</a></li>
+  <li><a href="#what-claude-does-for-you">7. What Claude AI does and doesn't</a></li>
 </ol>
 </nav>
 
-  <div class="note"><strong>This is the facilitator copy.</strong> It has everything you need to run the class — setup, step scripts with teacher notes, and checklists. Hand students the separate <strong>Student Handbook</strong>: same steps, plain language, no notes.</div>
+  <div class="note"><strong>This is the facilitator copy</strong> — setup, step scripts with notes, and checklists. Students get a separate <strong>Handbook</strong>: same steps, plain language, no notes.</div>
 
-  <p><strong>A hands-on lab.</strong> This is a hands-on lab to demonstrate where AI stands today. The trip book is the project, but the real point is watching Claude work: what it gets right on its own, what it has to infer. Encourage students to notice this as they build — the friction is the lesson, not something to apologize for.</p>
+  <p><strong>The objective of this lab is to show where AI stands today.</strong> The trip book is the project, but the real point is watching Claude work: what it gets right on its own, what it has to infer. Encourage students to notice this as they build — the friction is the lesson, not something to apologize for.</p>
 
   <p class="note">Tap the small <strong>+</strong> square next to any heading below to open that section — tap it again to close it.</p>
 
   <details class="step-details">
   <summary>
     <svg class="toggle-icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><rect x="1.5" y="1.5" width="17" height="17" rx="4" fill="none" stroke="currentColor" stroke-width="1.6"/><line class="toggle-icon-v" x1="10" y1="5.5" x2="10" y2="14.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><line x1="5.5" y1="10" x2="14.5" y2="10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-    <h2 id="the-goal">The goal</h2>
-  </summary>
-  <div class="step-body">
-  <p>By the end, each student has a <strong>trip book</strong> that:</p>
-  <ol>
-    <li><strong>Flips like a real book</strong> — tap or click to turn the pages.</li>
-    <li><strong>Lives in Claude</strong> — they add to it by uploading photos from any phone or laptop, and can <strong>download</strong> the finished book any time.</li>
-  </ol>
-  <p>There is <strong>no separate app or tool to install</strong>. The student talks to Claude, uploads photos with the <strong>+</strong> button, and Claude builds and updates the book directly.</p>
-  </div>
-  </details>
-
-  <details class="step-details">
-  <summary>
-    <svg class="toggle-icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><rect x="1.5" y="1.5" width="17" height="17" rx="4" fill="none" stroke="currentColor" stroke-width="1.6"/><line class="toggle-icon-v" x1="10" y1="5.5" x2="10" y2="14.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><line x1="5.5" y1="10" x2="14.5" y2="10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-    <h2 id="how-it-works-the-whole-idea">How it works — the whole idea</h2>
-  </summary>
-  <div class="step-body">
-  <ol>
-    <li>Student gets their own <strong>Claude Project</strong>, set up once by the student in Step 1.
-      <div class="note">This is where the book-building rules live — the student never sees or touches them.</div>
-    </li>
-    <li>Inside that project, the student starts a chat and clicks <strong>+</strong> to upload photos (phone, tablet, or computer — anywhere).</li>
-    <li>Claude <strong>adds each photo as a new page</strong> in the flippable trip book.</li>
-    <li>Claude <strong>shows each photo in turn and asks about it</strong>; the student gives a line by typing or talking. <em>(Optional.)</em></li>
-    <li>The book updates on screen. The student can <strong>flip through it</strong> and <strong>download it</strong> any time.</li>
-  </ol>
-  <p>Because uploading uses the chat <strong>+</strong>, students can add photos between steps, from home, from their phone — they just reopen their project and continue.</p>
-  </div>
-  </details>
-
-  <details class="step-details">
-  <summary>
-    <svg class="toggle-icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><rect x="1.5" y="1.5" width="17" height="17" rx="4" fill="none" stroke="currentColor" stroke-width="1.6"/><line class="toggle-icon-v" x1="10" y1="5.5" x2="10" y2="14.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><line x1="5.5" y1="10" x2="14.5" y2="10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-    <h2 id="what-youll-use">What you'll use</h2>
+    <h2 id="class-size-and-student-devices">1. Class size and student devices</h2>
   </summary>
   <div class="step-body">
   <ul>
-    <li><strong>Claude</strong> (claude.ai), open in a web browser — one <strong>Project</strong> per student.</li>
-    <li><a href="https://github.com/xwueng/trip-book-builder/blob/main/trip_book_spec.md" target="_blank" rel="noopener"><code>trip_book_spec.md</code></a> — the build spec; students point their project at it with a one-line paste into Project instructions in Step 1.</li>
-    <li>The <strong>"Start my book" line</strong> below, to begin each student's book.</li>
-    <li><a href="https://github.com/xwueng/trip-book-builder/blob/main/San_Francisco_demo_book.html" target="_blank" rel="noopener"><code>San_Francisco_demo_book.html</code></a> — a finished example to show the goal on day one.</li>
+    <li><strong>Class size:</strong> 6–10 students, working independently at their own pace.</li>
+    <li><strong>Class length:</strong> 90 minutes.</li>
+    <li><strong>Student devices:</strong> a laptop (recommended), tablet, or phone per student.</li>
+  </ul>
+  <div class="note"><strong>The setup steps:</strong> students create their own Claude account and Project — a real, if short, task. Budget 10–15 minutes each. Phone verification (below) is the most common snag, so build in some slack.</div>
+  </div>
+  </details>
+
+  <details class="step-details">
+  <summary>
+    <svg class="toggle-icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><rect x="1.5" y="1.5" width="17" height="17" rx="4" fill="none" stroke="currentColor" stroke-width="1.6"/><line class="toggle-icon-v" x1="10" y1="5.5" x2="10" y2="14.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><line x1="5.5" y1="10" x2="14.5" y2="10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    <h2 id="before-the-first-class-note-to-students">2. Before the first class — note to students</h2>
+  </summary>
+  <div class="step-body">
+  <blockquote>Bring your photos on your phone (or wherever they are). Pick one trip, and think of a title and the dates. No need to move your photos anywhere first — we'll upload them straight from your device in class. If you don't have a Gmail address to sign up with, bring a mobile phone that can receive text messages, even if you're working on a laptop — it's used once, to verify your new account.</blockquote>
+  </div>
+  </details>
+
+  <details class="step-details">
+  <summary>
+    <svg class="toggle-icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><rect x="1.5" y="1.5" width="17" height="17" rx="4" fill="none" stroke="currentColor" stroke-width="1.6"/><line class="toggle-icon-v" x1="10" y1="5.5" x2="10" y2="14.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><line x1="5.5" y1="10" x2="14.5" y2="10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    <h2 id="before-the-first-class-facilitator-prep-list">3. Before the first class — facilitator prep list</h2>
+  </summary>
+  <div class="step-body">
+  <ul class="checklist">
+    <li>(Before Step 1) Students without a Gmail address reminded to bring a mobile phone that can receive text messages, even if working on a laptop</li>
+    <li>The example book ready on the projector</li>
+    <li>Handouts printed in large type</li>
   </ul>
   </div>
   </details>
@@ -347,26 +332,10 @@
   <details class="step-details">
   <summary>
     <svg class="toggle-icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><rect x="1.5" y="1.5" width="17" height="17" rx="4" fill="none" stroke="currentColor" stroke-width="1.6"/><line class="toggle-icon-v" x1="10" y1="5.5" x2="10" y2="14.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><line x1="5.5" y1="10" x2="14.5" y2="10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-    <h2 id="who-and-how">Who and how</h2>
+    <h2 id="setting-up-each-students-project">4. Setting up each student's project</h2>
   </summary>
   <div class="step-body">
-  <ul>
-    <li><strong>Group size:</strong> 6–10 students, working independently at their own pace.</li>
-    <li><strong>Step length:</strong> 90 minutes with a short break.</li>
-    <li><strong>Devices:</strong> a laptop, tablet, or phone per student — anything that opens Claude in a browser.</li>
-    <li><strong>Room:</strong> a projector for demos; good lighting; water.</li>
-  </ul>
-  <div class="note"><strong>The setup steps:</strong> students create their own Claude account and Project — this is a real, if short, learning task, so budget 10–15 minutes per student. Phone verification (below) is where people most often get stuck, so build in a little slack there.</div>
-  </div>
-  </details>
-
-  <details class="step-details">
-  <summary>
-    <svg class="toggle-icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><rect x="1.5" y="1.5" width="17" height="17" rx="4" fill="none" stroke="currentColor" stroke-width="1.6"/><line class="toggle-icon-v" x1="10" y1="5.5" x2="10" y2="14.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><line x1="5.5" y1="10" x2="14.5" y2="10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-    <h2 id="setting-up-each-students-project">Setting up each student's project</h2>
-  </summary>
-  <div class="step-body">
-  <div class="note">Students do this themselves, following the written steps below. Do this before photos go in — either as a pre-step slot or as the start of Step 1.</div>
+  <div class="note">Students do this themselves, following the steps below — either as a pre-step slot or as the start of Step 1.</div>
 
   <details class="step-details">
   <summary>
@@ -378,7 +347,7 @@
     <li>Open a browser and go to <strong>claude.ai</strong>.</li>
     <li>Click <strong>Sign up</strong>. Choose <strong>"Continue with Google"</strong> (fastest, if they have a Google/Gmail account) or <strong>"Continue with email"</strong>.</li>
     <li>If using email: enter the email address, then check that inbox for a message from Claude and click the verification link (or enter the code shown). Claude will then ask for a <strong>phone number</strong> and text a code to enter.
-      <div class="note"><strong>This step trips people up — read carefully.</strong> Phone verification only applies to students who sign up with <strong>email</strong>, not Google — it's how Claude confirms they're a real person in that case. It must be a real mobile number that can receive text messages. Landlines, Google Voice, and other app-generated numbers are rejected. A personal mobile phone is the safest bet. Students who sign up with <strong>Google</strong> skip this step entirely.</div>
+      <div class="note"><strong>This step trips people up.</strong> Phone verification only applies if a student signs up with <strong>email</strong>, not Google — it's how Claude confirms they're a real person. It needs a real mobile number; landlines, Google Voice, and other app-generated numbers are rejected. Students who sign up with <strong>Google</strong> skip this step entirely.</div>
     </li>
     <li>Once the Claude chat screen appears, the account is ready.</li>
   </ol>
@@ -424,28 +393,14 @@
   </div>
   </details>
 
-  <h3>Start my book — paste this into the chat</h3>
-  <blockquote>"Please start my flip-through trip book. The title is <strong>[trip name]</strong> and the dates are <strong>[dates]</strong>. I'll upload all my photos with the + button now."</blockquote>
-  <p>This is pasted once the project is set up and the rules are added — see the Step 1 script below. After this, students just upload photos — the rules already in the project's instructions handle the rest (adding pages, asking about each photo, skip logic, facts, sizing).</p>
+  <p>Once setup is done, students just upload photos with the <strong>+</strong> button — the project's instructions handle the rest: starting the book, asking for a title and dates, adding pages, asking about each photo, skip logic, facts, and sizing.</p>
   </div>
   </details>
 
   <details class="step-details">
   <summary>
     <svg class="toggle-icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><rect x="1.5" y="1.5" width="17" height="17" rx="4" fill="none" stroke="currentColor" stroke-width="1.6"/><line class="toggle-icon-v" x1="10" y1="5.5" x2="10" y2="14.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><line x1="5.5" y1="10" x2="14.5" y2="10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-    <h2 id="before-the-first-class-note-to-students">Before the first class — note to students</h2>
-  </summary>
-  <div class="step-body">
-  <blockquote>Bring your photos on your phone (or wherever they are). Pick one trip, and think of a title and the dates. You do not need to move the photos anywhere first — we'll upload them straight from your phone in class. If you don't have a Gmail address to sign up with, bring a mobile phone that can receive text messages, even if you're working on a laptop — it's used once, to verify your new account.</blockquote>
-  </div>
-  </details>
-
-  <hr>
-
-  <details class="step-details">
-  <summary>
-    <svg class="toggle-icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><rect x="1.5" y="1.5" width="17" height="17" rx="4" fill="none" stroke="currentColor" stroke-width="1.6"/><line class="toggle-icon-v" x1="10" y1="5.5" x2="10" y2="14.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><line x1="5.5" y1="10" x2="14.5" y2="10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-    <h1 style="font-size:28px; color:var(--slate); margin:0;" id="the-four-steps">The four steps</h1>
+    <h2 id="building-the-trip-book-the-three-steps">5. Building the trip book — the three steps</h2>
   </summary>
   <div class="step-body">
   <div class="note">Each numbered step is a plain instruction to say to the student. Say one, wait until they've done it, then say the next. The shaded notes below steps are for you — don't read them aloud.</div>
@@ -459,102 +414,39 @@
   <ol>
     <li>Open Claude in the browser — the student sets up their own account and Project; see "Setting up each student's project" above. <span style="color:var(--clay);">(Budget 10–15 minutes.)</span></li>
     <li>Click the + at the bottom of the chat.</li>
-    <li>Open the Project and start a new chat. Paste the Start my book line with the trip name and dates. Press Enter. <span style="color:var(--clay);">(Student pastes it themselves.)</span></li>
-    <li>Choose <strong>4–6 photos</strong> to start with. <span style="color:var(--clay);">(Hold Ctrl and click on 4–6, or tap each one on a phone. Steer them away from "Select All" — on a phone that can mean their whole camera roll. A handful is plenty to see the book take shape; more can go in afterward.)</span></li>
-    <li><svg class="send-icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#D97757"/><path d="M12 17V7M12 7l-4.5 4.5M12 7l4.5 4.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg> Send them. Wait — each photo becomes a page in your book.</li>
-    <li>Need more? Click + again and add the rest.</li>
+    <li>Choose <strong>4–6 photos</strong> to start with. <span style="color:var(--clay);">(Ctrl+click for 4–6, or tap each one on a phone — steer them away from "Select All," which can grab the whole camera roll. A handful is enough to see the book take shape; more can go in later.)</span></li>
+    <li>Click the <svg class="send-icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#D97757"/><path d="M12 17V7M12 7l-4.5 4.5M12 7l4.5 4.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg> icon to send them.</li>
+    <li>Claude will ask for a title and the trip dates. Students can answer, or choose to skip — Claude will work from the photo dates instead. <span style="color:var(--clay);">(Worth letting at least one student try "skip," so the class sees Claude infer the dates on its own.)</span></li>
+    <li>Watch each photo become a page.</li>
     <li>Flip through your book on the screen.</li>
   </ol>
-  <div class="note">If a phone won't upload, open Claude in the phone's own browser and use + there. The account, project, and spec file are only set up once — Steps 2–4 just reopen the same project.</div>
+  <div class="note">If a device won't upload, open Claude in that device's own browser and use + there. The account, project, and spec file are only set up once — later steps just reopen the same project.</div>
   </div>
   </details>
 
   <details class="step-details">
   <summary>
     <svg class="toggle-icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><rect x="1.5" y="1.5" width="17" height="17" rx="4" fill="none" stroke="currentColor" stroke-width="1.6"/><line class="toggle-icon-v" x1="10" y1="5.5" x2="10" y2="14.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><line x1="5.5" y1="10" x2="14.5" y2="10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-    <h2 id="step-2-add-your-words-claude-asks-you">Step 2 — Add your words (Claude asks you)</h2>
+    <h2 id="step-2-put-it-in-order-and-polish">Step 2 — Put it in order and polish</h2>
   </summary>
   <div class="step-body">
-  <ol>
-    <li>Open Claude, open your Project, and continue your chat.</li>
-    <li>Claude will go through your photos one at a time — showing you each photo and asking about it.</li>
-    <li>For the photo on screen, tell Claude the place and a line about it — type it, or use your device's microphone to talk.</li>
-    <li>Not sure what to say? Ask Claude: "Give me a question to help me remember this one."</li>
-    <li>Don't want words on a photo? Just say "skip." <span style="color:var(--clay);">(Claude will name the place and add a short description and a fact for you.)</span></li>
-    <li>Flip through and read your book.</li>
-  </ol>
-  <div class="note">All words are optional — a photo-only book is fine. For skipped photos, Claude figures out the place and adds a line plus a fact about any well-known landmark. Students can also add more photos from home anytime with the + button.</div>
-  </div>
-  </details>
-
-  <details class="step-details">
-  <summary>
-    <svg class="toggle-icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><rect x="1.5" y="1.5" width="17" height="17" rx="4" fill="none" stroke="currentColor" stroke-width="1.6"/><line class="toggle-icon-v" x1="10" y1="5.5" x2="10" y2="14.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><line x1="5.5" y1="10" x2="14.5" y2="10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-    <h2 id="step-3-put-it-in-order-and-polish">Step 3 — Put it in order and polish</h2>
-  </summary>
-  <div class="step-body">
-  <ol>
-    <li>Open Claude, open your Project, and continue your chat.</li>
-    <li>To change the order, tell Claude: "Move the bridge photo to the front."</li>
-    <li>To take one out, tell Claude: "Remove the blurry photo on page 4."</li>
-    <li>Want a fact on a page? Ask Claude: "Add a fact about the Cliffs of Moher."</li>
-    <li>See a small <strong>"confirm venue"</strong> tag on a photo? Claude wasn't sure of the spot — tell it the real place and it'll update the page: "That's actually Fisherman's Wharf."</li>
-    <li>Fix any wording: "Change the line on the castle photo to…"</li>
-    <li>Flip through and check it reads the way you want.</li>
-  </ol>
-  <div class="note">Once every photo in the book has a confirmed location, the closing page automatically gets a small route map — one more reason to clear any "confirm venue" tags.</div>
-  </div>
-  </details>
-
-  <details class="step-details">
-  <summary>
-    <svg class="toggle-icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><rect x="1.5" y="1.5" width="17" height="17" rx="4" fill="none" stroke="currentColor" stroke-width="1.6"/><line class="toggle-icon-v" x1="10" y1="5.5" x2="10" y2="14.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><line x1="5.5" y1="10" x2="14.5" y2="10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-    <h2 id="step-4-download-and-share-it">Step 4 — Download and share it</h2>
-  </summary>
-  <div class="step-body">
-  <ol>
-    <li>Open Claude, open your Project, and continue your chat.</li>
-    <li>Flip through your finished book one more time.</li>
-    <li>To keep your own copy: click Download on the book. Students get two files — an <strong>HTML</strong> version and a <strong>PDF</strong> version.</li>
-    <li>To send it to family: attach the right file to an email, a text message, or a messaging app.</li>
-    <li>Show the class your cover and one favourite page.</li>
-  </ol>
-  <div class="note">Downloading is entirely optional — only for students who want a copy of their own or want to send it to family.</div>
-  <p><strong>Which file to download</strong></p>
+  <p>Ask Claude to make any of these changes — students just type or say it in plain language.</p>
   <table class="feature-table">
-    <thead><tr><th>Student's device (or the family member receiving it)</th><th>Download this</th></tr></thead>
+    <thead><tr><th>What you want to do</th><th>What to type/say</th></tr></thead>
     <tbody>
-      <tr><td>Android phone</td><td>HTML</td></tr>
-      <tr><td>Windows or Mac computer</td><td>HTML</td></tr>
-      <tr><td>iPhone or iPad</td><td>PDF</td></tr>
+      <tr><td>Change the order</td><td>"Move the bridge photo to the front."</td></tr>
+      <tr><td>Remove a photo</td><td>"Remove the blurry photo on page 4."</td></tr>
+      <tr><td>Add a fact</td><td>"Add a fact about the Cliffs of Moher."</td></tr>
+      <tr><td>Confirm a guessed location</td><td>See a <strong>"confirm venue"</strong> tag on a photo? Claude inferred the spot — tell it the real place: "That's actually Fisherman's Wharf."</td></tr>
+      <tr><td>Fix the wording</td><td>"Change the line on the castle photo to…"</td></tr>
     </tbody>
   </table>
-  <div class="note">Saving the HTML page as a PDF yourself (through the browser's print menu) does <strong>not</strong> produce a correct PDF. Students should always use the PDF file the trip book tool generates for them.</div>
-  </div>
-  </details>
-  </div>
-  </details>
+  <p>Flip through and check it reads the way you want.</p>
 
   <details class="step-details">
   <summary>
     <svg class="toggle-icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><rect x="1.5" y="1.5" width="17" height="17" rx="4" fill="none" stroke="currentColor" stroke-width="1.6"/><line class="toggle-icon-v" x1="10" y1="5.5" x2="10" y2="14.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><line x1="5.5" y1="10" x2="14.5" y2="10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-    <h2 id="running-this-as-3-steps">Running this as 3 steps</h2>
-  </summary>
-  <div class="step-body">
-  <ul>
-    <li><strong>Step 1</strong> — Start the book and upload all your photos.</li>
-    <li><strong>Step 2</strong> — Add your words (Claude asks about each photo) and put them in order.</li>
-    <li><strong>Step 3</strong> — Download and share.</li>
-  </ul>
-  </div>
-  </details>
-
-  <hr>
-
-  <details class="step-details">
-  <summary>
-    <svg class="toggle-icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><rect x="1.5" y="1.5" width="17" height="17" rx="4" fill="none" stroke="currentColor" stroke-width="1.6"/><line class="toggle-icon-v" x1="10" y1="5.5" x2="10" y2="14.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><line x1="5.5" y1="10" x2="14.5" y2="10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-    <h2 id="words-to-help-students-remember-give-out-in-steps-1-amp-3">Words to help students remember (give out in Steps 1 &amp; 3)</h2>
+    <h3 id="words-to-help-students-remember">Words to help students remember</h3>
   </summary>
   <div class="step-body">
   <p>Students don't need fancy words. One true sentence is plenty. Finish one of these for a photo:</p>
@@ -570,26 +462,48 @@
   </div>
   </details>
 
+  </div>
+  </details>
+
   <details class="step-details">
   <summary>
     <svg class="toggle-icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><rect x="1.5" y="1.5" width="17" height="17" rx="4" fill="none" stroke="currentColor" stroke-width="1.6"/><line class="toggle-icon-v" x1="10" y1="5.5" x2="10" y2="14.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><line x1="5.5" y1="10" x2="14.5" y2="10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-    <h2 id="facilitator-checklist">Facilitator checklist</h2>
+    <h2 id="step-3-download-and-share-it">Step 3 — Download and share it</h2>
   </summary>
   <div class="step-body">
-  <h3>Before each step</h3>
-  <ul class="checklist">
-    <li>(Before Step 1) The Project-instructions paste line (pointing to <a href="https://github.com/xwueng/trip-book-builder/blob/main/trip_book_spec.md" target="_blank" rel="noopener"><code>trip_book_spec.md</code></a>) ready to share with every student</li>
-    <li>(Before Step 1) Students without a Gmail address reminded to bring a mobile phone that can receive text messages, even if working on a laptop</li>
-    <li>The example book ready on the projector</li>
-    <li>The "Start my book" line ready to paste</li>
-    <li>Handouts printed in large type</li>
-  </ul>
-  <h3>Watch for</h3>
+  <p>The trip book downloads as an <strong>HTML</strong> file by default. Check the table below for the file your recipient needs — if you need a <strong>PDF</strong>, just ask Claude to make one.</p>
+  <table class="feature-table">
+    <thead><tr><th>Viewing device</th><th>What file to download</th><th>What to do</th></tr></thead>
+    <tbody>
+      <tr><td>Android phone</td><td>HTML (default)</td><td>Click <strong>Download</strong> to get the HTML file.</td></tr>
+      <tr><td>Windows or Mac computer</td><td>HTML (default)</td><td>Click <strong>Download</strong> to get the HTML file.</td></tr>
+      <tr><td>iPhone or iPad</td><td>PDF</td><td>Type or say <em>"Please generate a PDF file,"</em> then download the file Claude gives you.</td></tr>
+    </tbody>
+  </table>
+  <div class="note">Saving the HTML page as a PDF yourself (through the browser's print menu) does <strong>not</strong> produce a correct PDF. Students should always ask Claude to generate the PDF for them.</div>
+  <div class="note">Downloading is optional — only for students who want a copy or want to send it to family.</div>
+  <ol>
+    <li>To send it to family: attach the right file to an email, a text message, or a messaging app.
+      <div class="note">If email won't let the file through (photo-heavy books can get large), a USB drive or a cloud drive link (Google Drive, Dropbox) works too.</div>
+    </li>
+    <li>Show the class your cover and one favourite page.</li>
+  </ol>
+  </div>
+  </details>
+  </div>
+  </details>
+
+  <details class="step-details">
+  <summary>
+    <svg class="toggle-icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><rect x="1.5" y="1.5" width="17" height="17" rx="4" fill="none" stroke="currentColor" stroke-width="1.6"/><line class="toggle-icon-v" x1="10" y1="5.5" x2="10" y2="14.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><line x1="5.5" y1="10" x2="14.5" y2="10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    <h2 id="watch-for">6. Watch for</h2>
+  </summary>
+  <div class="step-body">
   <ul class="checklist">
     <li>Phone verification stalls — wrong number type (landline, Google Voice, VoIP), or the code takes a few minutes to arrive</li>
     <li>Students mistyping or only partly pasting the Project-instructions line — check it matches exactly before moving on</li>
     <li>Students who can't find <strong>Project instructions</strong> in their project — point them to it directly</li>
-    <li>Trouble uploading photos from a phone — open Claude in the phone's own browser and use + there</li>
+    <li>Trouble uploading photos from a student device — open Claude in that device's own browser and use + there</li>
     <li>A "confirm venue" tag left on a page — remind the student to just tell Claude the real place</li>
     <li>Quiet students who are stuck — circulate and check screens</li>
     <li>Remind students they can add photos from home anytime, by reopening their project</li>
@@ -600,23 +514,23 @@
   <details class="step-details">
   <summary>
     <svg class="toggle-icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><rect x="1.5" y="1.5" width="17" height="17" rx="4" fill="none" stroke="currentColor" stroke-width="1.6"/><line class="toggle-icon-v" x1="10" y1="5.5" x2="10" y2="14.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><line x1="5.5" y1="10" x2="14.5" y2="10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-    <h2 id="what-claude-does-for-you">What Claude AI does and doesn't</h2>
+    <h2 id="what-claude-does-for-you">7. What Claude AI does and doesn't</h2>
   </summary>
   <div class="step-body">
   <p>Worth sharing with students as a plain-language summary of what's happening behind the scenes:</p>
-  <table class="feature-table">
+  <table class="feature-table feature-table--index">
     <thead>
       <tr><th>#</th><th>What Claude does for you</th><th>How</th></tr>
     </thead>
     <tbody>
       <tr><td>1</td><td>Builds your trip book</td><td>Follows your instructions to turn photos into a flip-through book</td></tr>
       <tr><td>2</td><td>Reads your photos</td><td>Describes what's in each photo and infers the place; flags any it's unsure about so you can confirm</td></tr>
-      <tr><td>3</td><td>Edits on request</td><td>Just tell Claude what to change in chat — like moving a photo, changing the cover color, or making the fonts bigger</td></tr>
-      <tr><td>4</td><td>Lets you download and share it</td><td>Click Download anytime to save your book and send it to family</td></tr>
+      <tr><td>3</td><td>Edits on request</td><td>Makes the change you ask for in chat — moves a photo, changes the cover color, makes the fonts bigger, and more</td></tr>
+      <tr><td>4</td><td>Lets you download and share it</td><td>Generates a downloadable file whenever you're ready — HTML by default, or a PDF on request</td></tr>
     </tbody>
   </table>
-  <p><strong>Limited by:</strong> Claude AI is limited by platform support — iPhone and iPad don't open local HTML files as live pages. Direct students to the PDF file instead (see the table in Step 4).</p>
-  <p><strong>Doesn't:</strong> Claude doesn't generate a perfect trip book. The book might have misalignment, truncated text, or other rough spots — worth telling students to check it over before sharing, and a good discussion point on where AI still needs a human check.</p>
+  <p><strong>Limited by:</strong> platform support — iPhone and iPad don't open local HTML files as live pages; direct students to the PDF instead (see the table in Step 3).</p>
+  <p><strong>Doesn't:</strong> generate a perfect trip book. Expect occasional misalignment, truncated text, or rough spots — worth having students check it over before sharing, and a good discussion point on where AI still needs a human check.</p>
   </div>
   </details>
 
