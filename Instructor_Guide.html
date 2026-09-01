@@ -17,6 +17,11 @@
     --brass:#C79A4E;
     --rule:#DAD4C5;
     --shadow:0 1px 0 rgba(22,35,42,.04), 0 10px 30px -18px rgba(22,35,42,.45);
+    --amber:#CF7A1E;
+    --amber-tint:#FAEBD2;
+    --teal:#1E6E72;
+    --teal-deep:#17585B;
+    --teal-tint:#E4EFEE;
   }
   *{box-sizing:border-box;}
   html{-webkit-text-size-adjust:100%;}
@@ -58,12 +63,18 @@
     font-family:"Courier New",ui-monospace,monospace; font-size:.92em;
   }
 
-  .note{
-    background:var(--clay-tint); border-left:4px solid var(--clay);
-    padding:8px 16px; margin:6px 0 10px; border-radius:0 6px 6px 0;
-    font-size:16px; color:#5C3B1A;
+  .tip{
+    background:var(--amber-tint); border-left:4px solid var(--amber);
+    padding:8px 18px; margin:6px 0 10px; border-radius:0 8px 8px 0; color:#6B4610;
+    font-size:16px;
   }
-  .note strong{color:#5C3B1A;}
+  .tip strong{color:#6B4610;}
+  .example{
+    background:var(--teal-tint); border-left:4px solid var(--teal);
+    padding:8px 18px; margin:6px 0 10px; border-radius:0 8px 8px 0; color:var(--teal-deep);
+    font-size:16px;
+  }
+  .example strong{color:var(--teal-deep);}
 
   .copy-box{
     display:flex; align-items:center; gap:10px; flex-wrap:wrap;
@@ -121,11 +132,11 @@
   }
   .feature-table th, .feature-table td{padding:10px 14px; text-align:left; font-size:16px; vertical-align:top; border-bottom:none;}
   .feature-table th{
-    background:var(--clay-tint); color:var(--slate-deep); font-size:13.5px;
+    background:var(--teal-tint); color:var(--teal-deep); font-size:13.5px;
     text-transform:uppercase; letter-spacing:.04em;
   }
   .feature-table tbody tr+tr td{border-top:1px solid var(--rule);}
-  .feature-table td:first-child{font-weight:700; color:var(--slate-deep);}
+  .feature-table td:first-child{font-weight:700; color:var(--teal-deep);}
   .feature-table--index td:first-child{width:30px;}
 
   .checklist{list-style:none; padding-left:0;}
@@ -284,11 +295,11 @@
 </ol>
 </nav>
 
-  <div class="note"><strong>This is the facilitator copy</strong> — setup, step scripts with notes, and checklists. Students get a separate <strong>Handbook</strong>: same steps, plain language, no notes.</div>
+  <div class="example"><strong>This is the facilitator copy</strong> — setup, step scripts with notes, and checklists. Students get a separate <strong>Handbook</strong>: same steps, plain language, no notes.</div>
 
   <p><strong>The objective of this lab is to show where AI stands today.</strong> The trip book is the project, but the real point is watching Claude work: what it gets right on its own, what it has to infer. Encourage students to notice this as they build — the friction is the lesson, not something to apologize for.</p>
 
-  <p class="note">Tap the small <strong>+</strong> square next to any heading below to open that section — tap it again to close it.</p>
+  <p class="example">Tap the small <strong>+</strong> square next to any heading below to open that section — tap it again to close it.</p>
 
   <details class="step-details">
   <summary>
@@ -301,7 +312,7 @@
     <li><strong>Class length:</strong> 90 minutes.</li>
     <li><strong>Student devices:</strong> a laptop (recommended), tablet, or phone per student.</li>
   </ul>
-  <div class="note"><strong>The setup steps:</strong> students create their own Claude account and Project — a real, if short, task. Budget 10–15 minutes each. Phone verification (below) is the most common snag, so build in some slack.</div>
+  <div class="example"><strong>The setup steps:</strong> students create their own Claude account and Project — a real, if short, task. Budget 10–15 minutes each. Phone verification (below) is the most common snag, so build in some slack.</div>
   </div>
   </details>
 
@@ -335,7 +346,7 @@
     <h2 id="setting-up-each-students-project">4. Setting up each student's project</h2>
   </summary>
   <div class="step-body">
-  <div class="note">Students do this themselves, following the steps below — either as a pre-step slot or as the start of Step 1.</div>
+  <div class="example">Students do this themselves, following the steps below — either as a pre-step slot or as the start of Step 1.</div>
 
   <details class="step-details">
   <summary>
@@ -347,7 +358,8 @@
     <li>Open a browser and go to <strong>claude.ai</strong>.</li>
     <li>Click <strong>Sign up</strong>. Choose <strong>"Continue with Google"</strong> (fastest, if they have a Google/Gmail account) or <strong>"Continue with email"</strong>.</li>
     <li>If using email: enter the email address, then check that inbox for a message from Claude and click the verification link (or enter the code shown). Claude will then ask for a <strong>phone number</strong> and text a code to enter.
-      <div class="note"><strong>This step trips people up.</strong> Phone verification only applies if a student signs up with <strong>email</strong>, not Google — it's how Claude confirms they're a real person. It needs a real mobile number; landlines, Google Voice, and other app-generated numbers are rejected. Students who sign up with <strong>Google</strong> skip this step entirely.</div>
+      <div class="tip"><strong>This step trips people up.</strong> Phone verification only applies if a student signs up with <strong>email</strong>, not Google — it's how Claude confirms they're a real person. It needs a real mobile number; landlines, Google Voice, and other app-generated numbers are rejected. Students who sign up with <strong>Google</strong> skip this step entirely.</div>
+      <div class="example">Students who sign in with Google will get an email from Google titled "You shared some Google Account data with Claude." This is expected — it just confirms Google shared their name, profile picture, and email with Claude so they could sign in. No action needed; reassure students this is normal if they ask.</div>
     </li>
     <li>Once the Claude chat screen appears, the account is ready.</li>
   </ol>
@@ -362,7 +374,7 @@
   <div class="step-body">
   <ol>
     <li>Click <strong>Projects</strong> in the left-hand menu (or go to claude.ai/projects).</li>
-    <li>Click <strong>+ New Project</strong>.</li>
+    <li>Click <strong>New Project</strong> on a computer, or <strong>+New project</strong> on a phone/tablet.</li>
     <li>Name the Project (e.g. "My Trip Books") and confirm.</li>
   </ol>
   </div>
@@ -386,8 +398,8 @@
         </button>
       </div>
     </li>
-    <li>Inside the project, find <strong>Project instructions</strong> (same name on desktop and the mobile app), paste the line into that box, then click <strong>Save</strong>.
-      <div class="note">No download or attachment needed — students don't have to save anything to their device for this step.</div>
+    <li>Inside the project, find the instructions box — <strong>Instructions</strong> on a computer, <strong>Add Instructions</strong> on a phone/tablet — paste the line into it, then click <strong>Save</strong>.
+      <div class="example">No download or attachment needed — students don't have to save anything to their device for this step.</div>
     </li>
   </ol>
   </div>
@@ -403,7 +415,7 @@
     <h2 id="building-the-trip-book-the-three-steps">5. Building the trip book — the three steps</h2>
   </summary>
   <div class="step-body">
-  <div class="note">Each numbered step is a plain instruction to say to the student. Say one, wait until they've done it, then say the next. The shaded notes below steps are for you — don't read them aloud.</div>
+  <div class="example">Each numbered step is a plain instruction to say to the student. Say one, wait until they've done it, then say the next. The shaded notes below steps are for you — don't read them aloud.</div>
 
   <details class="step-details">
   <summary>
@@ -414,13 +426,14 @@
   <ol>
     <li>Open Claude in the browser — the student sets up their own account and Project; see "Setting up each student's project" above. <span style="color:var(--clay);">(Budget 10–15 minutes.)</span></li>
     <li>Click the + at the bottom of the chat.</li>
-    <li>Choose <strong>4–6 photos</strong> to start with. <span style="color:var(--clay);">(Ctrl+click for 4–6, or tap each one on a phone — steer them away from "Select All," which can grab the whole camera roll. A handful is enough to see the book take shape; more can go in later.)</span></li>
+    <li>Choose <strong>3–4 photos</strong> to start with. <span style="color:var(--clay);">(Ctrl+click for 3–4, or tap each one on a phone — steer them away from "Select All," which can grab the whole camera roll. A handful is enough to see the book take shape; more can go in later.)</span></li>
     <li>Click the <svg class="send-icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#D97757"/><path d="M12 17V7M12 7l-4.5 4.5M12 7l4.5 4.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg> icon to send them.</li>
     <li>Claude will ask for a title and the trip dates. Students can answer, or choose to skip — Claude will work from the photo dates instead. <span style="color:var(--clay);">(Worth letting at least one student try "skip," so the class sees Claude infer the dates on its own.)</span></li>
     <li>Watch each photo become a page.</li>
     <li>Flip through your book on the screen.</li>
   </ol>
-  <div class="note">If a device won't upload, open Claude in that device's own browser and use + there. The account, project, and spec file are only set up once — later steps just reopen the same project.</div>
+  <div class="tip">During busy hours, book generation can take a little longer — let students know to give it a few minutes if the first page doesn't appear right away.</div>
+  <div class="tip">If a device won't upload, open Claude in that device's own browser and use + there. The account, project, and spec file are only set up once — later steps just reopen the same project.</div>
   </div>
   </details>
 
@@ -430,6 +443,8 @@
     <h2 id="step-2-put-it-in-order-and-polish">Step 2 — Put it in order and polish</h2>
   </summary>
   <div class="step-body">
+  <p>Encourage students to put more than one small change in <strong>one message</strong> instead of sending them one at a time — this saves messages, which matters most on a free account.</p>
+  <div class="tip">Made a lot of edits in one sitting? Students may hit their usage limit for a while. Let them know this is normal — they just need to wait a few hours and can pick up right where they left off.</div>
   <p>Ask Claude to make any of these changes — students just type or say it in plain language.</p>
   <table class="feature-table">
     <thead><tr><th>What you want to do</th><th>What to type/say</th></tr></thead>
@@ -437,7 +452,7 @@
       <tr><td>Change the order</td><td>"Move the bridge photo to the front."</td></tr>
       <tr><td>Remove a photo</td><td>"Remove the blurry photo on page 4."</td></tr>
       <tr><td>Add a fact</td><td>"Add a fact about the Cliffs of Moher."</td></tr>
-      <tr><td>Confirm a guessed location</td><td>See a <strong>"confirm venue"</strong> tag on a photo? Claude inferred the spot — tell it the real place: "That's actually Fisherman's Wharf."</td></tr>
+      <tr><td>Confirm an inferred location</td><td>See a <strong>"confirm venue"</strong> tag on a photo? Claude inferred the spot — tell it the real place: "That's actually Fisherman's Wharf."</td></tr>
       <tr><td>Fix the wording</td><td>"Change the line on the castle photo to…"</td></tr>
     </tbody>
   </table>
@@ -480,11 +495,11 @@
       <tr><td>iPhone or iPad</td><td>PDF</td><td>Type or say <em>"Please generate a PDF file,"</em> then download the file Claude gives you.</td></tr>
     </tbody>
   </table>
-  <div class="note">Saving the HTML page as a PDF yourself (through the browser's print menu) does <strong>not</strong> produce a correct PDF. Students should always ask Claude to generate the PDF for them.</div>
-  <div class="note">Downloading is optional — only for students who want a copy or want to send it to family.</div>
+  <div class="tip">Saving the HTML page as a PDF yourself (through the browser's print menu) does <strong>not</strong> produce a correct PDF. Students should always ask Claude to generate the PDF for them.</div>
+  <div class="example">Downloading is optional — only for students who want a copy or want to send it to family.</div>
   <ol>
     <li>To send it to family: attach the right file to an email, a text message, or a messaging app.
-      <div class="note">If email won't let the file through (photo-heavy books can get large), a USB drive or a cloud drive link (Google Drive, Dropbox) works too.</div>
+      <div class="tip">If email won't let the file through (photo-heavy books can get large), a USB drive or a cloud drive link (Google Drive, Dropbox) works too.</div>
     </li>
     <li>Show the class your cover and one favourite page.</li>
   </ol>
@@ -502,7 +517,7 @@
   <ul class="checklist">
     <li>Phone verification stalls — wrong number type (landline, Google Voice, VoIP), or the code takes a few minutes to arrive</li>
     <li>Students mistyping or only partly pasting the Project-instructions line — check it matches exactly before moving on</li>
-    <li>Students who can't find <strong>Project instructions</strong> in their project — point them to it directly</li>
+    <li>Students who can't find the instructions box (<strong>Instructions</strong> on a computer, <strong>Add Instructions</strong> on a phone/tablet) — point them to it directly</li>
     <li>Trouble uploading photos from a student device — open Claude in that device's own browser and use + there</li>
     <li>A "confirm venue" tag left on a page — remind the student to just tell Claude the real place</li>
     <li>Quiet students who are stuck — circulate and check screens</li>
@@ -527,6 +542,7 @@
       <tr><td>2</td><td>Reads your photos</td><td>Describes what's in each photo and infers the place; flags any it's unsure about so you can confirm</td></tr>
       <tr><td>3</td><td>Edits on request</td><td>Makes the change you ask for in chat — moves a photo, changes the cover color, makes the fonts bigger, and more</td></tr>
       <tr><td>4</td><td>Lets you download and share it</td><td>Generates a downloadable file whenever you're ready — HTML by default, or a PDF on request</td></tr>
+      <tr><td>5</td><td>Runs on a token budget</td><td>Every message costs a little bit of Claude's "fuel" (called tokens) — bundling your edits into one message is like carpooling instead of five solo trips, stretching your usage budget so you can fit in more edits before you hit the limit</td></tr>
     </tbody>
   </table>
   <p><strong>Limited by:</strong> platform support — iPhone and iPad don't open local HTML files as live pages; direct students to the PDF instead (see the table in Step 3).</p>

@@ -18,11 +18,56 @@ these as the next things to reconcile, not as the intended end state:
   style throughout; the Student Handbook's top-level sections are neither numbered
   nor reordered to match. Apply the same treatment to the Student Handbook the next
   time either doc's top-level structure is touched, unless told otherwise.
-- The Student Handbook's Step 2 has a batching tip ("have more than one small
-  change? put them all in one message...") plus a teal `.example` box demonstrating
-  a 3-in-1 edit message. The Instructor Guide's Step 2 does not have either yet.
-  Port both to the Instructor Guide's Step 2 the next time it's touched, phrased for
-  the facilitator-copy voice, unless told otherwise.
+- The Student Handbook's Step 2 has a teal `.example` box demonstrating a 3-in-1 edit
+  message ("Move the bridge photo to the front, remove the blurry photo on page 4,
+  and change the line on the castle photo to..."). The Instructor Guide's Step 2 does
+  not have this yet. Port it the next time that section is touched, phrased for the
+  facilitator-copy voice, unless told otherwise.
+
+RESOLVED (for reference — no longer open gaps):
+- The Student Handbook's Step 2 batching tip ("put more than one small change in one
+  message...") is now ported to the Instructor Guide's Step 2, phrased for the
+  facilitator-copy voice (imperative "Encourage students to..." instead of the
+  Handbook's direct-to-student phrasing). Both docs also now carry a matching
+  usage-limit heads-up note directly below it (see "Usage-limit heads-up note" below).
+
+Sign-up choice presentation (Student Handbook only): "Create your account" splits the
+Google-vs-email choice into two boxes rather than one prose sentence — Google option
+first, then non-Google email. Each box is a short bold label followed by its one
+explanatory sentence: "Sign in with Google email" pairs with the note about the
+Google account-data-sharing email students will receive; "Sign in with non Google
+email" pairs with the phone-verification note (trimmed — it does NOT repeat "If you
+signed up with Google, you can skip straight to the next step," since that's already
+covered by the Google box). Per the amber-vs-teal rule below, both boxes are neutral/
+informational, not warnings, so they use `.example` (teal), not `.tip` (amber). The
+Instructor Guide keeps its existing single combined sentence for this choice (own
+`.note` styling, no amber/teal distinction in that doc) plus a separate `.note` for
+the Google-email heads-up — do not force the two-box layout into the Instructor
+Guide; that doc's condensed, facilitator-voiced format for this choice is intentional.
+
+Amber-vs-teal rule (Student Handbook only, restated for clarity): `.tip` (amber) is
+for genuine warnings/things that can go wrong (PDF generation, the usage-limit note,
+the busy-hours delay note, the email-file-size workaround). `.example` (teal) is for
+neutral illustrative/informational content, including the two sign-up boxes above and
+the "tap the + square to open a section" navigation instruction. No neutral content
+should sit inside a `.tip` box — see verification checklist item 13.
+
+Starting photo count: both docs now say **3–4 photos** to start with (was 4–6).
+Student Handbook: item 3 of Step 1. Instructor Guide: item 3 of Step 1, including the
+Ctrl+click parenthetical aside — keep both mentions of the number in that doc in sync
+if this changes again.
+
+Busy-hours generation-delay note: both docs' Step 1 now include a short warning-style
+note (`.tip` in the Student Handbook, `.note` in the Instructor Guide) that book
+generation can take longer during busy hours and to allow a few minutes before
+assuming something's wrong. Placed immediately after the step list, before any
+existing device-upload-troubleshooting note.
+
+Usage-limit heads-up note: both docs' Step 2 now include a short warning-style note
+(`.tip` in the Student Handbook, `.note` in the Instructor Guide) that a lot of edits
+in one sitting can trigger the usage limit, and that waiting a few hours resolves it.
+Placed near the top of Step 2, before the editing-actions table — in the Instructor
+Guide, directly below the (now-ported) batching-tip paragraph.
 
 Students work independently: neither guide assumes a classroom helper/aide sits with
 students during setup or steps. The Instructor Guide still assumes an instructor runs
@@ -208,32 +253,42 @@ styling is treated as sufficient visual separation between sections; don't reint
 both stylesheets even while unused, the same way `.dl-icon` does (see the download-
 button section below), in case a divider is ever reintroduced.
 
-Palette (the one thing kept distinct, same structure):
-- Instructor Guide: slate/slate-deep background, brass accent, clay badges — facilitator tone.
-- Student Handbook: teal/teal-deep background, amber accent — plain-language tone.
-Each doc's :root CSS variables are the single source of truth for its palette; the
-sidebar, toggle button, active-link highlight, and copy-button component (below) all
-derive their colors from those same variables, not hard-coded hex values.
+Palette:
+- Structural palette (background, headers, sidebar, badges) stays distinct per doc,
+  same structure:
+  - Instructor Guide: slate/slate-deep background, brass accent, clay badges —
+    facilitator tone.
+  - Student Handbook: teal/teal-deep background, amber accent — plain-language tone.
+- Warning/informational callout palette is now SHARED between both docs (changed —
+  previously the plan was for the Instructor Guide to derive its own slate/brass
+  equivalents; that plan is superseded, see below): both docs use the same amber
+  (`--amber`/`--amber-tint`, warnings) and teal (`--teal`/`--teal-deep`/`--teal-tint`,
+  informational) hex values for `.tip`/`.example`, layered into the Instructor
+  Guide's `:root` alongside its own slate/clay/brass tokens rather than replacing
+  them. Those structural tokens still drive the sidebar, toggle button, active-link
+  highlight, and copy-button component in each doc — only the `.tip`/`.example`
+  callout pair is now color-shared.
 
-Note/warning vs. example/illustration color — amber is reserved for warnings only
-(Student Handbook, currently): the Student Handbook now has two visually distinct
-callout box styles that must not be conflated:
+Note/warning vs. example/illustration color — amber is reserved for warnings only,
+teal for neutral/informational, in BOTH docs now: both guides have two visually
+distinct callout box styles that must not be conflated:
 - `.tip` (amber background, amber left border) — reserved for genuine warnings,
   cautions, or things that could go wrong if missed (e.g. "saving the HTML page as a
   PDF yourself does not produce a correct PDF," "if your email won't let the file
   through..."). Amber signals "pay attention, this could trip you up."
-- `.example` (teal background, teal left border, teal-deep text — using the doc's own
+- `.example` (teal background, teal left border, teal-deep text — using the shared
   `--teal-tint`/`--teal`/`--teal-deep` tokens, not new hex values) — reserved for
-  neutral illustrative content that isn't a warning, currently used once: the "one
-  message, three edits" sample message under Step 2's editing-action table. Teal
-  signals "here's an example," not "watch out."
-Do not use `.tip` for illustrative/example content going forward, and do not
-introduce a third ad-hoc callout color — reuse `.example` for any future
-non-warning illustrative callout in the Student Handbook. The Instructor Guide does
-not have an `.example` class yet (see Known Open Gaps above) — when porting the
-batching-tip/example pattern to the Instructor Guide, add the equivalent class using
-that doc's own slate/brass tokens rather than copying the Student Handbook's teal
-hex values directly.
+  neutral illustrative or orientation content that isn't a warning (e.g. the "tap the
+  + square to open a section" instruction, the facilitator-copy intro note, the "one
+  message, three edits" sample message). Teal signals "here's context/an example,"
+  not "watch out."
+Do not use `.tip` for illustrative/orientation content going forward, and do not
+introduce a third ad-hoc callout color — reuse `.example` for any future non-warning
+callout in either doc. The Instructor Guide's old single `.note` class (slate/clay-
+tinted, used for every aside regardless of warning-vs-informational) has been fully
+retired — every former `.note` usage has been reclassified into `.tip` or `.example`
+per the warning/informational split above; do not reintroduce `.note` or a
+slate/clay-tinted catch-all aside style in that doc going forward.
 
 Structure: masthead/cover, an inline on-page TOC (kept for print only), then top-level
 h2 sections each with a stable kebab-case id (see "Top-level section numbering" above
@@ -318,7 +373,7 @@ reader doesn't have to manually select/retype it:
   button's label swaps to "Copied!" for ~1.8s (via a `.copied` class + timeout) before
   reverting to "Copy".
 - Always pair a copy-box with an explicit, separate paste step naming exactly where the
-  text goes (e.g. "Paste it into the Project instructions box, then tap Save") — never
+  text goes (e.g. "Paste it into that instructions box, then tap Save") — never
   leave the reader to infer the destination from the copy step alone.
 
 Collapsible sections (added to both docs): every top-level h2 section and every
@@ -385,10 +440,17 @@ Claude does for the student, aimed at students rather than facilitators — stud
 wording is reused as-is in the Instructor Guide rather than reframed for facilitators.
 Structure: a 3-column `<table class="feature-table feature-table--index">` — `#`,
 `What Claude does for you`, `How` — inside the section's `<div class="step-body">`, one
-row per capability. Keep the row set itself short (four rows currently: builds the
-book, reads/describes photos, edits on request, download & share) — this is a summary,
-not a full feature inventory; do not expand it into a duplicate of the step-by-step
-instructions elsewhere in the doc. The `How` column's actor must always be Claude/AI,
+row per capability. Keep the row set itself short (five rows currently: builds the
+book, reads/describes photos, edits on request, download & share, runs on a token
+budget) — this is a summary, not a full feature inventory; do not expand it into a
+duplicate of the step-by-step instructions elsewhere in the doc. The fifth row ("Runs
+on a token budget") is a lighthearted tie-in to the usage-limit note above (Step 2):
+every message costs "fuel" (tokens), and bundling edits into one message is framed as
+carpooling — stretches the budget, doesn't eliminate the limit outright (don't claim
+batching "avoids" hitting the limit; it lets the student fit in more edits before they
+do). This row's text must be reused byte-for-byte identical between both docs, same as
+the rest of this table — see the reuse rule two sentences below. The `How` column's
+actor must always be Claude/AI,
 not the student — describe what Claude does ("Makes the change you ask for," "Generates
 a downloadable file"), not an instruction telling the student what to click or type.
 Immediately after the table, two required trailing notes: a bolded "Limited by:" line
@@ -403,12 +465,16 @@ platform support — ...") — keep them this concise in future edits rather tha
 reintroducing the earlier, more repetitive phrasing.
 - CSS: `.feature-table` is a bordered/rounded card matching the doc's other card
   components (`.loop-card`/`.callout`), using the doc's own `--card`/`--rule`/
-  `--shadow` tokens for the container. The header row (`.feature-table th`) uses the
-  doc's tint/accent pair for background/text — `--teal-tint`/`--teal-deep` in the
-  Student Handbook, `--clay-tint`/`--slate-deep` in the Instructor Guide — so the
-  table's palette derivation matches every other themed component in that doc. The
-  first column (`#`) is bold and colored with the doc's deep accent
-  (`--teal-deep`/`--slate-deep`) — but this narrow first-column width (`width:30px`) is
+  `--shadow` tokens for the container. The header row (`.feature-table th`) and first
+  column (`#`) now use the shared `--teal-tint`/`--teal-deep` informational color in
+  BOTH docs (changed — the Instructor Guide previously used its own `--clay-tint`/
+  `--slate-deep` accent here; that read as an "alert" orange/clay tone on tables that
+  are purely informational, so it was switched to match the Student Handbook's teal,
+  consistent with the amber-vs-teal warning/informational rule above). This applies to
+  all three `.feature-table` instances in the Instructor Guide — the editing-action
+  table, the device/file download table, and the "What Claude does" table — not just
+  the indexed one. The first column (`#`) is bold and colored with `--teal-deep` in
+  both docs — but this narrow first-column width (`width:30px`) is
   scoped to a `.feature-table--index` modifier class, not to `.feature-table` itself,
   since two other tables in these docs (the editing-action table and the device/file
   table, below) share the `.feature-table` base class but have full-length first-column
@@ -567,14 +633,21 @@ Anthropic's own support documentation only for the general project-knowledge flo
 the mobile-specific "Project files" label came from the person's own testing, not a
 docs citation — flag this to them again if it should ever need re-confirming.)
 
-Claude Projects "Project instructions" naming: the free-text field where a project's
-own custom instructions live (separate from Context/Project files above — this field
-holds instructions, not attached files) is currently referred to in both guides as
-**Project instructions**, used as the same label on desktop and the mobile app. This
-has not been independently verified against Anthropic's own product documentation for
-platform-label parity (unlike the Context/Project files note above, which cites
-support docs) — flag this for re-confirmation if it's ever in doubt, and correct both
-guides together if the actual mobile label turns out to differ.
+Claude Projects "Project instructions" naming — CORRECTED (was flagged unverified,
+now confirmed to differ by platform): the free-text field where a project's own
+custom instructions live (separate from Context/Project files above — this field
+holds instructions, not attached files) is labeled **Instructions** on desktop and
+**Add Instructions** on the phone/tablet app — the labels do NOT match, unlike the
+Context/Project files pair above. Both guides now reflect this: refer to "the
+instructions box," naming both platform labels (Instructions / Add Instructions) the
+first time each doc points the reader to it, rather than a single "Project
+instructions" name treated as universal. Apply the same platform split to the **New
+Project** button: **New Project** on desktop, **+New project** on phone/tablet (note
+the lowercase "project" and leading "+" in the phone/tablet label — this one is a
+genuine label difference, not just a styling quirk, so preserve the exact casing when
+quoting it). Every mention of either control in both docs — including secondary
+references like a "watch for"/troubleshooting bullet pointing the reader back to it —
+must use the platform-split wording, not the old single-label phrasing.
 
 Sharing the finished trip book: the student's finished book is a Claude artifact, and
 Anthropic's own docs (https://support.claude.com/en/articles/9547008-publish-and-share-artifacts)
@@ -660,9 +733,10 @@ Verification checklist before delivering any edit to either guide:
     "device"-ification has happened where "phone" is genuinely correct (account
     phone-number verification, the Ctrl+click-vs-tap note, the device/file table's
     "Android phone" row, the Student devices bullet).
-13. In the Student Handbook, amber (`.tip`) is used only for genuine warnings, and any
-    neutral illustrative/example content uses the teal `.example` class instead — no
-    example content sits inside a `.tip` box (see the amber-vs-teal color rule above).
+13. In BOTH docs, amber (`.tip`) is used only for genuine warnings, and any neutral
+    illustrative/informational content uses the teal `.example` class instead — no
+    such content sits inside a `.tip` box, and the Instructor Guide's old catch-all
+    `.note` class does not reappear (see the amber-vs-teal color rule above).
 
 Edits: given in plain language — apply to both docs' matching structure/CSS tokens
 (not just one) unless a Known Open Gap above says otherwise, regenerate, and re-run

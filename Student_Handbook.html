@@ -267,7 +267,7 @@
 
   <p><strong>The objective of this lab is to show where AI stands today.</strong> You'll use photos from one of your trips to make an electronic trip book. You'll be able to flip through it like a real book and share it with your family and friends. Along the way, you'll see what Claude gets right on its own — and what it has to infer.</p>
 
-  <p class="tip">Tap the small <strong>+</strong> square next to any heading below to open that section — tap it again to close it.</p>
+  <p class="example">Tap the small <strong>+</strong> square next to any heading below to open that section — tap it again to close it.</p>
 
   <details class="step-details">
   <summary>
@@ -287,11 +287,12 @@
     <ol>
       <li>Go to <strong>claude.ai</strong> in your browser.</li>
       <li>Click <strong>Sign up</strong>.</li>
-      <li>Choose <strong>"Continue with Google"</strong> if you have a Gmail address — it's the quickest way. Otherwise choose <strong>"Continue with email"</strong> and type your email address.</li>
+      <li>Choose how you'd like to sign up — see the two options below.</li>
       <li>If you used email: check your inbox for a message from Claude and click the link inside it (or type in the code it shows you). You'll then be asked for a <strong>mobile phone number</strong> and sent a 6-digit code by text message — type that in.</li>
     </ol>
   </div>
-  <div class="tip">The phone number step only applies if you signed up with <strong>email</strong> — it's how Claude checks you're a real person in that case. It needs to be a <strong>mobile</strong> number that can receive text messages (not a home phone). If you signed up with <strong>Google</strong>, you can skip straight to the next step.</div>
+  <div class="example"><strong>Sign in with Google email</strong><br>If you sign in with Google, expect an email from Google titled "You shared some Google Account data with Claude." That's normal — it just confirms Google shared your name, profile picture, and email with Claude so you could sign in. Nothing to do here.</div>
+  <div class="example"><strong>Sign in with non Google email</strong><br>The phone number step only applies if you signed up with <strong>email</strong> — it's how Claude checks you're a real person in that case. It needs to be a <strong>mobile</strong> number that can receive text messages (not a home phone).</div>
   </div>
   </details>
 
@@ -304,7 +305,7 @@
   <div class="loop-card">
     <ol>
       <li>Look for <strong>Projects</strong> in the menu and click it.</li>
-      <li>Click <strong>+ New Project</strong>.</li>
+      <li>Click <strong>New Project</strong> on a computer, or <strong>+New project</strong> on a phone/tablet.</li>
       <li>Type a name for your project (like "My Trip Books") and confirm.</li>
     </ol>
   </div>
@@ -319,7 +320,7 @@
   <div class="step-body">
   <div class="loop-card">
     <ol>
-      <li>Inside your new Project, find <strong>Project instructions</strong> (same name on desktop and the mobile app) and click into the box.</li>
+      <li>Inside your new Project, find the instructions box — <strong>Instructions</strong> on a computer, <strong>Add Instructions</strong> on a phone/tablet — and tap into it.</li>
       <li>Copy this line exactly as written — tap <strong>Copy</strong>, or select it yourself:
         <div class="copy-box">
           <code class="copy-text" id="rules-line">Build trip book by following the spec in https://xwueng.github.io/trip-book-builder/trip_book_spec.html</code>
@@ -331,7 +332,7 @@
           </button>
         </div>
       </li>
-      <li>Paste it into the <strong>Project instructions</strong> box, then tap <strong>Save</strong>.</li>
+      <li>Paste it into that instructions box, then tap <strong>Save</strong>.</li>
     </ol>
   </div>
   <p>That's it — your project now knows how to build your book. You won't need to touch this again.</p>
@@ -349,12 +350,13 @@
   <ol>
     <li>Open <strong>Claude</strong> in your browser and go to your Project. <em>(Already set up? Skip to step 2.)</em></li>
     <li>Click the <strong>+</strong> at the bottom of the chat.</li>
-    <li>Choose <strong>4–6 photos</strong> to start with. <em>(On a phone, tap each one — no need to grab your whole camera roll.)</em></li>
+    <li>Choose <strong>3–4 photos</strong> to start with. <em>(On a phone, tap each one — no need to grab your whole camera roll.)</em></li>
     <li>Click the <svg class="send-icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#D97757"/><path d="M12 17V7M12 7l-4.5 4.5M12 7l4.5 4.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg> icon to send them.</li>
     <li>Claude will ask for a title and the trip dates. Answer if you'd like, or choose to skip; Claude can work from the photo dates instead.</li>
     <li>Watch each photo become a page.</li>
     <li>Flip through your book on the screen.</li>
   </ol>
+  <div class="tip">During busy hours, Claude can take a little longer to generate your book — if the first page doesn't appear right away, just give it a few minutes.</div>
   </div>
   </details>
   <details class="step-details">
@@ -364,6 +366,7 @@
   </summary>
   <div class="step-body">
   <p>Have more than one small change? Put them all in <strong>one message</strong> instead of sending them one at a time — this saves you messages, which matters most on a free account.</p>
+  <div class="tip">Made a lot of edits in one sitting? You might hit your usage limit for a while. If that happens, no need to worry — just wait a few hours and pick up right where you left off.</div>
   <p>Ask Claude to make any of these changes — just type or say it in plain language.</p>
   <table class="feature-table">
     <thead><tr><th>What you want to do</th><th>What to type/say</th></tr></thead>
@@ -371,7 +374,7 @@
       <tr><td>Change the order</td><td>"Move the bridge photo to the front."</td></tr>
       <tr><td>Remove a photo</td><td>"Remove the blurry photo on page 4."</td></tr>
       <tr><td>Add a fact</td><td>"Add a fact about the Cliffs of Moher."</td></tr>
-      <tr><td>Confirm a guessed location</td><td>See a <strong>"confirm venue"</strong> tag on a photo? Claude inferred the spot — tell it the real place: "That's actually Fisherman's Wharf."</td></tr>
+      <tr><td>Confirm an inferred location</td><td>See a <strong>"confirm venue"</strong> tag on a photo? Claude inferred the spot — tell it the real place: "That's actually Fisherman's Wharf."</td></tr>
       <tr><td>Fix the wording</td><td>"Change the line on the castle photo to…"</td></tr>
     </tbody>
   </table>
@@ -440,6 +443,7 @@
       <tr><td>2</td><td>Reads your photos</td><td>Describes what's in each photo and infers the place; flags any it's unsure about so you can confirm</td></tr>
       <tr><td>3</td><td>Edits on request</td><td>Makes the change you ask for in chat — moves a photo, changes the cover color, makes the fonts bigger, and more</td></tr>
       <tr><td>4</td><td>Lets you download and share it</td><td>Generates a downloadable file whenever you're ready — HTML by default, or a PDF on request</td></tr>
+      <tr><td>5</td><td>Runs on a token budget</td><td>Every message costs a little bit of Claude's "fuel" (called tokens) — bundling your edits into one message is like carpooling instead of five solo trips, stretching your usage budget so you can fit in more edits before you hit the limit</td></tr>
     </tbody>
   </table>
   <p><strong>Limited by:</strong> Claude AI is limited by platform support — iPhone and iPad don't open local HTML files as live pages. Use the PDF file instead (see the table in Step 3).</p>
