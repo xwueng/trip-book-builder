@@ -2,6 +2,8 @@ GUIDE BOOK RULES
 (this file: instructions_spec.md — instructions for Claude to build and maintain
 Instructor_Guide.html and Student_Handbook.html, the class-facilitation guides.
 Separate from trip_book_spec.md, which governs the student's own trip book.)
+File must carry a last-updated stamp.
+Last updated: 2026-09-03 23:29 UTC
 
 Purpose: keep the two guide documents structurally identical and visually distinct,
 so any future edit can be applied to both without re-deriving the design each time.
@@ -688,6 +690,23 @@ repeated mentions of the same file. Exception: the literal text inside a copy-bo
 the copy-to-clipboard pattern above) stays exact, unstyled, unlinked plain text so it
 copies and pastes correctly, even where it contains a URL that names a repo file.
 
+Build timestamp (added to both docs): a single line — `Last updated: YYYY-MM-DD HH:MM
+UTC` (same date-time-UTC format as trip_book_spec.md's own stamp) — sits as the very
+last piece of content in the `.sheet` flow, directly after the final top-level
+section's closing `</details>` and immediately before the closing `</div>` of
+`.sheet`. It is not inside any `<details>`/section wrapper, has no heading or id, and
+is not part of the sidebar/TOC. Styling: `.print-timestamp{ text-align:right;
+font-size:9px; color:#888888; margin:20px 0 0; }` — small and muted so it reads as a
+discreet build stamp, not body content, but still legible (not the near-invisible 6px/
+#AAAAAA of the first pass); right-aligned so it lands in the lower-right corner of
+whatever page it falls on, on screen and when printed alike (this document has no true
+paged-media pagination, so "last page" means wherever this line naturally falls at the
+end of the content flow — right-aligned trailing text is the practical equivalent).
+The `.print-timestamp` CSS rule is defined once per doc's stylesheet, same token
+approach as `.dl-icon`/`.send-icon`. Update the date whenever either doc's content
+changes; the two docs' stamps do not need to match each other's date, only each doc's
+own last edit.
+
 Verification checklist before delivering any edit to either guide:
 1. Every heading id (h2 and any nested h3) has exactly one matching sidebar
    data-target, and vice versa (no orphans) — nested ids included.
@@ -737,6 +756,10 @@ Verification checklist before delivering any edit to either guide:
     illustrative/informational content uses the teal `.example` class instead — no
     such content sits inside a `.tip` box, and the Instructor Guide's old catch-all
     `.note` class does not reappear (see the amber-vs-teal color rule above).
+14. Both docs carry exactly one `.print-timestamp` line, positioned after the last
+    top-level section's closing `</details>` and before `.sheet`'s closing `</div>`,
+    outside any `<details>` wrapper and with no sidebar/TOC entry (see the Build
+    timestamp rule above).
 
 Edits: given in plain language — apply to both docs' matching structure/CSS tokens
 (not just one) unless a Known Open Gap above says otherwise, regenerate, and re-run
