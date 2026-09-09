@@ -2,7 +2,7 @@ GUIDE BOOK RULES
 (instructions for Claude to build/maintain Instructor_Guide.html and
 Student_Handbook.html. Separate from trip_book_spec.md, which governs the
 student's own trip book.)
-Last updated: 2026-09-09 21:00 UTC
+Last updated: 2026-09-09 22:10 UTC
 
 ## Purpose
 Keep both docs structurally identical (sidebar, ids, spacing, type scale) but
@@ -138,6 +138,22 @@ the common snag) stays directly below, unchanged.
 `.tip`) boxes — Google first, then non-Google — each a bold label + one sentence.
 Instructor Guide keeps its own condensed single-sentence + `.note`→now-`.tip`/
 `.example` version; do not force the two-box layout into it.
+
+## Extra section (Student Handbook only)
+Last top-level h2 section, after "What Claude AI does and doesn't" and directly
+before the build timestamp. Own id (`extra`), own sidebar + on-page TOC entry,
+wrapped in a collapsed `<details class="step-details">` like every other
+top-level section. Heading: "Extra — try it again on something new."
+- One intro paragraph (no callout box) telling the reader they already know the
+process — send photos, describe them in plain words, download — and that they
+can either start a new chat in the same Project or start a whole new Project to
+try a different kind of book. No callout styling; plain `<p>`.
+- A plain `<ul>` (not `.tip`/`.example`) with exactly four ideas, each a bold
+label + one short sentence: Recipe book, Pet memory book, Garden or craft
+journal, Short life-story page.
+- Instructor Guide has no counterpart section — this is a Student-only
+enrichment idea, not a Known open gap to reconcile; do not port it to the
+Instructor Guide unless separately asked.
 
 ## Objective sentence
 Both docs' opening paragraph leads with the bolded sentence "The objective of this
