@@ -2,7 +2,7 @@ GUIDE BOOK RULES
 (instructions for Claude to build/maintain Instructor_Guide.html and
 Student_Handbook.html. Separate from trip_book_spec.md, which governs the
 student's own trip book.)
-Last updated: 2026-09-09 22:10 UTC
+Last updated: 2026-09-23 21:23 UTC
 
 ## Purpose
 Keep both docs structurally identical (sidebar, ids, spacing, type scale) but
@@ -12,13 +12,23 @@ differ between docs.
 ## Known open gaps
 - Instructor Guide numbers its top-level sections (1–7); Student Handbook does not
 yet. Apply same numbering to Student Handbook next time its structure is touched.
-- Student Handbook Step 2 has a teal `.example` 3-in-1 edit example the Instructor
-Guide's Step 2 lacks. Port it (facilitator voice) next time that section is touched.
+- Student Handbook Step 2 has a plain-text (unboxed) “one message, three edits”
+example the Instructor Guide's Step 2 lacks. Port it (facilitator voice) next time that section is touched.
 
 ## Format & hosting
 - One self-contained HTML file per doc, no build step, no external deps.
 - HTML is primary (live sidebar); each doc's own "Print/Save as PDF" button is the
 PDF fallback.
+- Every Student Handbook revision ships TWO files: `Student_Handbook.html` and a
+regenerated `Student_Handbook.pdf` built from that same HTML (headless Chromium, print media, `preferCSSPageSize`, `printBackground`) — never deliver one without
+the other. Instructor Guide is HTML only; no PDF.
+- Student Handbook print: `@page{size:letter; margin:0.6in 0.6in 0.75in;
+@bottom-center{content:"Page " counter(page) " of " counter(pages)}}` (10pt, #555).
+Print keep-togethers: `.loop-card`, `.tip`, `.example`, `.toc`, `.copy-box`, `.quote-list li`, table rows; headings/summaries `break-after:avoid`. Don't
+put `page-break-inside:avoid` on whole `ul`/`ol` (leaves half-blank pages).
+- Student Handbook print matches screen styling: no print-only body font-size or
+cover shadow overrides; cover `h1` pinned to 42px in print (its `clamp(…5vw…)`
+would otherwise shrink on the narrower page).
 - Hosted via GitHub Pages (Google Drive won't render HTML live). `.md` specs ship
 alongside, rendered natively by GitHub — no Pages setup needed for them.
 
@@ -41,6 +51,20 @@ layered into the Instructor Guide's `:root` alongside its own tokens.
 Never put neutral content in `.tip`. No third ad-hoc callout color.
 - Exception: the device-setup list (below) stays an unboxed plain `<ul>` — do not
 wrap it in `.tip`/`.example` despite being informational (avoids callout overload).
+- Student Handbook text color (Student Handbook only): all regular body text and
+`.tip`/`.example` box text is solid black `#000000` (`body`, `strong`, `.tip`, `.example`, cover subtitle, copy-box text, quote-list). Headings, sidebar,
+TOC, table header row and table first-column labels keep their palette colors.
+Box backgrounds/borders unchanged.
+- Student Handbook page background (Student Handbook only): `--paper` is pure
+white `#FFFFFF` for readability on a large projector screen. Cards, tables and
+boxes keep their borders/tints for separation.
+- Neutral boxed text (Student Handbook only): `.loop-card` and `.quote-list li`
+use a barely-tinted `--box:#F4F6F5` background; the `.copy-box` inside a
+loop-card stays white so it stands out. `.tip`/`.example` unchanged.
+- Callout-fatigue exceptions (Student Handbook only): these stay plain `<p>`,
+never boxed — the tap-to-expand orientation note; the two sign-in notes (see
+Sign-up choice); the “Like what Claude did?” thumbs-up/down line; the “Example —
+one message, three edits” sample.
 - Instructor Guide's old `.note` class is retired — do not reintroduce; every prior
 `.note` is now `.tip` or `.example`.
 - `.send-icon` uses fixed Claude-brand orange (`#D97757`) in both docs — the one
@@ -70,6 +94,7 @@ their own `.step-body` (two-level accordion). Nested `<details>` get a left
 border+indent to show depth.
 - No JS needed (native `<details>`); only the copy-to-clipboard and scrollspy
 scripts exist.
+- `@media print` must also target `details.step-details::details-content{content-visibility:visible; display:block; height:auto}` (all `!important`) — current Chrome hides closed-details content there, and the child-selector override alone prints only headings.
 - `@media print` forces all collapsed content visible and hides the toggle icon —
 print/PDF always shows everything expanded.
 - One-line orientation note near the top of each doc explains the tap-to-expand
@@ -134,8 +159,9 @@ The existing "setup steps" note (budget 10–15 min/student, phone verification 
 the common snag) stays directly below, unchanged.
 
 ## Sign-up choice box (Student Handbook only)
-"Create your account" splits Google-vs-email into two `.example` (teal, not
-`.tip`) boxes — Google first, then non-Google — each a bold label + one sentence.
+"Create your account" splits Google-vs-email into two plain unboxed `<p>`s —
+Google first, then non-Google — each a bold label (“Sign in with Google email” /
+“Sign in with non Google email”), `<br>`, then the text. No `.example`/`.tip`.
 Instructor Guide keeps its own condensed single-sentence + `.note`→now-`.tip`/
 `.example` version; do not force the two-box layout into it.
 
@@ -190,8 +216,9 @@ Three `<table class="feature-table">` instances exist:
 1. **Editing-action table** (Step 2 top) — 2 cols, "What you want to do" / "What
 to type/say", 5 fixed rows (reorder, remove, add fact, confirm inferred location,
 fix wording), phrased as example quotes. Batching tip directly above (Student
-Handbook only — port to Instructor Guide per Known open gaps). Teal `.example`
-"one message, three edits" sample directly below, then the nested "Words to
+Handbook only — port to Instructor Guide per Known open gaps). Unboxed
+"one message, three edits" sample directly below as a plain `<p>` with bold
+"Example — one message, three edits:" label, then the nested "Words to
 help…" sub-section. No `feature-table--index` modifier.
 2. **Device/file download table** (Step 3) — 3 cols, "Viewing device" / "What
 file to download" / "What to do": Android phone & Windows/Mac → HTML by default;
@@ -210,6 +237,11 @@ batching = carpooling" bit, reused byte-for-byte in both docs). "How" column's
 actor is always Claude, never the student. Followed by two bolded trailing
 lines: "Limited by:" (iPhone/iPad can't open local HTML live — points to the PDF
 row) and "Doesn't:" (imperfect output — check before sharing).
+All three tables have vertical column borders matching the row borders
+(`1px solid var(--rule)` on `th+th`/`td+td`) — Student Handbook only for now.
+Column headers (`th`) are explicitly bold: `font-weight:800`, 15px, uppercase
+(13.5px, no letter-spacing below 600px so the 3-column table fits a phone)
+(Student Handbook only for now).
 All three tables: header row + first column use shared `--teal-tint`/`--teal-deep`
 in both docs (not Instructor Guide's old clay/slate accent).
 
@@ -289,12 +321,16 @@ reading order (Student Handbook exempt for now).
 "phone" is correct (verification, Ctrl+click note, "Android phone" row,
 device-setup list).
 13. `.tip` used only for warnings, `.example` only for neutral content, no `.note`
-anywhere — EXCEPT the device-setup list, which stays unboxed by design.
+anywhere — EXCEPT the device-setup list and the Student Handbook callout-fatigue
+exceptions (Palette), which stay unboxed by design.
 14. Exactly one `.print-timestamp` line per doc, positioned correctly, outside any
 `<details>`, no sidebar entry.
 15. Device-setup list: exactly 3 items, same order, identical wording between
 docs (aside from the direct-address vs. facilitator-voice intro line), with
 "recommended" bolded only in the "Phone + laptop" item.
+16. Student Handbook only: `Student_Handbook.pdf` regenerated from the final HTML
+— every section expanded, "Page X of Y" on every page, cover/body styling
+matches screen, no half-blank pages from stranded headings. No Instructor Guide PDF.
 
 Edits are given in plain language — apply to both docs unless a Known Open Gap
 says otherwise, regenerate, then re-run this checklist before delivering.

@@ -7,7 +7,8 @@ Facilitation materials for **My Trip Book**, a photo trip-book class that runs e
 | File / folder | What it's for | Who it's for |
 |---|---|---|
 | [`Instructor_Guide.html`](./Instructor_Guide.html) | Full facilitator copy — setup, step-by-step scripts, teacher notes, checklists | Instructors / helpers |
-| [`Student_Handbook.html`](./Student_Handbook.html) | Same steps, plain language, no notes — printable for students | Students |
+| [`Student_Handbook.html`](./Student_Handbook.html) | Same steps, plain language, no notes — the live version students open on their device | Students |
+| [`Student_Handbook.pdf`](./Student_Handbook.pdf) | Print-ready copy of the Student Handbook — every section expanded, page numbers on every page. Regenerated from the HTML with every revision so the two always match | Students (printed handouts) |
 | [`trip_book_spec.md`](./trip_book_spec.md) | The build spec — tells Claude how to build a trip book. Students point their Project at it by pasting one line into Project instructions (no download needed) | Referenced by student projects (not meant to be read as a guide) |
 | [`instructions_spec.md`](./instructions_spec.md) | The build spec for Claude to create/maintain `Instructor_Guide.html` and `Student_Handbook.html` — shared structure, typography, and design rules for the two guides | Used when editing the guides (not meant to be read as a guide) |
 | [`San_Francisco_demo_book.html`](./San_Francisco_demo_book.html) | Finished example trip book, flipped through on the projector on day one to show the goal | Instructors (demo only) |
@@ -24,13 +25,15 @@ The HTML files are hosted live via **GitHub Pages**, so they open directly in a 
 
 (Replace `<your-username>` and `<repo-name>` with your actual GitHub username and this repo's name.)
 
-`trip_book_spec.md` and `instructions_spec.md` don't need Pages — GitHub renders Markdown natively, so viewing them directly in the repo ([trip_book_spec.md](./trip_book_spec.md), [instructions_spec.md](./instructions_spec.md)) is enough. The `Demo Photos` folder is just a reference — GitHub shows the images in-browser if you click into the folder, but there's no need for a Pages link to it. `San_Francisco_demo_book.pdf` doesn't need Pages either — GitHub previews PDFs directly, or click "Download" for a local copy.
+`trip_book_spec.md` and `instructions_spec.md` don't need Pages — GitHub renders Markdown natively, so viewing them directly in the repo ([trip_book_spec.md](./trip_book_spec.md), [instructions_spec.md](./instructions_spec.md)) is enough. The `Demo Photos` folder is just a reference — GitHub shows the images in-browser if you click into the folder, but there's no need for a Pages link to it. `Student_Handbook.pdf` and `San_Francisco_demo_book.pdf` don't need Pages either — GitHub previews PDFs directly, or click "Download" for a local copy.
 
 ## Making edits
 
 1. Edit the file(s) locally or directly on GitHub.
 2. Commit and push (or re-upload via the web UI).
 3. GitHub Pages rebuilds automatically — changes are usually live within a minute.
+
+Every Student Handbook revision updates **both** `Student_Handbook.html` and `Student_Handbook.pdf` — push them together. The Instructor Guide is HTML only (no PDF).
 
 If you edit the Instructor Guide or Student Handbook, keep both in sync — see `instructions_spec.md` for the shared structure/design rules both docs follow, and the verification checklist to run before publishing an update.
 
