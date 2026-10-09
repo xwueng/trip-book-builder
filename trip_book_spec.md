@@ -2,9 +2,9 @@ TRIP BOOK RULES
 (trip_book_spec.md — student trip book + PDF export. Separate from
 instructions_spec.md, which covers Instructor Guide / Student Handbook. Never
 cross-edit.)
-Rule IDs (F/D/C/T/L/M/N/E/P) are stable references — cite by ID.
+Rule IDs (F/D/C/T/L/M/N/E/S/P) are stable references — cite by ID.
 File must carry a last-updated stamp.
-Last updated: 2026-08-18 23:15 UTC
+Last updated: 2026-10-09 04:00 UTC
 
 ## Format
 
@@ -81,7 +81,7 @@ L5. Scale-to-fit. This mechanism (L1/L2/L5 together) has regressed more
  present — use this reference implementation verbatim rather than
  re-deriving it from a description:
 
-```css
+```
 body{ display:flex; align-items:center; justify-content:center; }
 .stage{ width:100%; height:100%; display:flex;
         align-items:center; justify-content:center; }
@@ -93,7 +93,7 @@ body{ display:flex; align-items:center; justify-content:center; }
          border-radius:12px; }
 ```
 
-```js
+```
 var bookWrap = document.querySelector('.book-wrap');
 function fitToViewport(){
   var MARGIN = 20;
@@ -118,7 +118,7 @@ setTimeout(fitToViewport, 100);
 setTimeout(fitToViewport, 400);
 ```
 
- Non-negotiable properties of this mechanism, whether copied verbatim or
+Non-negotiable properties of this mechanism, whether copied verbatim or
  adapted: nav bar lives inside `.book-wrap` so it's part of the single
  measured/scaled unit (L2) — a nav bar outside this wrapper, or scaled
  independently, is the single most common way this regresses. The scale
@@ -127,7 +127,8 @@ setTimeout(fitToViewport, 400);
 
 ## Data Handling — Dates
 
-M1. Show date only if given; else omit, no placeholder.
+M1. Show date only if given; else omit, no placeholder. "Given" means typed
+ by the student or stored in the photo's own date info.
 M2. Missing metadata is normal, not an error.
 
 ## Data Handling — Places & Facts
@@ -170,16 +171,92 @@ M9. Layout: offset colliding markers/labels, connect back to true
 
 ## Notes & Conversation Flow
 
-N1. Ask for title/dates first if missing.
-N2. Walk through each photo, ask for the person's words.
+N1. Ask for title/dates first if missing, with exactly this prompt:
+ "What's the book's title and the trip dates?
+ 1. Skip title (Let AI make one)
+ 2. Skip dates (Let AI use the photo dates)
+ 3. Skip both"
+ The student types the title/dates as free text, or picks a number.
+ Skip title → make a title from the photos. Skip dates → use the dates
+ stored in the photos (M1); if none, show no dates. Skip both → do both.
+N2. Walk through each photo, ask for the person's words, with these options:
+ "1. Skip (Let AI write it)
+ 2. Skip all photos (Let AI write them all)"
+ Skip → N3 for that photo. Skip all photos → N3 for every remaining photo,
+ then build (N4).
 N3. If skipped/uncaptioned: write the note from the photo, name the place,
  add the fact.
 N4. Build only after asking. Exception: if told to skip ahead, build
  immediately — use N3 for uncaptioned photos, guess a title if missing.
+N5. Talk to the user in simple, short, direct sentences. No wordiness, no
+ filler, no long explanations. Applies to every message in the chat —
+ not to the book's own content (notes/facts follow C3/N3).
+N6. Whenever the user has a choice to make, give the options as a numbered
+ list (1, 2, 3…) so they can reply with just a number. Applies to every
+ choice point, including M6's map choice.
+ - Say once, in the first reply after the photos arrive: "When I show a
+   numbered list, type or say a number to pick an option. You can also
+   type your own words." Never repeat it under later lists.
+ - Option labels say "AI," never "I" or "me" (e.g. "Let AI write it"),
+   so the student knows who does what.
+ - Bare numbered lists (1, 2, 3) are only for options to pick from.
+   Instructions the student must follow in order use "Step 1:", "Step 2:"
+   labels, introduced by a line saying what the steps are for.
+N7. Sharing step — last step of every build.
+ a. Show the book and ask:
+    "Does it look good?
+    1. Yes
+    2. Change something"
+    On 2, say exactly: "What do you want to change?" Apply the change
+    (E1), say "Done.", show the book again and repeat this question.
+ b. On 1, check its size (S2) first, then ask:
+    - 16MB or less:
+      "Want to share it as a public link? Anyone with the link can see
+      your book.
+      1. Yes, share as a public link
+      2. Not now"
+    - Over 16MB: "Your book is too big (x MB) for a link.
+      1. Get a PDF
+      2. Not now"
+ Never offer both a link and a PDF together. Run only the path they pick.
+ Nothing is published unless the student picks "Yes, share as a public
+ link" or asks for a link. Re-offer after a rebuild only if asked.
 
 ## Edits
 
 E1. Plain-language request → apply and regenerate.
+
+## Sharing as a Link
+
+S1. Make a link only when the student picks it at N7 or asks for one. The
+ N7 question carries the "anyone with the link" warning — no second
+ confirm. Claude handles photo sizes as usual — no extra shrinking for
+ the link.
+S2. Size check — before every publish, including updates, check the built
+ book's size as-is.
+ - 16MB or less → publish.
+ - Over 16MB → don't publish. Say: "Your book is now too big (x MB) for
+   the link." (x = size in MB, whole number). If a link already exists,
+   add: "The link still shows the old book, without your new photos."
+   Then offer:
+   1. Get a PDF
+   2. Not now
+S3. Publish the HTML book as a private Claude artifact. It is saved in the
+ student's artifacts list, with a Share button. Don't paste the web
+ address. Say exactly:
+ "Your book is ready. To send the link, follow these 3 steps:
+ Step 1: Tap the Share button to turn on book sharing.
+ Step 2: Copy the link.
+ Step 3: Paste it into an email or text."
+ Claude cannot turn on sharing for the student — only the Share button
+ does.
+S4. If the student asks for the web address, paste it and add: "Turn on
+ sharing first, or family can't open it."
+S5. After an edit (E1), run S2, then republish to the same artifact so the
+ link stays the same. Say: "Updated. Same link." Never create a second
+ link for the same book unless asked.
+S6. The link opens in any browser, including iPhone/iPad, with the
+ page-turn working. Deleting the artifact stops the link for everyone.
 
 ## PDF Generation
 
