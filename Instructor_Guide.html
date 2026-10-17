@@ -231,6 +231,7 @@
     h2{page-break-before:always;}
     .masthead + h2{page-break-before:auto;}
     details.step-details:not([open]) > *:not(summary){display:block !important;}
+    details.step-details::details-content{content-visibility:visible !important; display:block !important; height:auto !important;}
     details.step-details .toggle-icon{display:none;}
     details.step-details > summary{cursor:default;}
   }
@@ -263,7 +264,7 @@
           <li><a href="#words-to-help-students-remember" data-target="words-to-help-students-remember">Words to help students remember</a></li>
         </ul>
       </li>
-      <li><a href="#step-3-download-and-share-it" data-target="step-3-download-and-share-it">Step 3 — Download &amp; share</a></li>
+      <li><a href="#step-3-download-and-share-it" data-target="step-3-download-and-share-it">Step 3 — Share your book</a></li>
       <li><a href="#watch-for" data-target="watch-for">6. Watch for</a></li>
       <li><a href="#what-claude-does-for-you" data-target="what-claude-does-for-you">7. What Claude AI does and doesn't</a></li>
     </ol>
@@ -290,7 +291,7 @@
   <li><a href="#step-1-start-your-book-and-add-all-your-photos">Step 1 — Start your book and add all your photos</a></li>
   <li><a href="#step-2-put-it-in-order-and-polish">Step 2 — Put it in order and polish</a></li>
   <li><a href="#words-to-help-students-remember">Words to help students remember</a></li>
-  <li><a href="#step-3-download-and-share-it">Step 3 — Download and share it</a></li>
+  <li><a href="#step-3-download-and-share-it">Step 3 — Share your book</a></li>
   <li><a href="#watch-for">6. Watch for</a></li>
   <li><a href="#what-claude-does-for-you">7. What Claude AI does and doesn't</a></li>
 </ol>
@@ -489,26 +490,16 @@
   <details class="step-details">
   <summary>
     <svg class="toggle-icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><rect x="1.5" y="1.5" width="17" height="17" rx="4" fill="none" stroke="currentColor" stroke-width="1.6"/><line class="toggle-icon-v" x1="10" y1="5.5" x2="10" y2="14.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><line x1="5.5" y1="10" x2="14.5" y2="10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-    <h2 id="step-3-download-and-share-it">Step 3 — Download and share it</h2>
+    <h2 id="step-3-download-and-share-it">Step 3 — Share your book</h2>
   </summary>
   <div class="step-body">
-  <p>The trip book downloads as an <strong>HTML</strong> file by default. Check the table below for the file your recipient needs — if you need a <strong>PDF</strong>, just ask Claude to make one.</p>
-  <table class="feature-table">
-    <thead><tr><th>Viewing device</th><th>What file to download</th><th>What to do</th></tr></thead>
-    <tbody>
-      <tr><td>Android phone</td><td>HTML (default)</td><td>Click <strong>Download</strong> to get the HTML file.</td></tr>
-      <tr><td>Windows or Mac computer</td><td>HTML (default)</td><td>Click <strong>Download</strong> to get the HTML file.</td></tr>
-      <tr><td>iPhone or iPad</td><td>PDF</td><td>Type or say <em>"Please generate a PDF file,"</em> then download the file Claude gives you.</td></tr>
-    </tbody>
-  </table>
-  <div class="tip">Saving the HTML page as a PDF yourself (through the browser's print menu) does <strong>not</strong> produce a correct PDF. Students should always ask Claude to generate the PDF for them.</div>
-  <div class="example">Downloading is optional — only for students who want a copy or want to send it to family.</div>
-  <ol>
-    <li>To send it to family: attach the right file to an email, a text message, or a messaging app.
-      <div class="tip">If email won't let the file through (photo-heavy books can get large), a USB drive or a cloud drive link (Google Drive, Dropbox) works too.</div>
-    </li>
-    <li>Show the class your cover and one favourite page.</li>
-  </ol>
+  <p>When the book looks right, Claude asks the student how to share it. They type the number of their choice:</p>
+  <ul>
+    <li><strong>Get a PDF</strong> — works on any account, including free ones. Claude makes a PDF file the student can attach to an email or text. The pages don't turn like the live book, but everything else looks the same. Students should always get the PDF from Claude; saving the book as a PDF through the browser's print menu doesn't work.</li>
+    <li><strong>Share a public link</strong> — paid accounts only. A web address the student pastes into an email or text. Whoever gets it can open the book in any browser on any device and flip through the pages. Students should only send it to people they'd share these photos with. If they change the book later, the same link shows the new version, so there's no need to send a new one.</li>
+    <li><strong>Not now</strong> — keep working and share later.</li>
+  </ul>
+  <p>Then have each student show the class their cover and one favourite page.</p>
   </div>
   </details>
   </div>
@@ -547,16 +538,16 @@
       <tr><td>1</td><td>Builds your trip book</td><td>Follows your instructions to turn photos into a flip-through book</td></tr>
       <tr><td>2</td><td>Reads your photos</td><td>Describes what's in each photo and infers the place; flags any it's unsure about so you can confirm</td></tr>
       <tr><td>3</td><td>Edits on request</td><td>Makes the change you ask for in chat — moves a photo, changes the cover color, makes the fonts bigger, and more</td></tr>
-      <tr><td>4</td><td>Lets you download and share it</td><td>Generates a downloadable file whenever you're ready — HTML by default, or a PDF on request</td></tr>
+      <tr><td>4</td><td>Shares your book</td><td>Makes a PDF, or publishes a public link on paid accounts</td></tr>
       <tr><td>5</td><td>Runs on a token budget</td><td>Every message costs a little bit of Claude's "fuel" (called tokens) — bundling your edits into one message is like carpooling instead of five solo trips, stretching your usage budget so you can fit in more edits before you hit the limit</td></tr>
     </tbody>
   </table>
-  <p><strong>Limited by:</strong> platform support — iPhone and iPad don't open local HTML files as live pages; direct students to the PDF instead (see the table in Step 3).</p>
+  <p><strong>Limited by:</strong> account type and book size. Public links need a paid account and work up to 16 MB; otherwise Claude makes a PDF (see Step 3).</p>
   <p><strong>Doesn't:</strong> generate a perfect trip book. Expect occasional misalignment, truncated text, or rough spots — worth having students check it over before sharing, and a good discussion point on where AI still needs a human check.</p>
   </div>
   </details>
 
-  <p class="print-timestamp">Last updated: 2026-09-09 20:35 UTC</p>
+  <p class="print-timestamp">Last updated: 2026-10-17 20:16 UTC</p>
 
 </div>
 
