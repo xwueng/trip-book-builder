@@ -4,20 +4,22 @@ instructions_spec.md, which covers Instructor Guide / Student Handbook. Never
 cross-edit.)
 Rule IDs (F/D/C/T/L/M/N/E/S/P) are stable references — cite by ID.
 File must carry a last-updated stamp.
-Last updated: 2026-10-09 04:00 UTC
+Last updated: 2026-10-17 19:34 UTC
 
 ## Format
 
 F1. Every build generates the self-contained HTML book (phone-friendly, real
  page-turn flip) by default. The static PDF export (P1–P4) of the same
  book is generated only when the student/user explicitly asks for a
- PDF — do not generate it automatically as part of a normal build.
+ PDF (including picking "Get a PDF" at N7/S2) — do not generate it
+ automatically as part of a normal build.
 F2. No music unless asked.
 
 ## Visual Design
 
 D1. Colors: paper `#F4EFE4` (full-viewport bg, `html`/`body`, outside L5's
- scaled unit), card `#FBF8F1` (page surface), teal `#2F6F6A` (headings/kickers/hints), amber `#C68A3D`, ink `#3A2F28` (titles/body).
+ scaled unit), card `#FBF8F1` (page surface), teal `#2F6F6A`
+ (headings/kickers/hints), amber `#C68A3D`, ink `#3A2F28` (titles/body).
  Secondary text (dates, route line, closing note, nav counter): ink at
  .55 opacity (dates) or .72 opacity (rest).
 D2. Serif (Palatino/Book Antiqua/Georgia) for title + place names;
@@ -32,17 +34,19 @@ D3. Cover: bordered frame; kicker "A Trip Book"; serif title; wavy divider
  file, but this is the one element most likely to slip through as an
  image tag instead). Inset it at least 20px from the card's padded
  edge, not flush against it. The label text must fit the box regardless
- of how long the destination name is: set the `<text>` element's `textLength` to the box's available width and `lengthAdjust=
-    "spacingAndGlyphs"`, so it compresses to fit instead of overflowing —
- this is decorative chrome with no other layout-safety rule (D7/
- L-series) covering it, so the guardrail has to be stated here
+ of how long the destination name is: set the `<text>` element's
+ `textLength` to the box's available width and
+ `lengthAdjust="spacingAndGlyphs"`, so it compresses to fit instead of
+ overflowing — this is decorative chrome with no other layout-safety
+ rule (D7/L-series) covering it, so the guardrail has to be stated here
  explicitly rather than assumed.
 D4. Closing: same frame; "The End"; map (M5–M9) above route line of places
  joined by "·" when M8 includes one; closing line.
 D5. Fact callout: bg = amber at 14% opacity (`rgba(198,138,61,.14)`), left
  amber border, sentence only, no label.
 D6. Nav buttons: fixed-size, teal, 3D-press style; counter centered between.
-D7. Photos never cropped. Frame = photo's real `aspect-ratio:w/h`, capped `max-height:50%` of page. `object-fit:contain` fallback; letterbox bg =
+D7. Photos never cropped. Frame = photo's real `aspect-ratio:w/h`, capped
+ `max-height:50%` of page. `object-fit:contain` fallback; letterbox bg =
  rule color `#C9BFA8`, never black/transparent.
 D8. Photo is dominant element, sized by its own ratio up to 50% page height.
  Page content stacks top-down; leftover space at bottom only, never
@@ -59,14 +63,16 @@ C4. No "Stop 1/2/3" labels on pages (M8's numbered map markers are separate).
 
 T1. Hinge-and-curl motion, never flat rotate.
 T2. `transform-origin: left center` (0% 50%) on every page — the vertical
- midpoint of the left edge, i.e. the book's spine axis. Not `left top` or `left bottom`: either pivots the page from a corner instead of
+ midpoint of the left edge, i.e. the book's spine axis. Not `left top` or
+ `left bottom`: either pivots the page from a corner instead of
  turning along the spine.
 T3. Same hinge geometry both directions; verify both.
 T4. Z-index: turned pages = `0..N`; unturned = `1000 - index`.
 T5. Actively-turning leaf: `z-index:9999` during transition; settle to T4
  range after.
 T6. Verify flip at midpoint and near end, not just first pages.
-T7. Only current front leaf + (mid-transition) its neighbor are `visibility:visible`; all other leaves `visibility:hidden`.
+T7. Only current front leaf + (mid-transition) its neighbor are
+ `visibility:visible`; all other leaves `visibility:hidden`.
 
 ## Layout & Rendering
 
@@ -81,7 +87,7 @@ L5. Scale-to-fit. This mechanism (L1/L2/L5 together) has regressed more
  present — use this reference implementation verbatim rather than
  re-deriving it from a description:
 
-```
+```css
 body{ display:flex; align-items:center; justify-content:center; }
 .stage{ width:100%; height:100%; display:flex;
         align-items:center; justify-content:center; }
@@ -93,7 +99,7 @@ body{ display:flex; align-items:center; justify-content:center; }
          border-radius:12px; }
 ```
 
-```
+```js
 var bookWrap = document.querySelector('.book-wrap');
 function fitToViewport(){
   var MARGIN = 20;
@@ -118,12 +124,13 @@ setTimeout(fitToViewport, 100);
 setTimeout(fitToViewport, 400);
 ```
 
-Non-negotiable properties of this mechanism, whether copied verbatim or
+ Non-negotiable properties of this mechanism, whether copied verbatim or
  adapted: nav bar lives inside `.book-wrap` so it's part of the single
  measured/scaled unit (L2) — a nav bar outside this wrapper, or scaled
  independently, is the single most common way this regresses. The scale
  calculation must bail out (not clamp to the floor) on a zero/invalid
- measurement. Paper background stays outside this unit, on `body`. `transform-origin` must be `center center` to match L1's centering.
+ measurement. Paper background stays outside this unit, on `body`.
+ `transform-origin` must be `center center` to match L1's centering.
 
 ## Data Handling — Dates
 
@@ -134,9 +141,10 @@ M2. Missing metadata is normal, not an error.
 ## Data Handling — Places & Facts
 
 M3. Every photo's place is exactly one state:
- 1. Confirmed — state plainly.
- 2. Guessed — write a fact, flag with "confirm venue" badge.
- 3. N/A — object/non-place photo; no location field, no badge, no guess.
+ - State 1, Confirmed — state plainly.
+ - State 2, Guessed — write a fact, flag with "confirm venue" badge.
+ - State 3, N/A — object/non-place photo; no location field, no badge,
+   no guess.
 M4. State 2 → fact + badge. State 3 → no claim, no badge. Confirmed/guessed/
  N-A state drives both the photo page's badge and the map marker (M8)
  from the same source — keep them in sync across edits.
@@ -171,19 +179,32 @@ M9. Layout: offset colliding markers/labels, connect back to true
 
 ## Notes & Conversation Flow
 
+*(Every student-facing prompt below is in a code block so it renders with
+its exact numbers. Show it to the student word for word, numbers included,
+as plain chat text — not inside a code block. Every menu starts at 1, even
+when it follows another menu in the same chat. Never renumber, never
+continue from an earlier list.)*
+
 N1. Ask for title/dates first if missing, with exactly this prompt:
- "What's the book's title and the trip dates?
- 1. Skip title (Let AI make one)
- 2. Skip dates (Let AI use the photo dates)
- 3. Skip both"
+
+```
+What's the book's title and the trip dates?
+1. Skip title (Let AI make one)
+2. Skip dates (Let AI use the photo dates)
+3. Skip both
+```
+
  The student types the title/dates as free text, or picks a number.
  Skip title → make a title from the photos. Skip dates → use the dates
  stored in the photos (M1); if none, show no dates. Skip both → do both.
 N2. Walk through each photo, ask for the person's words, with these options:
- "1. Skip (Let AI write it)
- 2. Skip all photos (Let AI write them all)"
- Skip → N3 for that photo. Skip all photos → N3 for every remaining photo,
- then build (N4).
+
+```
+1. Skip (Let AI write it)
+2. Skip all photos (Let AI write them all)
+```
+
+ 1 → N3 for that photo. 2 → N3 for every remaining photo, then build (N4).
 N3. If skipped/uncaptioned: write the note from the photo, name the place,
  add the fact.
 N4. Build only after asking. Exception: if told to skip ahead, build
@@ -192,8 +213,15 @@ N5. Talk to the user in simple, short, direct sentences. No wordiness, no
  filler, no long explanations. Applies to every message in the chat —
  not to the book's own content (notes/facts follow C3/N3).
 N6. Whenever the user has a choice to make, give the options as a numbered
- list (1, 2, 3…) so they can reply with just a number. Applies to every
- choice point, including M6's map choice.
+ list so they can reply with just a number. Applies to every choice
+ point, including M6's map choice.
+ - Every list starts at 1 and counts up by 1 (1, 2, 3…). Never continue
+   numbering from an earlier list.
+ - A reply that is just a number (e.g. "2", "2.", "#2", "two", "option 2")
+   always picks that option from the most recent list. Never treat it as
+   a title, caption, date, or free text. If the number isn't on that
+   list, say: "Please pick a number from the list." and show the list
+   again.
  - Say once, in the first reply after the photos arrive: "When I show a
    numbered list, type or say a number to pick an option. You can also
    type your own words." Never repeat it under later lists.
@@ -204,23 +232,39 @@ N6. Whenever the user has a choice to make, give the options as a numbered
    labels, introduced by a line saying what the steps are for.
 N7. Sharing step — last step of every build.
  a. Show the book and ask:
-    "Does it look good?
-    1. Yes
-    2. Change something"
-    On 2, say exactly: "What do you want to change?" Apply the change
-    (E1), say "Done.", show the book again and repeat this question.
+
+```
+Does it look good?
+1. Yes
+2. Change something
+```
+
+ On 2, say exactly: "What do you want to change?" Apply the change
+ (E1), say "Done.", show the book again and repeat this question.
  b. On 1, check its size (S2) first, then ask:
-    - 16MB or less:
-      "Want to share it as a public link? Anyone with the link can see
-      your book.
-      1. Yes, share as a public link
-      2. Not now"
-    - Over 16MB: "Your book is too big (x MB) for a link.
-      1. Get a PDF
-      2. Not now"
- Never offer both a link and a PDF together. Run only the path they pick.
- Nothing is published unless the student picks "Yes, share as a public
- link" or asks for a link. Re-offer after a rebuild only if asked.
+ - 16MB or less:
+
+```
+How do you want to share it?
+1. Get a PDF (free account)
+2. Share a public link (paid account; anyone with the link can see your book)
+3. Not now
+```
+
+ - Over 16MB:
+
+```
+Your book is too big (x MB) for a link.
+1. Get a PDF
+2. Not now
+```
+
+ Run only the path they pick. Nothing is published unless the student
+ picks "Share a public link" or asks for a link. Claude can't see the
+ student's plan, so the student picks; the "(free account)"/"(paid
+ account)" labels guide them. If publishing fails
+ or isn't available on the student's account (e.g. free plan), use the
+ S7 fallback. Re-offer after a rebuild only if asked.
 
 ## Edits
 
@@ -229,7 +273,7 @@ E1. Plain-language request → apply and regenerate.
 ## Sharing as a Link
 
 S1. Make a link only when the student picks it at N7 or asks for one. The
- N7 question carries the "anyone with the link" warning — no second
+ N7 option carries the "anyone with the link" warning — no second
  confirm. Claude handles photo sizes as usual — no extra shrinking for
  the link.
 S2. Size check — before every publish, including updates, check the built
@@ -239,15 +283,23 @@ S2. Size check — before every publish, including updates, check the built
    the link." (x = size in MB, whole number). If a link already exists,
    add: "The link still shows the old book, without your new photos."
    Then offer:
-   1. Get a PDF
-   2. Not now
+
+```
+1. Get a PDF
+2. Not now
+```
+
 S3. Publish the HTML book as a private Claude artifact. It is saved in the
  student's artifacts list, with a Share button. Don't paste the web
  address. Say exactly:
- "Your book is ready. To send the link, follow these 3 steps:
- Step 1: Tap the Share button to turn on book sharing.
- Step 2: Copy the link.
- Step 3: Paste it into an email or text."
+
+```
+Your book is ready. To send the link, follow these 3 steps:
+Step 1: Tap the Share button to turn on book sharing.
+Step 2: Copy the link.
+Step 3: Paste it into an email or text.
+```
+
  Claude cannot turn on sharing for the student — only the Share button
  does.
 S4. If the student asks for the web address, paste it and add: "Turn on
@@ -257,6 +309,15 @@ S5. After an edit (E1), run S2, then republish to the same artifact so the
  link for the same book unless asked.
 S6. The link opens in any browser, including iPhone/iPad, with the
  page-turn working. Deleting the artifact stops the link for everyone.
+S7. Link not available. Public links may not be available on free
+ accounts. If publishing fails or isn't offered on the student's
+ account, don't retry and don't explain plans. Say:
+
+```
+A public link isn't available on your account.
+1. Get a PDF
+2. Not now
+```
 
 ## PDF Generation
 
