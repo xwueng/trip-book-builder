@@ -6,69 +6,79 @@
 <title>Trip Book Feedback</title>
 <meta name="description" content="What a trip book is, common questions, and a form to ask your own.">
 <style>
+/* Same palette and type as Student_Handbook.html */
 :root{
-  --paper:#F4EFE4; --card:#FBF8F1; --teal:#2F6F6A; --amber:#C68A3D; --ink:#3A2F28;
-  --muted:rgba(58,47,40,.72); --rule:#C9BFA8; --tint:rgba(198,138,61,.14);
-  --serif:"Palatino Linotype","Book Antiqua",Palatino,Georgia,serif;
-  --sans:"Segoe UI",system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;
+  --paper:#FFFFFF; --card:#FFFFFF; --box:#F4F6F5;
+  --ink:#203A3F; --ink-soft:#3C5256;
+  --teal:#1E6E72; --teal-deep:#17585B;
+  --amber:#CF7A1E; --amber-tint:#FAEBD2; --teal-tint:#E4EFEE;
+  --rule:#D8CDB8;
+  --shadow:0 1px 0 rgba(32,58,63,.04), 0 10px 30px -18px rgba(32,58,63,.35);
+  --sans:"Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
 }
 *{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
 html,body{margin:0}
-body{background:var(--paper); color:var(--ink); font:19px/1.6 var(--sans);
-  padding:40px max(16px,env(safe-area-inset-right)) 56px max(16px,env(safe-area-inset-left))}
-.wrap{max-width:660px; margin:0 auto; display:flex; flex-direction:column; gap:36px}
-h1,h2{font-family:var(--serif); font-weight:600; margin:0; color:var(--ink)}
-h1{font-size:clamp(30px,6vw,40px); line-height:1.15}
-h2{font-size:28px; line-height:1.2}
+body{background:var(--paper); color:#000000; font:18px/1.62 var(--sans);
+  padding:20px max(16px,env(safe-area-inset-right)) 56px max(16px,env(safe-area-inset-left))}
+.wrap{max-width:720px; margin:0 auto; display:flex; flex-direction:column; gap:28px}
+h1,h2,h3{color:var(--teal-deep); margin:0}
 p{margin:0}
-a{color:var(--teal); font-weight:600; text-underline-offset:3px}
+a{color:var(--teal-deep); font-weight:600; text-underline-offset:3px}
+a:hover{color:var(--amber)}
 a:focus-visible,summary:focus-visible{outline:3px solid var(--amber); outline-offset:3px; border-radius:4px}
-.kicker{font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:var(--teal); font-weight:700}
-header{display:flex; flex-direction:column; gap:14px}
-.divider{width:180px; height:14px}
 
-/* Example page + points */
+/* Cover, like the handbook's */
+.cover{position:relative; border:2px solid var(--ink); border-radius:14px;
+  background:radial-gradient(circle at 18% 120%, var(--teal-tint), transparent 60%), var(--card);
+  padding:28px 110px 24px 36px; box-shadow:var(--shadow); display:flex; flex-direction:column; gap:8px}
+.cover h1{font-size:clamp(28px,5vw,40px); line-height:1.08}
+.cover p{font-size:17px}
+.stamp{position:absolute; top:26px; right:30px; width:64px; height:78px;
+  border:2px dashed var(--amber); border-radius:4px; display:flex; align-items:center; justify-content:center;
+  color:var(--amber); font-size:12px; font-weight:700; letter-spacing:.05em; text-align:center; transform:rotate(6deg)}
+@media (max-width:480px){ .cover{padding:22px 88px 20px 20px} .stamp{right:16px; top:20px; width:56px; height:68px} }
+
+/* Example page (drawn in the trip book's own colors) + points */
 .example{display:flex; gap:28px; flex-wrap:wrap; align-items:center}
-.page{width:210px; max-width:100%; aspect-ratio:2/3; background:var(--card); border:1px solid var(--rule); border-radius:6px;
-  box-shadow:0 6px 18px rgba(58,47,40,.18); padding:14px; display:flex; flex-direction:column; gap:6px; flex:none}
+.page{width:210px; max-width:100%; aspect-ratio:2/3; background:#FBF8F1; border:1px solid #C9BFA8; border-radius:6px;
+  box-shadow:0 6px 18px rgba(58,47,40,.18); padding:14px; display:flex; flex-direction:column; gap:6px; flex:none; color:#3A2F28}
 .page svg{width:100%; height:auto; border-radius:3px; display:block}
-.page .place{font:600 18px/1.15 var(--serif)}
+.page .place{font:600 18px/1.15 "Palatino Linotype","Book Antiqua",Palatino,Georgia,serif}
 .page .date{font-size:11px; color:rgba(58,47,40,.55)}
 .page .note{font-size:12px; line-height:1.4}
-.page .fact{font-size:11px; line-height:1.35; background:var(--tint); border-left:2px solid var(--amber); padding:5px 7px; margin-top:6px}
-.side{flex:1 1 240px; min-width:0; display:flex; flex-direction:column; gap:18px}
-.points{margin:0; padding-left:22px; display:flex; flex-direction:column; gap:10px}
-.points li::marker{color:var(--amber)}
+.page .fact{font-size:11px; line-height:1.35; background:rgba(198,138,61,.14); border-left:2px solid #C68A3D; padding:5px 7px; margin-top:6px}
+.side{flex:1 1 240px; min-width:0; display:flex; flex-direction:column; gap:16px}
+.points{margin:0; padding-left:26px; display:flex; flex-direction:column; gap:6px}
 
-/* Ask box */
-.small{font-size:16px; color:var(--muted)}
-iframe.form{width:100%; height:800px; border:1px solid var(--rule); border-radius:10px; background:var(--card); display:block}
+/* Form */
+.small{font-size:16px; color:var(--ink-soft)}
+iframe.form{width:100%; height:800px; border:1px solid var(--rule); border-radius:12px; background:var(--card); display:block}
 iframe.form.sent{height:320px}
 @media (max-width:480px){ iframe.form{height:1000px} iframe.form.sent{height:380px} }
-.formbox{display:flex; flex-direction:column; gap:12px; padding:0 0 24px}
+.formbox{display:flex; flex-direction:column; gap:12px; padding:12px 0 8px}
 
-/* Two folding sections: Common questions, then Ask a question */
+/* Folding sections, styled like the handbook's */
 .folds{display:flex; flex-direction:column}
-details.fold{border-top:1px solid var(--rule)}
-details.fold:last-child{border-bottom:1px solid var(--rule)}
-details.fold > summary{list-style:none; cursor:pointer; display:flex; align-items:center; justify-content:flex-start; gap:14px; padding:18px 0}
+details.fold > summary{list-style:none; cursor:pointer; display:flex; align-items:center; gap:12px;
+  border-bottom:2px solid var(--rule); padding:14px 0 8px}
 details.fold > summary::-webkit-details-marker{display:none}
-.toggle{flex:none; width:24px; color:var(--teal); display:grid; place-items:center; font:700 30px/1 var(--sans)}
+details.fold > summary h2{font-size:24px}
+details.fold > summary:hover h2{color:var(--amber)}
+.toggle{flex:none; width:20px; color:var(--amber); display:grid; place-items:center; font:700 28px/1 var(--sans)}
 .toggle::before{content:"+"}
 details.fold[open] .toggle::before{content:"\2212"}
-.qa{display:flex; flex-direction:column; gap:20px; padding:0 0 24px}
-.qa h3{font:700 19px/1.4 var(--sans); color:var(--teal); margin:0 0 4px}
-footer{font-size:14px; color:var(--muted); text-align:center}
-@media (max-width:480px){ body{font-size:18px} .example{justify-content:center} }
+.qa{display:flex; flex-direction:column; gap:16px; padding:14px 0 8px}
+.qa h3{font-size:19px; margin:0 0 2px}
+footer{font-size:14px; color:var(--ink-soft); text-align:center}
 </style>
 </head>
 <body>
 <div class="wrap">
 
-  <header>
-    <span class="kicker">A Trip Book</span>
+  <header class="cover">
+    <div class="stamp">MY<br>TRIP</div>
     <h1>What a trip book is</h1>
-    <svg class="divider" viewBox="0 0 180 14" aria-hidden="true"><circle cx="5" cy="7" r="3.5" fill="#C68A3D"/><path d="M14 7 Q 24 1 34 7 T 54 7 T 74 7 T 94 7 T 114 7 T 134 7 T 154 7 T 166 7" fill="none" stroke="#C68A3D" stroke-width="1.6"/><circle cx="175" cy="7" r="3.5" fill="#C68A3D"/></svg>
     <p>A small book made from your trip photos. You flip the pages on a phone or computer, like a real book. Claude AI builds it for you.</p>
   </header>
 
