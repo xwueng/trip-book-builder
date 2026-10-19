@@ -18,7 +18,7 @@ body{background:var(--paper); color:var(--ink); font:19px/1.6 var(--sans);
   padding:40px max(16px,env(safe-area-inset-right)) 56px max(16px,env(safe-area-inset-left))}
 .wrap{max-width:660px; margin:0 auto; display:flex; flex-direction:column; gap:36px}
 h1,h2{font-family:var(--serif); font-weight:600; margin:0; color:var(--ink)}
-h1{font-size:clamp(36px,7vw,50px); line-height:1.1}
+h1{font-size:clamp(30px,6vw,40px); line-height:1.15}
 h2{font-size:28px; line-height:1.2}
 p{margin:0}
 a{color:var(--teal); font-weight:600; text-underline-offset:3px}
@@ -51,10 +51,9 @@ iframe.form.sent{height:320px}
 .folds{display:flex; flex-direction:column}
 details.fold{border-top:1px solid var(--rule)}
 details.fold:last-child{border-bottom:1px solid var(--rule)}
-details.fold > summary{list-style:none; cursor:pointer; display:flex; align-items:center; justify-content:space-between; gap:16px; padding:18px 0}
+details.fold > summary{list-style:none; cursor:pointer; display:flex; align-items:center; justify-content:flex-start; gap:14px; padding:18px 0}
 details.fold > summary::-webkit-details-marker{display:none}
-.toggle{flex:none; width:36px; height:36px; border-radius:50%; border:2px solid var(--teal); color:var(--teal);
-  display:grid; place-items:center; font:700 24px/1 var(--sans)}
+.toggle{flex:none; width:24px; color:var(--teal); display:grid; place-items:center; font:700 30px/1 var(--sans)}
 .toggle::before{content:"+"}
 details.fold[open] .toggle::before{content:"\2212"}
 .qa{display:flex; flex-direction:column; gap:20px; padding:0 0 24px}
@@ -102,7 +101,7 @@ footer{font-size:14px; color:var(--muted); text-align:center}
 
   <div class="folds">
   <details class="fold">
-    <summary><h2>Common questions</h2><span class="toggle" aria-hidden="true"></span></summary>
+    <summary><span class="toggle" aria-hidden="true"></span><h2>Common questions</h2></summary>
     <div class="qa">
       <!-- To add a question: copy one <div>...</div> block below and change the words. -->
       <div><h3>Do I have to write the words for each photo?</h3>
@@ -119,7 +118,7 @@ footer{font-size:14px; color:var(--muted); text-align:center}
   </details>
 
     <details class="fold" id="ask">
-      <summary><h2>Ask a question</h2><span class="toggle" aria-hidden="true"></span></summary>
+      <summary><span class="toggle" aria-hidden="true"></span><h2>Ask a question</h2></summary>
       <div class="formbox">
         <iframe class="form" id="qform" aria-label="Trip Book Questions form"
           src="https://docs.google.com/forms/d/e/1FAIpQLSclvDI4FXfRsSjBAqkiJhEaG3xfww00q5eqKb0-X9ed5BtpNg/viewform?embedded=true">Loading the form…</iframe>
