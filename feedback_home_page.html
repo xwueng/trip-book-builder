@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trip Book Feedback</title>
+<meta name="description" content="What a trip book is, common questions, and a form to ask your own.">
+<style>
+:root{
+  --paper:#F4EFE4; --card:#FBF8F1; --teal:#2F6F6A; --amber:#C68A3D; --ink:#3A2F28;
+  --muted:rgba(58,47,40,.72); --rule:#C9BFA8; --tint:rgba(198,138,61,.14);
+  --serif:"Palatino Linotype","Book Antiqua",Palatino,Georgia,serif;
+  --sans:"Segoe UI",system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--paper); color:var(--ink); font:19px/1.6 var(--sans);
+  padding:40px max(16px,env(safe-area-inset-right)) 56px max(16px,env(safe-area-inset-left))}
+.wrap{max-width:660px; margin:0 auto; display:flex; flex-direction:column; gap:36px}
+h1,h2{font-family:var(--serif); font-weight:600; margin:0; color:var(--ink)}
+h1{font-size:clamp(36px,7vw,50px); line-height:1.1}
+h2{font-size:28px; line-height:1.2}
+p{margin:0}
+a{color:var(--teal); font-weight:600; text-underline-offset:3px}
+a:focus-visible,summary:focus-visible{outline:3px solid var(--amber); outline-offset:3px; border-radius:4px}
+.kicker{font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:var(--teal); font-weight:700}
+header{display:flex; flex-direction:column; gap:14px}
+.divider{width:180px; height:14px}
+
+/* Example page + points */
+.example{display:flex; gap:28px; flex-wrap:wrap; align-items:center}
+.page{width:210px; max-width:100%; aspect-ratio:2/3; background:var(--card); border:1px solid var(--rule); border-radius:6px;
+  box-shadow:0 6px 18px rgba(58,47,40,.18); padding:14px; display:flex; flex-direction:column; gap:6px; flex:none}
+.page svg{width:100%; height:auto; border-radius:3px; display:block}
+.page .place{font:600 18px/1.15 var(--serif)}
+.page .date{font-size:11px; color:rgba(58,47,40,.55)}
+.page .note{font-size:12px; line-height:1.4}
+.page .fact{font-size:11px; line-height:1.35; background:var(--tint); border-left:2px solid var(--amber); padding:5px 7px; margin-top:6px}
+.side{flex:1 1 240px; min-width:0; display:flex; flex-direction:column; gap:18px}
+.points{margin:0; padding-left:22px; display:flex; flex-direction:column; gap:10px}
+.points li::marker{color:var(--amber)}
+
+/* Ask box */
+.ask{display:flex; flex-direction:column; gap:14px}
+.askbox{background:var(--tint); border-left:3px solid var(--amber); border-radius:0 10px 10px 0; padding:20px 22px; display:flex; flex-direction:column; gap:14px}
+.button{align-self:flex-start; display:inline-block; background:var(--teal); color:#fff; text-decoration:none; font-weight:700;
+  padding:12px 24px; border-radius:999px; box-shadow:0 3px 0 #1F4C48}
+.button:hover{background:#285F5B}
+.button:active{transform:translateY(2px); box-shadow:0 1px 0 #1F4C48}
+.small{font-size:16px; color:var(--muted)}
+iframe.form{width:100%; height:1150px; border:1px solid var(--rule); border-radius:10px; background:var(--card); display:block}
+@media (max-width:480px){ iframe.form{height:1300px} }
+
+/* Common questions: one fold for the whole list */
+details.faq{border-top:1px solid var(--rule); border-bottom:1px solid var(--rule)}
+details.faq > summary{list-style:none; cursor:pointer; display:flex; align-items:center; justify-content:space-between; gap:16px; padding:18px 0}
+details.faq > summary::-webkit-details-marker{display:none}
+.toggle{flex:none; width:36px; height:36px; border-radius:50%; border:2px solid var(--teal); color:var(--teal);
+  display:grid; place-items:center; font:700 24px/1 var(--sans)}
+.toggle::before{content:"+"}
+details.faq[open] .toggle::before{content:"\2212"}
+.qa{display:flex; flex-direction:column; gap:20px; padding:0 0 24px}
+.qa h3{font:700 19px/1.4 var(--sans); color:var(--teal); margin:0 0 4px}
+footer{font-size:14px; color:var(--muted); text-align:center}
+@media (max-width:480px){ body{font-size:18px} .example{justify-content:center} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <span class="kicker">A Trip Book</span>
+    <h1>What a trip book is</h1>
+    <svg class="divider" viewBox="0 0 180 14" aria-hidden="true"><circle cx="5" cy="7" r="3.5" fill="#C68A3D"/><path d="M14 7 Q 24 1 34 7 T 54 7 T 74 7 T 94 7 T 114 7 T 134 7 T 154 7 T 166 7" fill="none" stroke="#C68A3D" stroke-width="1.6"/><circle cx="175" cy="7" r="3.5" fill="#C68A3D"/></svg>
+    <p>A small book made from your trip photos. You flip the pages on a phone or computer, like a real book. Claude AI builds it for you.</p>
+  </header>
+
+  <div class="example">
+    <div class="page" role="img" aria-label="Example page: Golden Gate Bridge">
+      <svg viewBox="0 0 172 115" aria-hidden="true">
+        <rect width="172" height="115" fill="#BFD6DA"/>
+        <circle cx="132" cy="28" r="12" fill="#F2D8A0"/>
+        <path d="M0 80 Q 40 62 80 76 T 172 70 V115 H0Z" fill="#8FB09A"/>
+        <path d="M0 96 Q 50 84 100 94 T 172 92 V115 H0Z" fill="#6E9580"/>
+        <rect x="30" y="38" width="6" height="58" fill="#B5543C"/><rect x="128" y="38" width="6" height="58" fill="#B5543C"/>
+        <path d="M33 40 Q 82 92 131 40" fill="none" stroke="#B5543C" stroke-width="2"/>
+        <rect x="0" y="66" width="172" height="4" fill="#B5543C"/>
+      </svg>
+      <span class="place">Golden Gate Bridge</span>
+      <span class="date">June 14, 2026</span>
+      <span class="note">Windy walk across at sunset. We watched the fog roll in.</span>
+      <span class="fact">The orange color was first used as a primer and kept because it shows up in fog.</span>
+    </div>
+    <div class="side">
+      <ul class="points">
+        <li>One page for each photo.</li>
+        <li>Each page has the place, the date, your words and a short fact.</li>
+        <li>A cover at the start. A map of your trip at the end.</li>
+        <li>Share it with family as a link or a PDF.</li>
+      </ul>
+      <p>Want to make one? Read the <a href="https://xwueng.github.io/trip-book-builder/Student_Handbook.html">Student Handbook</a>.</p>
+    </div>
+  </div>
+
+  <section class="ask">
+    <h2>Ask a question</h2>
+    <div class="askbox">
+      <p>No account needed. Type your question below and press Submit.</p>
+      <p class="small">Good questions are added to Common questions below, with answers.</p>
+    </div>
+    <iframe class="form" title="Trip Book Questions form"
+      src="https://docs.google.com/forms/d/e/1FAIpQLSclvDI4FXfRsSjBAqkiJhEaG3xfww00q5eqKb0-X9ed5BtpNg/viewform?embedded=true"
+      loading="lazy">Loading the form…</iframe>
+    <p class="small">Form not showing? <a href="https://forms.gle/jtDgiAySfNko1m4T9" target="_blank" rel="noopener">Open it in a new tab</a>.</p>
+  </section>
+
+  <details class="faq">
+    <summary><h2>Common questions</h2><span class="toggle" aria-hidden="true"></span></summary>
+    <div class="qa">
+      <!-- To add a question: copy one <div>...</div> block below and change the words. -->
+      <div><h3>Do I have to write the words for each photo?</h3>
+        <p>No. You can tell Claude what you remember, or skip and let Claude write it for you.</p></div>
+      <div><h3>What if I don't remember where a photo was taken?</h3>
+        <p>Claude makes a best guess and marks it &ldquo;confirm venue&rdquo; so you can check it.</p></div>
+      <div><h3>Can family on an iPhone or iPad see it?</h3>
+        <p>Yes. The link opens in any browser, and the pages still turn. A very large book can be made into a PDF instead.</p></div>
+      <div><h3>Who can see my book?</h3>
+        <p>Only you, until you choose to share it. Anyone you send the link to can see it.</p></div>
+      <div><h3>What device do I need?</h3>
+        <p>A phone is needed either way. A phone plus a laptop works best: read the handbook on one, work in Claude on the other.</p></div>
+    </div>
+  </details>
+
+  <footer>Trip Book Builder</footer>
+</div>
+</body>
+</html>
