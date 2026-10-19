@@ -41,24 +41,22 @@ header{display:flex; flex-direction:column; gap:14px}
 .points li::marker{color:var(--amber)}
 
 /* Ask box */
-.ask{display:flex; flex-direction:column; gap:14px}
-.askbox{background:var(--tint); border-left:3px solid var(--amber); border-radius:0 10px 10px 0; padding:20px 22px; display:flex; flex-direction:column; gap:14px}
-.button{align-self:flex-start; display:inline-block; background:var(--teal); color:#fff; text-decoration:none; font-weight:700;
-  padding:12px 24px; border-radius:999px; box-shadow:0 3px 0 #1F4C48}
-.button:hover{background:#285F5B}
-.button:active{transform:translateY(2px); box-shadow:0 1px 0 #1F4C48}
 .small{font-size:16px; color:var(--muted)}
-iframe.form{width:100%; height:1150px; border:1px solid var(--rule); border-radius:10px; background:var(--card); display:block}
-@media (max-width:480px){ iframe.form{height:1300px} }
+iframe.form{width:100%; height:800px; border:1px solid var(--rule); border-radius:10px; background:var(--card); display:block}
+iframe.form.sent{height:320px}
+@media (max-width:480px){ iframe.form{height:1000px} iframe.form.sent{height:380px} }
+.formbox{display:flex; flex-direction:column; gap:12px; padding:0 0 24px}
 
-/* Common questions: one fold for the whole list */
-details.faq{border-top:1px solid var(--rule); border-bottom:1px solid var(--rule)}
-details.faq > summary{list-style:none; cursor:pointer; display:flex; align-items:center; justify-content:space-between; gap:16px; padding:18px 0}
-details.faq > summary::-webkit-details-marker{display:none}
+/* Two folding sections: Common questions, then Ask a question */
+.folds{display:flex; flex-direction:column}
+details.fold{border-top:1px solid var(--rule)}
+details.fold:last-child{border-bottom:1px solid var(--rule)}
+details.fold > summary{list-style:none; cursor:pointer; display:flex; align-items:center; justify-content:space-between; gap:16px; padding:18px 0}
+details.fold > summary::-webkit-details-marker{display:none}
 .toggle{flex:none; width:36px; height:36px; border-radius:50%; border:2px solid var(--teal); color:var(--teal);
   display:grid; place-items:center; font:700 24px/1 var(--sans)}
 .toggle::before{content:"+"}
-details.faq[open] .toggle::before{content:"\2212"}
+details.fold[open] .toggle::before{content:"\2212"}
 .qa{display:flex; flex-direction:column; gap:20px; padding:0 0 24px}
 .qa h3{font:700 19px/1.4 var(--sans); color:var(--teal); margin:0 0 4px}
 footer{font-size:14px; color:var(--muted); text-align:center}
@@ -102,19 +100,8 @@ footer{font-size:14px; color:var(--muted); text-align:center}
     </div>
   </div>
 
-  <section class="ask">
-    <h2>Ask a question</h2>
-    <div class="askbox">
-      <p>No account needed. Type your question below and press Submit.</p>
-      <p class="small">Good questions are added to Common questions below, with answers.</p>
-    </div>
-    <iframe class="form" title="Trip Book Questions form"
-      src="https://docs.google.com/forms/d/e/1FAIpQLSclvDI4FXfRsSjBAqkiJhEaG3xfww00q5eqKb0-X9ed5BtpNg/viewform?embedded=true"
-      loading="lazy">Loading the form…</iframe>
-    <p class="small">Form not showing? <a href="https://forms.gle/jtDgiAySfNko1m4T9" target="_blank" rel="noopener">Open it in a new tab</a>.</p>
-  </section>
-
-  <details class="faq">
+  <div class="folds">
+  <details class="fold">
     <summary><h2>Common questions</h2><span class="toggle" aria-hidden="true"></span></summary>
     <div class="qa">
       <!-- To add a question: copy one <div>...</div> block below and change the words. -->
@@ -131,7 +118,30 @@ footer{font-size:14px; color:var(--muted); text-align:center}
     </div>
   </details>
 
+    <details class="fold" id="ask">
+      <summary><h2>Ask a question</h2><span class="toggle" aria-hidden="true"></span></summary>
+      <div class="formbox">
+        <iframe class="form" id="qform" aria-label="Trip Book Questions form"
+          src="https://docs.google.com/forms/d/e/1FAIpQLSclvDI4FXfRsSjBAqkiJhEaG3xfww00q5eqKb0-X9ed5BtpNg/viewform?embedded=true">Loading the form…</iframe>
+        <p class="small">Form not showing? <a href="https://forms.gle/jtDgiAySfNko1m4T9" target="_blank" rel="noopener">Open it in a new tab</a>.</p>
+      </div>
+    </details>
+  </div>
+
   <footer>Trip Book Builder</footer>
 </div>
+<script>
+// The form reloads inside the frame: form, then thank-you, then form again ("Submit another response").
+// Shrink the frame on the thank-you page so there is no big blank space.
+(function(){
+  var f=document.getElementById('qform'), loads=0;
+  f.addEventListener('load',function(){
+    loads++;
+    var thanks = loads % 2 === 0;
+    f.classList.toggle('sent', thanks);
+    if (thanks) f.scrollIntoView({block:'start'});
+  });
+})();
+</script>
 </body>
 </html>
