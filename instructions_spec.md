@@ -2,7 +2,7 @@ GUIDE BOOK RULES
 (instructions for Claude to build/maintain Instructor_Guide.html and
 Student_Handbook.html. Separate from trip_book_spec.md, which governs the
 student's own trip book.)
-Last updated: 2026-10-20 01:00 UTC
+Last updated: 2026-10-20 23:52 UTC
 
 ## Purpose
 Keep both docs structurally identical (sidebar, ids, spacing, type scale) but
@@ -115,8 +115,8 @@ heading text and both TOC copies, matching reading order:
   1. Class size and student devices
   2. Before the first class — note to students
   3. Before the first class — facilitator prep list
-  4. Setting up each student's project (nested Part 1–4: account, Project, rules,
-     internet access)
+  4. Setting up each student's project (nested Part 1–4: account, internet
+     access, Project, rules)
   5. Building the trip book — the three steps (nested Step 1/2/3; Step 2 nests
      "Words to help students remember")
   6. Watch for
@@ -178,9 +178,12 @@ Instructor Guide keeps its own condensed single-sentence + `.note`→now-`.tip`/
 `.example` version; do not force the two-box layout into it.
 
 ## Turn on internet access (both docs)
-Last nested sub-part of setup: Student Handbook "4. Turn on internet access"
-(id `turn-on-internet-access`), Instructor Guide "Part 4 — Turn on internet
-access" (id `part-4-turn-on-internet-access`). Five steps: open claude.ai in a
+Second nested sub-part of setup, directly after creating the account and before
+creating the Project: Student Handbook "2. Turn on internet access" (id
+`turn-on-internet-access`), Instructor Guide "Part 2 — Turn on internet access"
+(id `part-2-turn-on-internet-access`; Project and rules ids follow as
+`part-3-create-a-project`, `part-4-attach-the-spec-file`). Watch for's map item
+points to Part 2. Five steps: open claude.ai in a
 browser on any device (laptop app also works) → name/initials → Settings →
 Capabilities → turn on **Code execution and file creation** → turn on **Allow
 network egress** (lets Claude fetch real map data). Then the note that the phone
