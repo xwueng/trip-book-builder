@@ -1,6 +1,6 @@
-# Trip Book Feedback: how it is set up
+# Trip Book Questions & Feedback: how it is set up
 
-Last updated: 2026-10-19
+Last updated: 2026-10-20
 
 People read about the trip book, see common questions, and ask their own question on one web page. No account or sign-in is needed. New questions are emailed to the owner, who replies by email and adds good ones to the page.
 
@@ -25,7 +25,7 @@ flowchart LR
   O -->|good Q&A added by hand| P
 ```
 
-1. A visitor opens the feedback home page and opens **Ask a question**.
+1. A visitor opens the feedback home page and opens **Ask a question or share feedback**.
 2. They fill out the form inside the page and press **Submit**.
 3. Google Forms saves the answer and shows the thank-you message inside the page.
 4. The script's trigger runs and emails the full question to the owner. If the visitor left an email, pressing **Reply** goes straight to them.
@@ -37,7 +37,7 @@ All feedback files live in the `feedback/` folder: the page, `feedback_form.gs`,
 
 **Look:** same colors, fonts and cover box as `Student_Handbook.html`. The example Golden Gate page uses the trip book's own colors.
 
-**Sections, top to bottom:** the cover ("What a trip book is"), the example page with four points and the Student Handbook link, **Common questions** (folds), and **Ask a question** (folds). Both folding sections start closed.
+**Sections, top to bottom:** the cover ("What a trip book is"), the example page with four points and the Student Handbook link, **Common questions** (folds), and **Ask a question or share feedback** (folds). Both folding sections start closed.
 
 **The built-in form:** the form is shown in a frame using its embed address:
 
