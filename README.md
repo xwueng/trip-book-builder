@@ -14,6 +14,9 @@ Facilitation materials for **My Trip Book**, a photo trip-book class that runs e
 | [`San_Francisco_demo_book.html`](./San_Francisco_demo_book.html) | Finished example trip book, flipped through on the projector on day one to show the goal | Instructors (demo only) |
 | [`San_Francisco_demo_book.pdf`](./San_Francisco_demo_book.pdf) | Static PDF export of the same demo book (screenshot-through-pages, per the "PDF generation" section of `trip_book_spec.md`) — handy for printing or sharing where a live flip-book isn't practical | Instructors (demo only) |
 | [`Demo Photos/`](./Demo%20Photos) | Source photos used to build the San Francisco demo book | Instructors (reference only, not needed by students) |
+| [`feedback/feedback_home_page.html`](./feedback/feedback_home_page.html) | **Trip Book Questions & Feedback** page — what a trip book is, Common questions, and the question form built into the page (no sign-in needed) | Students, families, anyone with the link |
+| [`feedback/feedback_setup.md`](./feedback/feedback_setup.md) | How the feedback page, Google Form and email script fit together; live form settings; how to add a Common question and answer questions | Owner (maintaining the feedback setup) |
+| [`feedback/feedback_form.gs`](./feedback/feedback_form.gs) | Public copy of the Google Apps Script that first created the form and emails each new question to the owner (email address removed) | Owner (reference only — do not rerun) |
 
 ## Viewing the guides
 
@@ -22,6 +25,7 @@ The HTML files are hosted live via **GitHub Pages**, so they open directly in a 
 - **Instructor Guide:** `https://<your-username>.github.io/<repo-name>/Instructor_Guide.html`
 - **Student Handbook:** `https://<your-username>.github.io/<repo-name>/Student_Handbook.html`
 - **San Francisco demo book:** `https://<your-username>.github.io/<repo-name>/San_Francisco_demo_book.html`
+- **Questions & Feedback page:** `https://<your-username>.github.io/<repo-name>/feedback/feedback_home_page.html`
 
 (Replace `<your-username>` and `<repo-name>` with your actual GitHub username and this repo's name.)
 
@@ -36,6 +40,12 @@ The HTML files are hosted live via **GitHub Pages**, so they open directly in a 
 Every Student Handbook revision updates **both** `Student_Handbook.html` and `Student_Handbook.pdf` — push them together. The Instructor Guide is HTML only (no PDF).
 
 If you edit the Instructor Guide or Student Handbook, keep both in sync — see `instructions_spec.md` for the shared structure/design rules both docs follow, and the verification checklist to run before publishing an update.
+
+## Questions & Feedback
+
+Students and families ask questions on the Questions & Feedback page. The form inside it is a Google Form in the owner's Google account, and a Google Apps Script emails each new question to the owner. Neither lives in this repo — see [`feedback/feedback_setup.md`](./feedback/feedback_setup.md) for how the pieces connect and the form's live settings.
+
+To add a Common question, edit `feedback/feedback_home_page.html` on GitHub (pencil icon), find the line `To add a question`, and paste a new question block under it. Never post the asker's name or email.
 
 ## Setup this repo needs (one-time)
 
