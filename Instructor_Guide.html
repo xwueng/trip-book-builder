@@ -132,10 +132,12 @@
   }
   .feature-table th, .feature-table td{padding:10px 14px; text-align:left; font-size:16px; vertical-align:top; border-bottom:none;}
   .feature-table th{
-    background:var(--teal-tint); color:var(--teal-deep); font-size:13.5px;
-    text-transform:uppercase; letter-spacing:.04em;
+    background:var(--teal-tint); color:var(--teal-deep); font-size:15px;
+    font-weight:800; text-transform:uppercase; letter-spacing:.04em;
   }
+  @media (max-width:600px){ .feature-table th{font-size:13.5px; letter-spacing:0;} }
   .feature-table tbody tr+tr td{border-top:1px solid var(--rule);}
+  .feature-table th+th, .feature-table td+td{border-left:1px solid var(--rule);}
   .feature-table td:first-child{font-weight:700; color:var(--teal-deep);}
   .feature-table--index td:first-child{width:30px;}
 
@@ -173,6 +175,7 @@
 
   .dl-icon{ vertical-align:-2px; }
   .send-icon{ vertical-align:-2px; }
+  .feedback-icon{ vertical-align:-3px; }
   .print-timestamp{ text-align:right; font-size:9px; color:#888888; margin:20px 0 0; }
 
   /* Side TOC panel */
@@ -254,6 +257,7 @@
           <li><a href="#part-1-create-a-claude-account" data-target="part-1-create-a-claude-account">Part 1 — Create account</a></li>
           <li><a href="#part-2-create-a-project" data-target="part-2-create-a-project">Part 2 — Create project</a></li>
           <li><a href="#part-3-attach-the-spec-file" data-target="part-3-attach-the-spec-file">Part 3 — Add the rules</a></li>
+          <li><a href="#part-4-turn-on-internet-access" data-target="part-4-turn-on-internet-access">Part 4 — Internet access</a></li>
         </ul>
       </li>
       <li><a href="#building-the-trip-book-the-three-steps" data-target="building-the-trip-book-the-three-steps">5. Building the trip book</a></li>
@@ -267,6 +271,7 @@
       <li><a href="#step-3-download-and-share-it" data-target="step-3-download-and-share-it">Step 3 — Share your book</a></li>
       <li><a href="#watch-for" data-target="watch-for">6. Watch for</a></li>
       <li><a href="#what-claude-does-for-you" data-target="what-claude-does-for-you">7. What Claude AI does and doesn't</a></li>
+      <li><a href="#questions-and-feedback" data-target="questions-and-feedback">8. Questions &amp; feedback</a></li>
     </ol>
   </nav>
 </aside>
@@ -288,12 +293,13 @@
   <li><a href="#before-the-first-class-facilitator-prep-list">3. Before the first class — facilitator prep list</a></li>
   <li><a href="#setting-up-each-students-project">4. Setting up each student's project</a></li>
   <li><a href="#building-the-trip-book-the-three-steps">5. Building the trip book — the three steps</a></li>
-  <li><a href="#step-1-start-your-book-and-add-all-your-photos">Step 1 — Start your book and add all your photos</a></li>
+  <li><a href="#step-1-start-your-book-and-add-all-your-photos">Step 1 — Start your book and add your photos</a></li>
   <li><a href="#step-2-put-it-in-order-and-polish">Step 2 — Put it in order and polish</a></li>
   <li><a href="#words-to-help-students-remember">Words to help students remember</a></li>
   <li><a href="#step-3-download-and-share-it">Step 3 — Share your book</a></li>
   <li><a href="#watch-for">6. Watch for</a></li>
   <li><a href="#what-claude-does-for-you">7. What Claude AI does and doesn't</a></li>
+  <li><a href="#questions-and-feedback">8. Questions &amp; feedback</a></li>
 </ol>
 </nav>
 
@@ -315,9 +321,9 @@
   </ul>
   <p>The student chooses one of these three setups — a phone is required either way (needed to receive a verification code if signing up with a non-Google email):</p>
   <ul>
-    <li><strong>Phone + laptop</strong> — <strong>recommended</strong>: one screen for the handbook, one for Claude</li>
-    <li><strong>Phone + tablet</strong> — a solid alternative</li>
-    <li><strong>Phone only</strong> — works, but the small screen makes it harder to follow the handbook while working in Claude</li>
+    <li><strong>Phone + laptop</strong> — <strong>recommended</strong>: read the handbook on one screen and work in Claude on the other</li>
+    <li><strong>Phone + tablet</strong> — a solid middle ground if you don't have a laptop</li>
+    <li><strong>Phone only</strong> — works, but the small screen makes it harder to read the handbook and work in Claude at the same time</li>
   </ul>
   <div class="example"><strong>The setup steps:</strong> students create their own Claude account and Project — a real, if short, task. Budget 10–15 minutes each. Phone verification (below) is the most common snag, so build in some slack.</div>
   </div>
@@ -343,6 +349,7 @@
     <li>(Before Step 1) Students without a Gmail address reminded to bring a mobile phone that can receive text messages, even if working on a laptop</li>
     <li>The example book ready on the projector</li>
     <li>Handouts printed in large type</li>
+    <li>The <a href="https://xwueng.github.io/trip-book-builder/feedback/feedback_home_page.html" target="_blank" rel="noopener">Questions &amp; Feedback page</a> link ready to share at the end of class</li>
   </ul>
   </div>
   </details>
@@ -412,6 +419,23 @@
   </div>
   </details>
 
+  <details class="step-details">
+  <summary>
+    <svg class="toggle-icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><rect x="1.5" y="1.5" width="17" height="17" rx="4" fill="none" stroke="currentColor" stroke-width="1.6"/><line class="toggle-icon-v" x1="10" y1="5.5" x2="10" y2="14.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><line x1="5.5" y1="10" x2="14.5" y2="10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    <h3 id="part-4-turn-on-internet-access">Part 4 — Turn on internet access</h3>
+  </summary>
+  <div class="step-body">
+  <ol>
+    <li>Open <strong>claude.ai</strong> in a browser — on any device. <span style="color:var(--clay);">(On a laptop, the Claude app works too.)</span></li>
+    <li>Click the name or initials (bottom-left), then <strong>Settings</strong>.</li>
+    <li>Open <strong>Capabilities</strong>.</li>
+    <li>Turn on <strong>Code execution and file creation</strong>.</li>
+    <li>Turn on <strong>Allow network egress</strong> — this lets Claude fetch real map data for the book.</li>
+  </ol>
+  <div class="tip">The phone and iPad apps don't have this switch, so students need a browser for this part. It's a one-time setting that applies to every chat, including in the app.</div>
+  </div>
+  </details>
+
   <p>Once setup is done, students just upload photos with the <strong>+</strong> button — the project's instructions handle the rest: starting the book, asking for a title and dates, adding pages, asking about each photo, skip logic, facts, and sizing.</p>
   </div>
   </details>
@@ -427,7 +451,7 @@
   <details class="step-details">
   <summary>
     <svg class="toggle-icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><rect x="1.5" y="1.5" width="17" height="17" rx="4" fill="none" stroke="currentColor" stroke-width="1.6"/><line class="toggle-icon-v" x1="10" y1="5.5" x2="10" y2="14.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><line x1="5.5" y1="10" x2="14.5" y2="10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-    <h2 id="step-1-start-your-book-and-add-all-your-photos">Step 1 — Start your book and add all your photos</h2>
+    <h2 id="step-1-start-your-book-and-add-all-your-photos">Step 1 — Start your book and add your photos</h2>
   </summary>
   <div class="step-body">
   <ol>
@@ -435,7 +459,7 @@
     <li>Click the + at the bottom of the chat.</li>
     <li>Choose <strong>3–4 photos</strong> to start with. <span style="color:var(--clay);">(Ctrl+click for 3–4, or tap each one on a phone — steer them away from "Select All," which can grab the whole camera roll. A handful is enough to see the book take shape; more can go in later.)</span></li>
     <li>Click the <svg class="send-icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#D97757"/><path d="M12 17V7M12 7l-4.5 4.5M12 7l4.5 4.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg> icon to send them.</li>
-    <li>Claude will ask for a title and the trip dates. Students can answer, or choose to skip — Claude will work from the photo dates instead. <span style="color:var(--clay);">(Worth letting at least one student try "skip," so the class sees Claude infer the dates on its own.)</span></li>
+    <li>Claude will ask for a title and the trip dates. Students can answer, or choose to skip — Claude will work from the photo dates instead. <span style="color:var(--clay);">(Claude gives choices as a numbered list — students can reply with just the number. Worth letting at least one student try "skip," so the class sees Claude infer the dates on its own.)</span></li>
     <li>Watch each photo become a page.</li>
     <li>Flip through your book on the screen.</li>
   </ol>
@@ -451,6 +475,7 @@
   </summary>
   <div class="step-body">
   <p>Encourage students to put more than one small change in <strong>one message</strong> instead of sending them one at a time — this saves messages, which matters most on a free account.</p>
+  <p>If students like what Claude did, they can click the <svg class="feedback-icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> thumbs up icon below its reply, or <svg class="feedback-icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3zm7-13h2.67A2.31 2.31 0 0 1 22 4v7a2.31 2.31 0 0 1-2.33 2H17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> thumbs down if not. To save tokens, they can skip "please" and "thank you" — just say what to change.</p>
   <div class="tip">Made a lot of edits in one sitting? Students may hit their usage limit for a while. Let them know this is normal — they just need to wait a few hours and can pick up right where they left off.</div>
   <p>Ask Claude to make any of these changes — students just type or say it in plain language.</p>
   <table class="feature-table">
@@ -463,6 +488,7 @@
       <tr><td>Fix the wording</td><td>"Change the line on the castle photo to…"</td></tr>
     </tbody>
   </table>
+  <p><strong>Example — one message, three edits:</strong> "Move the bridge photo to the front, remove the blurry photo on page 4, and change the line on the castle photo to 'We got soaked but couldn't stop laughing.'"</p>
   <p>Flip through and check it reads the way you want.</p>
 
   <details class="step-details">
@@ -515,6 +541,9 @@
     <li>Phone verification stalls — wrong number type (landline, Google Voice, VoIP), or the code takes a few minutes to arrive</li>
     <li>Students mistyping or only partly pasting the Project-instructions line — check it matches exactly before moving on</li>
     <li>Students who can't find the instructions box (<strong>Instructions</strong> on a computer, <strong>Add Instructions</strong> on a phone/tablet) — point them to it directly</li>
+    <li>No map on the closing page, or a rough one — check both switches in Part 4 are on</li>
+    <li>Students typing a word when Claude shows a numbered list — remind them they can reply with just the number</li>
+    <li>Students on a free account picking <strong>Share a public link</strong> — it needs a paid account; point them to <strong>Get a PDF</strong></li>
     <li>Trouble uploading photos from a student device — open Claude in that device's own browser and use + there</li>
     <li>A "confirm venue" tag left on a page — remind the student to just tell Claude the real place</li>
     <li>Quiet students who are stuck — circulate and check screens</li>
@@ -547,7 +576,17 @@
   </div>
   </details>
 
-  <p class="print-timestamp">Last updated: 2026-10-17 20:16 UTC</p>
+  <details class="step-details">
+  <summary>
+    <svg class="toggle-icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><rect x="1.5" y="1.5" width="17" height="17" rx="4" fill="none" stroke="currentColor" stroke-width="1.6"/><line class="toggle-icon-v" x1="10" y1="5.5" x2="10" y2="14.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><line x1="5.5" y1="10" x2="14.5" y2="10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    <h2 id="questions-and-feedback">8. Questions &amp; feedback</h2>
+  </summary>
+  <div class="step-body">
+  <p>At the end of class, point students to the <a href="https://xwueng.github.io/trip-book-builder/feedback/feedback_home_page.html" target="_blank" rel="noopener">Questions &amp; Feedback page</a> — common questions plus a short form, no account or sign-in needed. Students and their families can use it. Each question is emailed to the lab owner, who replies when an email was left and adds useful ones to Common questions. Names and emails are never posted.</p>
+  </div>
+  </details>
+
+  <p class="print-timestamp">Last updated: 2026-10-20 01:00 UTC</p>
 
 </div>
 
